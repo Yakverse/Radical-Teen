@@ -1,8 +1,14 @@
+@font-face {
+    font-family: Burbank Big Condensed Bold;
+    src: url(../font/burbank-big-condensed-bold.otf);
+  }
+
 body {
     margin: 0;
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 100%;
-    line-height: 1.3em;
+    line-height: 100%;
+    overflow: hidden;
 }
 
 header{
@@ -13,22 +19,65 @@ header{
     position: fixed;
 }
 
-main{
-    margin-top: 10%;
-    margin-left: 27.5%;
-    width: 45%;
-    margin-right: 27.5%;
-    border-radius: 15px;
+.titulo{
+    font-family: 'Burbank Big Condensed Bold';
+    line-height: 100%;
+    color: white;
+    font-size: 48px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    text-align: center;
 }
 
-main .bloco .iconeJogo{
-    width: 200px;
-    height: 200px;
-    border-radius: 15px;
-    margin: 1.71%;
-    margin-bottom: 2%;
-    margin-top: 2%;
-    border: solid 1px white;
-    padding: 3%;
-    background: black;
+main{
+    position: fixed;
+    margin-top: 0;
+    top: 8%;
+    height: 92%;
+    width: 100%;
+    background-color: rgba(6, 28, 51, 1);
+    text-align: center;
 }
+
+.bloco{
+    display: inline-block;
+    width: 33%;
+    height: 50%;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 3px;
+    transition: all 1s;
+}
+.bloco:hover{
+    transform: scale(1.02);
+    cursor: pointer;
+}
+.bloco .textJogo{
+    transition: all 1s;
+}
+.bloco:hover .textJogo{
+    transform: scale(1.2);
+}
+#csgo{
+    background: url(../img/csgo.jpg) no-repeat center / cover;
+}
+#fortnite{
+    background: url(../img/fortnite.jpg) no-repeat center / cover;
+}
+#freefire{
+    background: url(../img/freefire.jpg) no-repeat center / cover;
+}
+#fifa{
+    background: url(../img/fifa.jpg) no-repeat center / cover;
+}
+#lol{
+    background: url(../img/lol.jpg) no-repeat center / cover;
+}
+#rocketleague{
+    background: url(../img/rocketleague.png) no-repeat center / cover;
+}
+
+.opaco{
+    opacity: 30%;
+}
+
