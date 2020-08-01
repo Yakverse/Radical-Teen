@@ -11,6 +11,7 @@ body {
     overflow: hidden;
 }
 
+/* Header */
 header{
     top: 0;
     height: 8%;
@@ -19,7 +20,24 @@ header{
     position: fixed;
 }
 
+.redesSociais{
+    position: absolute;
+    top: 20%;
+    left: 1%;
+    opacity: 75%;
+}
+
+.iconesRedesSociais{
+    width: 46px;
+    height: 46px;
+}
+.iconesRedesSociais:hover{
+    cursor: pointer;
+}
+
 .titulo{
+    margin: 0;
+    margin-top: 1%;
     font-family: 'Burbank Big Condensed Bold';
     line-height: 100%;
     color: white;
@@ -27,8 +45,10 @@ header{
     font-weight: bolder;
     text-transform: uppercase;
     text-align: center;
+    z-index: 999;
 }
 
+/* Main */
 main{
     position: fixed;
     margin-top: 0;
@@ -52,11 +72,13 @@ main{
     transform: scale(1.02);
     cursor: pointer;
 }
-.bloco .textJogo{
-    transition: all 1s;
-}
 .bloco:hover .textJogo{
     transform: scale(1.2);
+}
+.textJogo{
+    transition: all 1s;
+    width: auto; 
+    height: 200px;
 }
 #csgo{
     background: url(../img/csgo.jpg) no-repeat center / cover;
@@ -81,3 +103,22 @@ main{
     opacity: 30%;
 }
 
+
+
+/* Mobile */
+@media (max-width: 1080px){
+    .redesSociais{
+        display: none;
+    }
+    .titulo{
+        margin-top: 2%;
+        font-size: 12vw;
+        z-index: 9999;
+    }
+
+    .textJogo{
+        height: 110px;
+        width: auto;
+        text-align: right;
+    }
+}
