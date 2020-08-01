@@ -23,7 +23,7 @@ header{
 .redesSociais{
     position: absolute;
     top: 20%;
-    left: 1%;
+    right: 1%;
     opacity: 75%;
 }
 
@@ -33,6 +33,7 @@ header{
 }
 .iconesRedesSociais:hover{
     cursor: pointer;
+    transform: scale(1.2);
 }
 
 .titulo{
@@ -46,6 +47,7 @@ header{
     text-transform: uppercase;
     text-align: center;
     z-index: 999;
+    transition: all 1s;
 }
 
 /* Main */
@@ -55,16 +57,17 @@ main{
     top: 8%;
     height: 92%;
     width: 100%;
-    background-color: rgba(6, 28, 51, 1);
+    background-color: black;
     text-align: center;
 }
 
 .bloco{
     display: inline-block;
     width: 33%;
-    height: 50%;
+    height: 49%;
     margin-left: 0;
     margin-right: 0;
+    margin-top: 0.33%;
     border-radius: 3px;
     transition: all 1s;
 }
@@ -100,13 +103,20 @@ main{
 }
 
 .opaco{
-    opacity: 30%;
+    opacity: 25%;
 }
 
 
 
 /* Mobile */
-@media (max-width: 1080px){
+@media (max-width: 1650px ){
+    .textJogo{
+        height: 110px;
+        width: auto;
+        text-align: right;
+    } 
+}
+@media (max-width: 1080px ){
     .redesSociais{
         display: none;
     }
@@ -116,9 +126,13 @@ main{
         z-index: 9999;
     }
 
-    .textJogo{
-        height: 110px;
-        width: auto;
-        text-align: right;
+    #fifa{
+        background: url(../img/fifamobile.jpg) no-repeat center / cover;
+    }
+}
+@media (max-height: 1600px){
+    .titulo{
+        margin-top: 1%;
+        font-size: 48px;
     }
 }
