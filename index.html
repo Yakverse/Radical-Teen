@@ -6,6 +6,8 @@
         <link rel="shortcut icon" href="img/icon.png" />
         <!-- Font Awesome -->
         <script src="https://kit.fontawesome.com/72ea4166fa.js" crossorigin="anonymous"></script>
+        <!-- JQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     <body>
         <header>
@@ -19,37 +21,52 @@
 
             </div>
             <h1 class="titulo">Selecione Um Jogo<span id="pisca">_</span></h1>
+            <div class="return">
+                <i class="iconeReturn fas fa-arrow-left"></i>
+            </div>
         </header>
         <main>
             <div class="bloco" id="fortnite">
-                <p>⠀</p>
+                <p class="nada"> </p>
                 <img src="img/fortnitetext.png" class="textJogo">
             </div>
 
             <div class="bloco" id="fifa">
-                <p>⠀</p>
+                <p class="nada"> </p>
                 <img src="img/fifatext.png" class="textJogo">
             </div>
 
-            <div class="bloco opaco" id="csgo" title="EM BREVE">
-                <p>⠀</p>
+            <div class="bloco naodisponivel" id="csgo" title="EM BREVE">
+                <p class="nada"> </p>
                 <img src="img/csgotext.png" class="textJogo">
             </div>
 
-            <div class="bloco opaco" id="freefire">
-                <p>⠀</p>
+            <div class="bloco naodisponivel" id="freefire">
+                <p class="nada"> </p>
                 <img src="img/freefiretext.png" class="textJogo" title="EM BREVE">
             </div>
 
-            <div class="bloco opaco" id="lol">
-                <p>⠀</p>
+            <div class="bloco naodisponivel" id="lol">
+                <p class="nada"> </p>
                 <img src="img/loltext.png" class="textJogo" title="EM BREVE">
             </div>
 
-            <div class="bloco opaco" id="rocketleague">
-                <p>⠀</p>
+            <div class="bloco naodisponivel" id="rocketleague">
+                <p class="nada"> </p>
                 <img src="img/rocketleaguetext.png" class="textJogo" title="EM BREVE">
             </div>
+
+            <div class="pagamento">
+                <img class="bancoLogo" src="img/logonubankroxo.png">
+                <p class="nada"> </p>
+                <img class="qrcodePagamento" src="img/qrcode.png">
+                <p class="bancoNomeCliente">Nome Completo do Usuário da Conta</p>
+                <div class="informacoesPagamento">
+                    <p>Banco 260 - Nu Pagamentos S.A.</p>
+                    <p>Agência 0001</p>
+                    <p>Conta XXXXXXX-2</p>
+                </div>
         </main>
+        <script src="js/script.js"></script>
     </body>
 </html>
