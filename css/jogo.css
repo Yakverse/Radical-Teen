@@ -46,6 +46,10 @@ header{
 .redesSociais .fa-twitch::before{
     color:#9146ff;
 }
+.redesSociais .fa-whatsapp::before{
+    color: #2bb201;
+    font-size: 53px;
+}
 /* .redesSociais .fa-instagram-square::before{
     color: #44274c;
 } */
@@ -56,10 +60,12 @@ header{
 
 
 /* Return */
-.return{
+.voltar{
     position: absolute;
     top: 20%;
     left: 1%;
+}
+.return{
     display: none;
 }
 .iconeReturn{
@@ -257,6 +263,9 @@ main{
 @media (max-width: 1080px ){
     .redesSociais{
         display: none;
+    }
+    .home{
+        opacity: 0;
     }
     .titulo{
         margin-top: 3%;

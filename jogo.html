@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Campeonatos Radical Teen</title>
+        <link rel="stylesheet" href="css/jogo.css">
+        <link rel="shortcut icon" href="img/icon.png" />
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/72ea4166fa.js" crossorigin="anonymous"></script>
+        <!-- JQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    </head>
+    <body>
+        <header>
+            <div class="redesSociais">
+                <a href="https://www.twitch.tv/radicalteen_" target="_blank"><i class="iconesRedesSociais fab fa-twitch"></i></a>
+                <a href="https://www.instagram.com/radicalteen_" target="_blank"><img class="iconesRedesSociais" src="img/instagramicon.png"></a>
+                <!-- <img class="iconesRedesSociais" src="img/discordicon.png"> -->
+                <a href="https://discord.gg/AR3mQbQ" target="_blank"><i class="iconesRedesSociais fab fa-discord"></i></a>
+                <!-- <img class="iconesRedesSociais" src="img/twitchicon.png"> -->
+                <a href="https://chat.whatsapp.com/Jeg1ZMurond09tT8WaFdCy" target="_blank"><i class="iconesRedesSociais fab fa-whatsapp"></i></a>
+                <!-- <a href="https://www.instagram.com/radicalteen_" target="_blank"><i class="iconesRedesSociais fab fa-instagram-square"></i></a> -->
+
+            </div>
+            <h1 class="titulo">Selecione Um Jogo</h1>
+            <div class="voltar">
+                <div class="return"><i class="iconeReturn fas fa-arrow-left"></i></div>
+                <a href="index.html"><div class="home"><i class="iconeReturn fas fa-home"></i></div></a>
+            </div>
+        </header>
+        <main>
+            <div class="bloco" id="fortnite">
+                <p class="nada"> </p>
+                <img src="img/fortnitetext.png" class="textJogo">
+            </div>
+
+            <div class="bloco" id="fifa">
+                <p class="nada"> </p>
+                <img src="img/fifatext.png" class="textJogo">
+            </div>
+
+            <div class="bloco naodisponivel" id="csgo" title="EM BREVE">
+                <p class="nada"> </p>
+                <img src="img/csgotext.png" class="textJogo">
+            </div>
+
+            <div class="bloco naodisponivel" id="freefire">
+                <p class="nada"> </p>
+                <img src="img/freefiretext.png" class="textJogo" title="EM BREVE">
+            </div>
+
+            <div class="bloco naodisponivel" id="lol">
+                <p class="nada"> </p>
+                <img src="img/loltext.png" class="textJogo" title="EM BREVE">
+            </div>
+
+            <div class="bloco naodisponivel" id="rocketleague">
+                <p class="nada"> </p>
+                <img src="img/rocketleaguetext.png" class="textJogo" title="EM BREVE">
+            </div>
+
+            <div class="pagamento">
+                <img class="bancoLogo" src="img/logonubankroxo.png">
+                <p class="nada"> </p>
+                <img class="qrcodePagamento" src="img/qrcode.png">
+                <p class="bancoNomeCliente">Nome Completo do Usuário da Conta</p>
+                <div class="informacoesPagamento">
+                    <p>Banco 260 - Nu Pagamentos S.A.</p>
+                    <p>Agência 0001</p>
+                    <p>Conta XXXXXXX-2</p>
+                </div>
+        </main>
+        <!-- Mensagem de Erro -->
+        <div class="mensagem animate__animated animate__fadeInUp">
+            <div class="topMensagemErro">
+            </div>
+            <p class="textoMensagem">Nenhum campeonato disponível para este jogo.</p>
+            <div class="progress">
+                <div class="progress-value"></div>
+            </div>
+        </div>
+        </script>
+        <script src="js/jogo.js"></script>
+    </body>
+</html>
