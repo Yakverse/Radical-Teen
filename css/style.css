@@ -8,6 +8,7 @@ body {
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 100%;
     line-height: 100%;
+    min-height: 100%;
 }
 
 img{
@@ -86,16 +87,6 @@ header{
     text-align: center;
     z-index: 999;
     transition: all 1s;
-}
-
-@keyframes pisca {
-    50% {
-        opacity: 0;
-      }
-}
-#pisca {
-    animation: pisca 1s step-start infinite;
-    display: none;
 }
 
 /* Main */
@@ -212,6 +203,49 @@ main{
     line-height: 100%;
 }
 
+.mensagem{
+    font-family: 'Burbank Big Condensed Bold';
+    color: black;
+    font-size: 32px;
+    bottom: 20px;
+    right: 20px;
+    position: fixed;
+    background: #f6f6f6;
+    width: 20%;
+    height: 15%;
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+}
+
+.textoMensagem{
+    margin-left: 5%;
+    margin-right: 5%;
+    line-height: 100%;
+}
+
+.progress {
+    background: rgba(255,255,255,0.1);
+    align-items: center;
+    position: absolute;
+    height: 5%;
+    width: 100%;
+    bottom: 0;
+}
+  
+.progress-value {
+    animation: load 6s normal forwards;
+    box-shadow: 0 10px 40px -10px white;
+    background: black;
+    height: 100%;
+    width: 0;
+}
+
+@keyframes load {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
 /* Mobile */
 @media (max-width: 1650px ){
     .textJogo{
@@ -229,11 +263,14 @@ main{
         font-size: 12vw;
         z-index: 9999;
     }
-
+    .iconeReturn::before{
+        font-size: 12vw;
+    }
     #fifa{
         background: url(../img/fifamobile.jpg) no-repeat center / cover;
     }
     .pagamento{
+        background-color:rgba(0, 0, 0, 0.75);
         top: 0;
         left: 0;
         height: 100%;
@@ -256,6 +293,19 @@ main{
     }
     .informacoesPagamento{
         margin-top: 15%;
+    }
+    .mensagem{
+        top: 25%;
+        left: 20%;
+        right: auto;
+        width: 60%;
+        height: 50%;
+    }
+    .textoMensagem{
+        font-size: 12vw;
+    }
+    .progress{
+        height: 2%;
     }
 }
 @media (max-height: 1600px){

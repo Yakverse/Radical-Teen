@@ -4,6 +4,7 @@ $(document).ready(function(){
     var main = $("main")
     var titulo = $(".titulo")
     var pagamento = $(".pagamento")
+    var mensagem = $(".mensagem")
 
     // Paginas
     bloco.click(function(){
@@ -11,7 +12,13 @@ $(document).ready(function(){
         var titulo = $(".titulo")
         var pagamento = $(".pagamento")
         if($( this ).hasClass("naodisponivel")){
-            alert("No momento não existe nenhum campeonato disponível para este jogo")
+            $.wait = function( callback, seconds){
+                return window.setTimeout( callback, seconds * 1000 );
+            }
+            mensagem.show()
+            $.wait( function(){ 
+                mensagem.hide("fast") 
+            }, 7);
         }
         else{
             bloco.hide()
