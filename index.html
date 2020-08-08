@@ -8,6 +8,7 @@
         <script src="https://kit.fontawesome.com/72ea4166fa.js" crossorigin="anonymous"></script>
         <!-- JQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     </head>
     <body>
         <header>
@@ -20,7 +21,7 @@
                 <!-- <a href="https://www.instagram.com/radicalteen_" target="_blank"><i class="iconesRedesSociais fab fa-instagram-square"></i></a> -->
 
             </div>
-            <h1 class="titulo">Selecione Um Jogo<span id="pisca">_</span></h1>
+            <h1 class="titulo">Selecione Um Jogo</h1>
             <div class="return">
                 <i class="iconeReturn fas fa-arrow-left"></i>
             </div>
@@ -67,6 +68,16 @@
                     <p>Conta XXXXXXX-2</p>
                 </div>
         </main>
+        <!-- Mensagem de Erro -->
+        <div class="mensagem animate__animated animate__fadeInUp">
+            <div class="topMensagemErro">
+            </div>
+            <p class="textoMensagem">Nenhum campeonato disponível para este jogo.</p>
+            <div class="progress">
+                <div class="progress-value"></div>
+            </div>
+        </div>
+        </script>
         <script src="js/script.js"></script>
     </body>
 </html>
