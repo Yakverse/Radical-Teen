@@ -108,7 +108,7 @@ main{
 }
 
 
-.botaoInfo{
+.botaoInfoDiv{
     position: absolute;
     bottom: 25%;
     z-index: 999;
@@ -120,11 +120,11 @@ main{
     color: white;
 }
 
-.botaoInfo i::before{
+.botaoInfo::before{
     font-size: 72px;
 }
 
-.botaoInfo i:hover{
+.botaoInfo:hover{
     cursor: pointer;
     color: black;
 }
@@ -166,6 +166,11 @@ main{
 
 /* Mobile */
 @media (max-width: 1650px ){
+    .mensagemInfo{
+        left: 5%;
+        width: 90%;
+        top: 5%;
+    }
 }
 @media (max-width: 1080px ){
     .redesSociais{
@@ -188,11 +193,6 @@ main{
         height: 15%;
         left: 20%;
         font-size: 10vw;
-    }
-    .mensagemInfo{
-        left: 5%;
-        width: 90%;
-        top: 5%;
     }
     .closeInfo:before{
         font-size: 10vw;
