@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    var body = $("body")
     var bloco = $(".bloco")
     var seta = $(".return")
     var home= $(".home")
@@ -26,6 +27,7 @@ $(document).ready(function(){
             home.hide()
             seta.show()
             pagamento.show()
+            body.removeAttr("id")
             if(this.id == "fortnite"){
                 main.attr("id", "fortnite")
                 titulo.text("fortnite");
@@ -59,5 +61,6 @@ $(document).ready(function(){
         titulo.text("Selecione Um Jogo");
         home.show()
         bloco.show()
+        body.attr("id", "selecionarJogoPagina")
     });
 });
