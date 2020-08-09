@@ -34,7 +34,9 @@ main{
     width: 33%;
     display: inline-block;
     transition: all 1s;
-    opacity: 15%;
+    opacity: 25%;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
 }
 
 #csgo{
@@ -59,7 +61,7 @@ main{
 
 .titulo{
     margin: 0;
-    top: 10%;
+    top: 15%;
     font-family: 'Burbank Big Condensed Bold';
     line-height: 100%;
     color: white;
@@ -77,18 +79,6 @@ main{
     text-align: center;
 }
 
-.texto{
-    font-family: 'Burbank Big Condensed Bold';
-    color: white;
-    line-height: 100%;
-    font-size: 52px;
-    position: absolute;
-    margin-left: 20%;
-    margin-right: 20%;
-    z-index: 999;
-    top: 30%;
-}
-
 .botaoEntrar{
     text-transform: uppercase;
     padding: 0;
@@ -99,7 +89,7 @@ main{
     background: white;
     position: absolute;
     left: 35%;
-    bottom: 5%;
+    bottom: 40%;
     z-index: 999;
     color: black;
     font-size: 42px;
@@ -113,10 +103,66 @@ main{
     outline: -webkit-focus-ring-color auto 1px;
 }
 
-button:active {
+.botaoEntrar:active {
     border-style: none;
 }
 
+
+.botaoInfo{
+    position: absolute;
+    bottom: 25%;
+    z-index: 999;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+}
+
+.botaoInfo i::before{
+    font-size: 72px;
+}
+
+.botaoInfo i:hover{
+    cursor: pointer;
+    color: black;
+}
+
+.mensagemInfo{
+    position: absolute;
+    background: black;
+    border: 1px solid white;
+    z-index: 1000;
+    top: 20%;
+    min-height: 60%;
+    left: 30%;
+    width: 40%;
+    display: none;
+}
+
+.closeInfo::before{
+    font-size: 48px;
+    color: white;
+    position: absolute;
+    right: 3%;
+    top: 2%;
+}
+.closeInfo:hover{
+    cursor: pointer;
+    color: red;
+}
+
+.textoInfo{
+    font-family: 'Burbank Big Condensed Bold';
+    color: white;
+    line-height: 100%;
+    font-size: 52px;
+    margin-bottom: 5%;
+    margin-top: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
 
 /* Mobile */
 @media (max-width: 1650px ){
@@ -128,7 +174,6 @@ button:active {
     .titulo{
         margin-top: 3%;
         font-size: 16vw;
-        z-index: 9999;
     }
     #fifa{
         background: url(../img/fifamobile.jpg) no-repeat center / cover;
@@ -142,6 +187,17 @@ button:active {
         width: 60%;
         height: 15%;
         left: 20%;
+        font-size: 10vw;
+    }
+    .mensagemInfo{
+        left: 5%;
+        width: 90%;
+        top: 5%;
+    }
+    .closeInfo:before{
+        font-size: 10vw;
+    }
+    .textoInfo{
         font-size: 10vw;
     }
 }
