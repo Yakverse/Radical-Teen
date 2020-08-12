@@ -10,6 +10,8 @@ body {
     line-height: 100%;
     min-height: 100%;
     background: black;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 img{
@@ -19,51 +21,36 @@ img{
     -o-user-drag: none;
 }
 
-#selecionarJogoPagina{
-    overflow: hidden;
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: white;
 }
 
 /* Header */
 header{
     top: 0;
-    height: 8%;
+    height: auto;
     width: 100%;
     background: black;
     position: fixed;
     z-index: 999;
 }
 
-.redesSociais{
-    position: absolute;
-    top: 20%;
-    right: 1%;
-}
-.iconesRedesSociais{
+.icones{
     width: auto;
-    height: 45px;
+    height: 4.5vh;
 }
-.iconesRedesSociais::before{
-    font-size: 48px;
+.icones::before{
+    font-size: 4.5vh;
     color: white;
 }
-.redesSociais .fa-discord::before{
-    color: #7289dc;
-}
-.redesSociais .fa-twitch::before{
-    color:#9146ff;
-}
-.redesSociais .fa-whatsapp::before{
-    color: #2bb201;
-    font-size: 53px;
-}
-/* .redesSociais .fa-instagram-square::before{
-    color: #44274c;
-} */
-.iconesRedesSociais:hover{
+.icones:hover{
     cursor: pointer;
     transform: scale(1.2);
 }
-
 
 /* Return */
 .voltar{
@@ -74,37 +61,51 @@ header{
 .return{
     display: none;
 }
-.iconeReturn{
-    width: auto;
-    height: 45px;
-}
-.iconeReturn::before{
-    font-size: 48px;
-    color: white;
-}
-.iconeReturn:hover{
-    cursor: pointer;
-    transform: scale(1.2);
-}
 
+
+/* Título */
 .titulo{
-    margin: 0;
-    margin-top: 1%;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
+    font-size: 5vh;
     font-family: 'Burbank Big Condensed Bold';
     line-height: 100%;
     color: white;
-    font-size: 48px;
     font-weight: bolder;
     text-transform: uppercase;
     text-align: center;
     transition: all 1s;
 }
 
+
+/* Redes Sociais */
+.redesSociais{
+    position: absolute;
+    top: 20%;
+    right: 1%;
+}
+/* .redesSociais .fa-discord::before{
+    color: #7289dc;
+}
+.redesSociais .fa-twitch::before{
+    color:#9146ff;
+}
+.redesSociais .fa-whatsapp::before{
+    color: #2bb201;
+    font-size: 53px;
+} */
+/* .redesSociais .fa-instagram-square::before{
+    color: #44274c;
+} */
+.redesSociais .fa-whatsapp::before, .fa-instagram::before{
+    font-size: 5vh;
+}
+
 /* Main */
 main{
     position: absolute;
     margin-top: 0;
-    top: 8%;
+    top: 8vh;
     height: 92%;
     width: 100%;
     background-color: black;
@@ -131,7 +132,9 @@ main{
 .textJogo{
     transition: all 1s;
     width: auto; 
-    height: 200px;
+    max-width: 100%;
+    height: 40%;
+    margin-top: 15%;
 }
 
 #csgo{
@@ -155,8 +158,12 @@ main{
 
 .naodisponivel{
     opacity: 25%;
+    filter: blur(0.75px);
+    -webkit-filter: blur(0.75px);
 }
 
+
+/* Pagamento */
 .pagamento{
     background-color:rgba(0, 0, 0, 0.9);
     position: absolute;
@@ -214,6 +221,8 @@ main{
     line-height: 100%;
 }
 
+
+/* Mensagem de Erro */
 .mensagem{
     font-family: 'Burbank Big Condensed Bold';
     color: black;
@@ -223,7 +232,7 @@ main{
     position: fixed;
     background: #f6f6f6;
     width: 20%;
-    height: 15%;
+    min-height: 15%;
     border-radius: 5px;
     text-align: center;
     display: none;
@@ -257,28 +266,23 @@ main{
     100% { width: 100%; }
 }
 
+
+
 /* Mobile */
 @media (max-width: 1650px ){
     .textJogo{
-        height: 110px;
+        height: 16%;
         width: auto;
-        text-align: right;
+        margin-top: 0%;
     } 
 }
 @media (max-width: 1080px ){
+    .fa-home:before{
+        opacity: 0;
+        font-size: 0.01px;
+    }
     .redesSociais{
         display: none;
-    }
-    .home{
-        opacity: 0;
-    }
-    .titulo{
-        margin-top: 3%;
-        font-size: 12vw;
-        z-index: 9999;
-    }
-    .iconeReturn::before{
-        font-size: 12vw;
     }
     #fifa{
         background: url(../img/fifamobile.jpg) no-repeat center / cover;
@@ -323,8 +327,4 @@ main{
     }
 }
 @media (max-height: 1600px){
-    .titulo{
-        margin-top: 1%;
-        font-size: 48px;
-    }
 }
