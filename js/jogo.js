@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    var body = $("body")
     var bloco = $(".bloco")
     var seta = $(".return")
     var home= $(".home")
@@ -14,20 +13,18 @@ $(document).ready(function(){
         var titulo = $(".titulo")
         var pagamento = $(".pagamento")
         if($( this ).hasClass("naodisponivel")){
-            $.wait = function( callback, seconds){
-                return window.setTimeout( callback, seconds * 1000 );
-            }
-            mensagem.show()
-            $.wait( function(){ 
-                mensagem.hide("fast") 
-            }, 7);
+            mensagem.fadeIn(300, function(){
+                window.setTimeout(function(){
+                    mensagem.fadeOut();
+                }, 6000);
+            });
+
         }
         else{
             bloco.hide()
             home.hide()
             seta.show()
             pagamento.show()
-            body.removeAttr("id")
             if(this.id == "fortnite"){
                 main.attr("id", "fortnite")
                 titulo.text("fortnite");
@@ -61,6 +58,5 @@ $(document).ready(function(){
         titulo.text("Selecione Um Jogo");
         home.show()
         bloco.show()
-        body.attr("id", "selecionarJogoPagina")
     });
 });
