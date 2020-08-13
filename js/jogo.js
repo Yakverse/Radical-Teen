@@ -1,11 +1,23 @@
 $(document).ready(function(){
     var bloco = $(".bloco")
     var seta = $(".return")
-    var home= $(".home")
+    var home = $(".home")
     var main = $("main")
     var titulo = $(".titulo")
     var pagamento = $(".pagamento")
     var mensagem = $(".mensagem")
+    var barra = $(".barra")
+    var conteudoBarra = $(".conteudoBarra")
+    var fecharBarra = $(".fecharBarra")
+
+    // Barra
+    barra.click(function(){
+        conteudoBarra.toggle("fast")
+    });
+    fecharBarra.click(function(){
+        conteudoBarra.toggle("fast")
+    });
+
 
     // Paginas
     bloco.click(function(){

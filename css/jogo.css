@@ -65,8 +65,8 @@ header{
 
 /* Título */
 .titulo{
-    margin-top: 1.5vh;
-    margin-bottom: 1.5vh;
+    margin-top: 2vh;
+    margin-bottom: 1vh;
     font-size: 5vh;
     font-family: 'Burbank Big Condensed Bold';
     line-height: 100%;
@@ -101,6 +101,15 @@ header{
     font-size: 5vh;
 }
 
+/* Barra */
+.barra{
+    position: absolute;
+    top: 20%;
+    right: 2%;
+    display: none;
+}
+
+
 /* Main */
 main{
     position: absolute;
@@ -110,16 +119,64 @@ main{
     width: 100%;
     background-color: black;
     text-align: center;
+    font-size: 0;
 }
 
+/* Conteúdo da Barra */
+.conteudoBarra{
+    right: 0;
+    top: -1%;
+    z-index: 1001;
+    position: absolute;
+    width: 30%;
+    height: 101%;
+    background: black;
+    opacity: 90%;
+    display: none;
+}
+
+.fecharBarra{
+    position: absolute;
+    top: 1%;
+    left: 2%;
+    color: white;
+}
+.fecharBarra::before{
+    font-size: 3vh;
+}
+.fecharBarra:hover{
+    cursor: pointer;
+}
+
+.redesSociaisBarra{
+    position: absolute;
+    top: 6%;
+    width: 100%;
+    text-align: center;
+    font-size: 3vw;
+}
+.siganosBarra{
+    font-size: 6vh;
+    color: white;
+    font-family: 'Burbank Big Condensed Bold';
+    line-height: 100%;
+}
+.iconesRedesSociaisBarra i::before{
+    font-size: 8vh;
+}
+
+
+
+/* Jogos */
 .bloco{
     display: inline-block;
-    width: 33%;
-    height: 49.3%;
-    margin-left: 0;
-    margin-right: 0;
-    margin-bottom: 0.33%;
-    border-radius: 3px;
+    width: 33.2%;
+    height: 49.5%;
+    margin-left: 0.05%;
+    margin-right: 0.05%;
+    margin-top: 0.1%;
+    margin-bottom: 0.1%;
+    border-radius: 1%;
     transition: all 1s;
 }
 .bloco:hover{
@@ -158,8 +215,8 @@ main{
 
 .naodisponivel{
     opacity: 25%;
-    filter: blur(0.75px);
-    -webkit-filter: blur(0.75px);
+    filter: blur(1px);
+    -webkit-filter: blur(1px);
 }
 
 
@@ -226,7 +283,7 @@ main{
 .mensagem{
     font-family: 'Burbank Big Condensed Bold';
     color: black;
-    font-size: 32px;
+    font-size: 6vh;
     bottom: 20px;
     right: 20px;
     position: fixed;
@@ -277,12 +334,14 @@ main{
     } 
 }
 @media (max-width: 1080px ){
-    .fa-home:before{
-        opacity: 0;
-        font-size: 0.01px;
-    }
     .redesSociais{
         display: none;
+    }
+    .barra{
+        display: inline-block;
+    }
+    .conteudoBarra{
+        width: 80%;
     }
     #fifa{
         background: url(../img/fifamobile.jpg) no-repeat center / cover;
@@ -316,11 +375,8 @@ main{
         top: 25%;
         left: 20%;
         right: auto;
-        width: 60%;
+        min-width: 60%;
         height: 50%;
-    }
-    .textoMensagem{
-        font-size: 12vw;
     }
     .progress{
         height: 2%;
