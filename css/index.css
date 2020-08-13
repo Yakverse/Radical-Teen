@@ -9,7 +9,9 @@ body {
     font-size: 100%;
     line-height: 100%;
     min-height: 100%;
-    overflow: hidden;
+    overflow: scroll;
+    overflow-x: hidden;
+    background-color: black;
 }
 
 img{
@@ -17,6 +19,14 @@ img{
     -khtml-user-drag: none;
     -moz-user-drag: none;
     -o-user-drag: none;
+}
+
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: white;
 }
 
 /* Main */
@@ -65,7 +75,7 @@ main{
     font-family: 'Burbank Big Condensed Bold';
     line-height: 100%;
     color: white;
-    font-size: 92px;
+    font-size: 20vw;
     font-weight: bolder;
     text-transform: uppercase;
     transition: all 1s;
@@ -92,7 +102,7 @@ main{
     bottom: 48%;
     z-index: 999;
     color: black;
-    font-size: 42px;
+    font-size: 6vh;
     font-family: 'Burbank Big Condensed Bold';
 }
 
@@ -142,7 +152,7 @@ main{
 }
 
 .closeInfo::before{
-    font-size: 48px;
+    font-size: 5vh;
     color: white;
     position: absolute;
     right: 3%;
@@ -156,7 +166,7 @@ main{
     font-family: 'Burbank Big Condensed Bold';
     color: white;
     line-height: 100%;
-    font-size: 52px;
+    font-size: 6vh;
     margin-bottom: 5%;
     margin-top: 10%;
     margin-left: 5%;
@@ -191,7 +201,6 @@ main{
         width: 60%;
         height: 15%;
         left: 20%;
-        font-size: 10vw;
     }
     .closeInfo:before{
         font-size: 10vw;

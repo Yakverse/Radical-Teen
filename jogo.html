@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <title>Campeonatos Radical Teen</title>
         <link rel="stylesheet" href="css/jogo.css">
         <link rel="shortcut icon" href="img/icon.png" />
@@ -11,6 +12,16 @@
     </head>
     <body id="selecionarJogoPagina">
         <header>
+            <!-- Icones de Voltar e Home -->
+            <div class="voltar">
+                <div class="return"><i class="icones fas fa-arrow-left"></i></div>
+                <a href="index.html"><div class="home"><i class="icones fas fa-home"></i></div></a>
+            </div>
+
+            <!-- Título -->
+            <h1 class="titulo">Selecione Um Jogo</h1>
+
+            <!-- Redes Sociais -->
             <div class="redesSociais">
                 <!-- <img class="icones" src="img/twitchicon.png"> -->
                 <a href="https://www.twitch.tv/radicalteen_" target="_blank"><i class="icones fab fa-twitch"></i></a>
@@ -19,45 +30,55 @@
                 <!-- <img class="icones" src="img/discordicon.png"> -->
                 <a href="https://discord.gg/AR3mQbQ" target="_blank"><i class="icones fab fa-discord"></i></a>
                 <a href="https://chat.whatsapp.com/Jeg1ZMurond09tT8WaFdCy" target="_blank"><i class="icones fab fa-whatsapp"></i></a>
-
             </div>
-            <h1 class="titulo">Selecione Um Jogo</h1>
-            <div class="voltar">
-                <div class="return"><i class="icones fas fa-arrow-left"></i></div>
-                <a href="index.html"><div class="home"><i class="icones fas fa-home"></i></div></a>
+
+            <!-- Icone Barra -->
+            <div class="barra">
+                <i class="fas fa-bars icones"></i>
             </div>
         </header>
         <main>
+            <!-- Conteúdo da Barra -->
+            <div class="conteudoBarra">
+                <i class="fecharBarra fas fa-times"></i>
+                <div class="redesSociaisBarra">
+                    <div class="iconesRedesSociaisBarra">
+                        <p class="siganosBarra">Siga-nos nas redes sociais!</p>
+                        <a href="https://www.twitch.tv/radicalteen_" target="_blank"><i class="icones fab fa-twitch"></i></a>
+                        <a href="https://www.instagram.com/radicalteen_" target="_blank"><i class="icones fab fa-instagram"></i></a>
+                        <a href="https://discord.gg/AR3mQbQ" target="_blank"><i class="icones fab fa-discord"></i></a>
+                        <a href="https://chat.whatsapp.com/Jeg1ZMurond09tT8WaFdCy" target="_blank"><i class="icones fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Jogos -->
             <div class="bloco" id="fortnite">
-                <p class="nada"> </p>
                 <img src="img/fortnitetext.png" class="textJogo">
             </div>
 
             <div class="bloco" id="fifa">
-                <p class="nada"> </p>
                 <img src="img/fifatext.png" class="textJogo">
             </div>
 
             <div class="bloco naodisponivel" id="csgo" title="EM BREVE">
-                <p class="nada"> </p>
                 <img src="img/csgotext.png" class="textJogo">
             </div>
 
             <div class="bloco naodisponivel" id="freefire">
-                <p class="nada"> </p>
                 <img src="img/freefiretext.png" class="textJogo" title="EM BREVE">
             </div>
 
             <div class="bloco naodisponivel" id="lol">
-                <p class="nada"> </p>
                 <img src="img/loltext.png" class="textJogo" title="EM BREVE">
             </div>
 
             <div class="bloco naodisponivel" id="rocketleague">
-                <p class="nada"> </p>
                 <img src="img/rocketleaguetext.png" class="textJogo" title="EM BREVE">
             </div>
 
+            <!-- Pagamentos -->
             <div class="pagamento">
                 <img class="bancoLogo" src="img/logonubankroxo.png">
                 <p class="nada"> </p>
