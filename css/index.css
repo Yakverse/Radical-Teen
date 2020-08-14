@@ -29,8 +29,8 @@ img{
     background: white;
 }
 
-/* Main */
-main{
+/* Fundo */
+.fundo{
     position: absolute;
     margin-top: 0;
     top: 0%;
@@ -38,15 +38,18 @@ main{
     width: 100%;
     background-color: black;
     text-align: center;
+    z-index: 999;
+    font-size: 0;
 }
+
 .fundoJogo{
     height: 100%;
-    width: 33%;
+    width: 33.33%;
     display: inline-block;
     transition: all 1s;
     opacity: 25%;
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
+    filter: blur(1vh);
+    -webkit-filter: blur(1vh);
 }
 
 #csgo{
@@ -68,42 +71,40 @@ main{
     background: url(../img/rocketleague.jpg) no-repeat center / cover;
 }
 
+/* Main */
+main{
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
 
 .titulo{
     margin: 0;
-    top: 15%;
+    margin-top: 25vh;
     font-family: 'Burbank Big Condensed Bold';
     line-height: 100%;
     color: white;
-    font-size: 20vw;
+    font-size: 10vh;
     font-weight: bolder;
     text-transform: uppercase;
-    transition: all 1s;
-    line-height: 100%;
-    position: absolute;
-    z-index: 999;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    text-align: center;
+    z-index: 1000;
 }
 
 .botaoEntrar{
     text-transform: uppercase;
     padding: 0;
     border-color: white;
-    margin: 0;
-    width: 30%;
-    height: 15%;
     background: white;
-    position: absolute;
-    left: 35%;
-    bottom: 48%;
-    z-index: 999;
+    z-index: 1000;
     color: black;
     font-size: 6vh;
     font-family: 'Burbank Big Condensed Bold';
+    margin: 0;
+    margin-top: 4vh;
+    width: 40vh;
+    height: 13vh;
 }
 
 .botaoEntrar:hover{
@@ -119,19 +120,13 @@ main{
 
 
 .botaoInfoDiv{
-    position: absolute;
-    bottom: 38%;
-    z-index: 999;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    text-align: center;
+    z-index: 1000;
     color: white;
+    margin-top: 2vh;
 }
 
 .botaoInfo::before{
-    font-size: 72px;
+    font-size: 7vh;
 }
 
 .botaoInfo:hover{
@@ -143,9 +138,8 @@ main{
     position: absolute;
     background: black;
     border: 1px solid white;
-    z-index: 1000;
+    z-index: 1001;
     top: 20%;
-    min-height: 60%;
     left: 30%;
     width: 40%;
     display: none;
@@ -155,8 +149,8 @@ main{
     font-size: 5vh;
     color: white;
     position: absolute;
-    right: 3%;
-    top: 2%;
+    right: 1.5vh;
+    top: 1vh;
 }
 .closeInfo:hover{
     cursor: pointer;
@@ -167,10 +161,10 @@ main{
     color: white;
     line-height: 100%;
     font-size: 6vh;
-    margin-bottom: 5%;
-    margin-top: 10%;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-bottom: 5vh;
+    margin-top: 5vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
 }
 
 /* Mobile */
@@ -182,36 +176,12 @@ main{
     }
 }
 @media (max-width: 1080px ){
-    .redesSociais{
-        display: none;
-    }
-    .titulo{
-        margin-top: 3%;
-        font-size: 16vw;
-    }
     #fifa{
         background: url(../img/fifamobile.jpg) no-repeat center / cover;
     }
     .texto{
         font-size: 7vw;
-        margin-left: 15%;
-        margin-right: 15%;
-    }
-    .botaoEntrar{
-        width: 60%;
-        height: 15%;
-        left: 20%;
-    }
-    .closeInfo:before{
-        font-size: 10vw;
-    }
-    .textoInfo{
-        font-size: 10vw;
     }
 }
 @media (max-height: 1600px){
-    .titulo{
-        margin-top: 3%;
-        font-size: 96px;
-    }
 }

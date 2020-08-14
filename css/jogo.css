@@ -215,8 +215,8 @@ main{
 
 .naodisponivel{
     opacity: 25%;
-    filter: blur(1px);
-    -webkit-filter: blur(1px);
+    filter: blur(0.1vh);
+    -webkit-filter: blur(0.1vh);
 }
 
 
