@@ -10,7 +10,7 @@
         <!-- JQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
-    <body id="selecionarJogoPagina">
+    <body>
         <header>
             <!-- Icones de Voltar e Home -->
             <div class="voltar">
@@ -62,34 +62,84 @@
                 <img src="img/fifatext.png" class="textJogo">
             </div>
 
-            <div class="bloco naodisponivel" id="csgo" title="EM BREVE">
+            <div class="bloco naoDisponivel" id="csgo" title="EM BREVE">
                 <img src="img/csgotext.png" class="textJogo">
             </div>
 
-            <div class="bloco naodisponivel" id="freefire">
+            <div class="bloco naoDisponivel" id="freefire">
                 <img src="img/freefiretext.png" class="textJogo" title="EM BREVE">
             </div>
 
-            <div class="bloco naodisponivel" id="lol">
+            <div class="bloco naoDisponivel" id="lol">
                 <img src="img/loltext.png" class="textJogo" title="EM BREVE">
             </div>
 
-            <div class="bloco naodisponivel" id="rocketleague">
+            <div class="bloco naoDisponivel" id="rocketleague">
                 <img src="img/rocketleaguetext.png" class="textJogo" title="EM BREVE">
             </div>
 
             <!-- Pagamentos -->
             <div class="pagamento">
-                <img class="bancoLogo" src="img/logonubankroxo.png">
-                <p class="nada"> </p>
-                <img class="qrcodePagamento" src="img/qrcode.png">
-                <p class="bancoNomeCliente">Nome Completo do Usuário da Conta</p>
-                <div class="informacoesPagamento">
-                    <p>Banco 260 - Nu Pagamentos S.A.</p>
-                    <p>Agência 0001</p>
-                    <p>Conta XXXXXXX-2</p>
+                <div class="pagamentoTopo">
+                    <h2 class="pagamentoData">30/08/2020</h2>
+                    <h2 class="pagamentoTitulo">Selecione a forma de pagamento</h2>
                 </div>
+                <div class="pagamentoCorpo">
+
+                    <div class="pagamentoInicio">
+                        <p class="pagamentoPremio">Prêmiação: R$ 100,00</p>
+                        <p class="pagamentoInscricao">Inscrição: R$ 15,00</p>
+                        <p class="pagamentoInfo">Informações do Campeonato</p>
+                        <button id="botaoPagar">Pagamento</button>
+                    </div>
+
+                    <div class="opcoesPagamento">
+                        <div class="pagamentoOpcao" id="nubank">
+                            <img class="bancoLogo" src="img/logonubankroxo.png">
+                            <p>Nubank (Transferência)
+                            </p>
+                        </div>
+                        <div class="pagamentoOpcao" id="paypal">
+                            <img class="bancoLogo" src="img/paypallogo.png">
+                            <p>PayPal</p>
+                        </div>
+                        <div class="pagamentoOpcao" id="mercadopago">
+                            <img class="bancoLogo" src="img/mercadopagologo.png">
+                            <p>Mercado Pago</p>
+                        </div>
+                    </div>
+
+                    <div class="pagamentos pagamentoNubank">
+                        <img class="qrcodePagamento" src="img/qrcode.png">
+                        <p class="bancoNomeCliente">Nome Completo do Usuário da Conta</p>
+                        <div class="informacoesPagamento">
+                            <p>Banco 260 - Nu Pagamentos S.A.</p>
+                            <p>Agência 0001</p>
+                            <p>Conta XXXXXXX-2</p>
+                        </div>
+                    </div>
+                    <div class="pagamentos pagamentoPaypal">
+                        <img class="qrcodePagamento" src="img/qrcode.png">
+                        <p class="bancoNomeCliente"></p>
+                        <div class="informacoesPagamento">
+                        </div>
+                    </div>
+                    <div class="pagamentos pagamentoMercadoPago">
+                        <img class="qrcodePagamento" src="img/qrcode.png">
+                        <p class="bancoNomeCliente"></p>
+                        <div class="informacoesPagamento">
+                        </div>
+                    </div>
+                </div>
+                    </div>
+                    <div class="pagamentos pagamentoPaypal"></div>
+                    <div class="pagamentos pagamentoMercadoPago"></div>
+                    
+                </div>
+            </div>
+
         </main>
+
         <!-- Mensagem de Erro -->
         <div class="mensagem">
             <p class="textoMensagem">Nenhum campeonato disponível para este jogo.</p>
@@ -97,6 +147,7 @@
                 <div class="progress-value"></div>
             </div>
         </div>
+
         </script>
         <script src="js/jogo.js"></script>
     </body>
