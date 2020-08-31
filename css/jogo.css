@@ -1,7 +1,9 @@
 @font-face {
     font-family: Burbank Big Condensed Bold;
     src: url(../font/burbank-big-condensed-bold.otf);
-  }
+}
+
+
 
 body {
     margin: 0;
@@ -122,8 +124,8 @@ main{
     height: 92%;
     width: 100%;
     background-color: black;
-    text-align: center;
     font-size: 0;
+    scroll-behavior: smooth;
 }
 
 /* Conteúdo da Barra */
@@ -179,7 +181,31 @@ main{
     margin: 0;
     transition: all 1s;
     border-radius: 0.5vh;
+    text-align: center;
+    color: white;
+    position: relative;
 }
+
+.blocoImgDiv{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.textJogo{
+    display: block;
+    transition: all 1s;
+    width: auto;
+    max-width: 100%;
+    height: 40%;
+    margin: 0;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15%;
+}
+
 .bloco:hover{
     cursor: pointer;
     /* -webkit-box-shadow:inset 0px 0px 0px 0.1vh #f6f6f6;
@@ -189,13 +215,92 @@ main{
 .bloco:hover .textJogo{
     transform: scale(1.2);
 }
-.textJogo{
-    transition: all 1s;
-    width: auto; 
-    max-width: 100%;
-    height: 40%;
-    margin-top: 15%;
+
+
+
+.textBloco{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.5);
+    position: relative;
+    font-family: 'Burbank Big Condensed Bold';
+    display: none;
 }
+
+.infoBloco{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.dataBloco{
+    font-size: 6vh;
+    margin: 0;
+    margin-top: 3vh;
+}
+.ladosBloco{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-left: 1.5vh;
+    margin-right: 1.5vh;
+}
+
+.ladosBloco h2{
+    margin: 2vh;
+    font-size: 5vh;
+}
+
+.ladosBloco p{
+    margin: 0;
+    font-size: 7vh;
+    line-height: 100%;
+    text-shadow: 0 0 40px rgba(0,231,255,.8), 0 5px 8px rgba(0,231,255,.3);
+}
+
+.divBotaoInscricao{
+    position: absolute;
+    bottom: 10vh;
+    width: 100%;
+}
+.botaoInscricao{
+    text-transform: uppercase;
+    padding: 0;
+    border: 0px;
+    border-radius: 1vh;
+    background: #ff0;
+    color: black;
+    font-size: 6vh;
+    font-family: 'Burbank Big Condensed Bold';
+    margin: 0;
+    width: 60%;
+    height: 10vh;
+    clip-path: polygon(8% 0,100% 0,93% 93%,0 100%);
+    transition: all .3s ease-in-out;
+}
+
+.botaoInscricao *{
+    transition: all .3s ease-in-out;
+}
+
+.botaoInscricao:hover{
+    cursor: pointer;
+}
+.botaoInscricao:hover span{
+    margin-left: 15px;
+}
+
+.botaoInscricao:active {
+    border-style: none;
+    outline: none;
+}
+
+.botaoInscricao:focus{
+    outline: none;
+}
+
 
 #csgo{
     background: url(../img/csgo.jpg) no-repeat center / cover;
@@ -222,9 +327,117 @@ main{
     -webkit-filter: blur(0.1vh);
 }
 
+/* Section */
+/* section{
+    margin-top: 2vh;
+    scroll-behavior: smooth;
+}
+
+.jogoBloco{
+    font-family: 'Burbank Big Condensed Bold';
+    color: white;
+    height: 92vh;
+    position: relative;
+    scroll-behavior: smooth;
+}
+
+
+#fortniteBloco{
+    background: rgba(0, 0, 0, 0.3) url(../img/fundoFortniteBloco.jpg) no-repeat center / cover;
+}
+
+.conteudoFortnite{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+.textBloco{
+    position: absolute;
+    left: 0vh;
+    width: 100%;
+    top: 10vh;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.ladosBloco{
+    display: inline-block;
+    margin: 5vh;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+.textBloco h2{
+    font-size: 5vh;
+}
+
+.textBloco p{
+    margin: 0;
+    font-size: 9vh;
+    line-height: 100%;
+    text-shadow: 0 0 40px rgba(0,231,255,.8), 0 5px 8px rgba(0,231,255,.3);
+}
+
+.divBotaoInscricao{
+    margin-top: 1vh;
+}
+.botaoInscricao{
+    text-transform: uppercase;
+    padding: 0;
+    border: 0px;
+    border-radius: 1vh;
+    background: #ff0;
+    color: black;
+    font-size: 6vh;
+    font-family: 'Burbank Big Condensed Bold';
+    margin: 0;
+    width: 40vh;
+    height: 12vh;
+    clip-path: polygon(8% 0,100% 0,93% 93%,0 100%);
+    transition: all .3s ease-in-out;
+}
+
+.botaoInscricao *{
+    transition: all .3s ease-in-out;
+}
+
+.botaoInscricao:hover{
+    cursor: pointer;
+}
+.botaoInscricao:hover span{
+    margin-left: 15px;
+}
+
+.botaoInscricao:active {
+    border-style: none;
+    outline: none;
+}
+
+.botaoInscricao:focus{
+    outline: none;
+}
+
+
+.imagemBlocoFortnite{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+}
+.imagemBlocoFortnite img{
+    width: auto;
+    height: 45vh;
+} */
+
+
+
+
+
 
 /* Pagamento */
-.pagamento{
+/* .pagamento{
     background-color:rgba(0, 0, 0, 0.75);
     position: absolute;
     top: 0;
@@ -233,6 +446,7 @@ main{
     width: 100%;
     display: none;
     color: white;
+    text-align: center;
 }
 
 .pagamentoTopo{
@@ -362,7 +576,10 @@ main{
 }
 
 .qrcodePagamento{
-    width: 25vh;
+    width: 30vh;
+    padding: 1vh;
+    background: white;
+    border: 1vh solid black;
 }
 
 .bancoNomeCliente{
@@ -382,6 +599,37 @@ main{
     margin-top: 1vh;
 }
 
+
+.picPayBotao{
+    text-transform: uppercase;
+    padding: 0;
+    border: 0px;
+    border-radius: 1vh;
+    background: #21c25e;
+    z-index: 1000;
+    color: white;
+    font-size: 6vh;
+    font-family: 'Burbank Big Condensed Bold';
+    margin: 0;
+    margin-top: 4vh;
+    width: 45vh;
+    height: 13vh;
+}
+
+.picPayBotao:hover{
+    cursor: pointer;
+    background: #0b9854;
+    color: white;
+}
+
+.picPayBotao:active {
+    border-style: none;
+    outline: none;
+}
+
+.picPayBotao:focus{
+    outline: none;
+} */
 
 
 
@@ -435,13 +683,11 @@ main{
 /* Mobile */
 @media (max-width: 1650px ){
     .textJogo{
-        height: 6vh;
+        height: 5vh;
         width: auto;
         margin-top: 0%;
     } 
-    .bloco:hover .textJogo{
-        transform: scale(1);
-    }
+    
 }
 @media (max-width: 1080px ){
     .redesSociais{
@@ -453,12 +699,28 @@ main{
     .conteudoBarra{
         width: 80%;
     }
+    .bloco:hover .textJogo{
+        transform: scale(1.05);
+    }
     #fifa{
         background: url(../img/fifamobile.jpg) no-repeat center / cover;
     }
-    .bancoLogo{
-        height: 10vh;
+
+    /* .textBloco{
+        left: 0vh;
+        width: 100%;
     }
+    .ladosBloco{
+        display: block;
+    }
+    .imagemBlocoFortnite{
+        display: none;
+    } */
+
+    
+    /* .bancoLogo{
+        height: 10vh;
+    } */
 
     .mensagem{
         top: 25%;
