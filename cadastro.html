@@ -33,32 +33,33 @@
                 <i class="fas fa-bars icones"></i>
             </div>
         </header> -->
+        <script defer src="js/cadastro.js"></script>
         <div id="container">
             <div id="inviteContainer">
                 <div class="logoContainer"><img class="logo" src="img/rtpretosemborda.png"/><img class="text" src="img/rtlogopreto.png"/></div>
                 <div class="acceptContainer">
-                <form>
+                <form id="formCadastro" action="/" method="GET">
                     <h1>CADASTRO</h1>
                     <div class="formContainer">
                     <div class="formDiv" style="transition-delay: 0.2s">
                         <p>NOME COMPLETO</p>
-                        <input type="text" required=""/>
+                        <input type="text" required="" id="nomeForm"/>
                     </div>
                     <div class="formDiv" style="transition-delay: 0.2s">
                         <p>EMAIL</p>
-                        <input type="email" required=""/>
+                        <input type="email" required="" id="emailForm"/>
                     </div>
                     <div class="formDiv" style="transition-delay: 0.3s">
                         <p>TEL/CEL</p>
-                        <input type="tel" required=""/>
+                        <input type="tel" required="" id="celForm"/>
                     </div>
                     <div class="formDiv" style="transition-delay: 0.4s">
                         <p>SENHA</p>
-                        <input type="password" required=""/>
+                        <input type="password" required="" id="senhaForm"/>
                     </div>
                     <div class="formDiv" style="transition-delay: 0.4s">
                         <p>REPETIR SENHA</p>
-                        <input type="password" required=""/>
+                        <input type="password" required="" id="repetirSenha"/>
                     </div>
                     <div class="formDiv" style="transition-delay: 0.6s">
                         <button class="acceptBtn" type="submit">Cadastro</button><span class="register">Já tem uma conta?<a href="login.html">Login</a></span>
@@ -69,6 +70,6 @@
             </div>
             </div>
         </script>
-        <script src="js/login.js"></script>
+        <script src="js/animacao.js"></script>
     </body>
 </html>
