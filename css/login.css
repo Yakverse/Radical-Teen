@@ -42,7 +42,6 @@ header{
     width: 100%;
     position: fixed;
     font-size: 0;
-    background: black;
 }
 
 header *{
@@ -130,11 +129,14 @@ header *{
   #inviteContainer .acceptContainer {
     padding: 45px 30px;
     box-sizing: border-box;
-    width: 400px;
+    width: 600px;
     margin-left: -400px;
     overflow: hidden;
     height: 0;
     opacity: 0;
+  }
+  .login #inviteContainer .acceptContainer{
+    width: 400px;
   }
   #inviteContainer .acceptContainer.loadIn {
     opacity: 1;
@@ -158,7 +160,6 @@ header *{
   form {
     position: relative;
     text-align: center;
-    height: 100%;
   }
   form h1 {
     margin: 0 0 15px 0;
@@ -210,7 +211,7 @@ header *{
         -ms-user-select: none;
             user-select: none;
   }
-  .formContainer input[type=password], .formContainer input[type=email] {
+  .formContainer input[type=password], .formContainer input[type=email], .formContainer input[type=text], .formContainer input[type=tel] {
     background: transparent;
     border: none;
     box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.15);
@@ -219,7 +220,7 @@ header *{
     color: #fff;
     width: 100%;
   }
-  .formContainer input[type=password]:focus, .formContainer input[type=email]:focus {
+  .formContainer input[type=password]:focus, .formContainer input[type=email]:focus, .formContainer input[type=text]:focus, .formContainer input[type=tel]:focus {
     box-shadow: inset 0 -2px 0 #fff;
   }
   
@@ -305,9 +306,9 @@ header *{
   .acceptBtn {
     width: 100%;
     box-sizing: border-box;
-    background: #7289DA;
+    background: rgba(255, 255, 255, 0.8);
     border: none;
-    color: #fff;
+    color: black;
     padding: 20px 0;
     border-radius: 3px;
     cursor: pointer;
@@ -319,7 +320,7 @@ header *{
             user-select: none;
   }
   .acceptBtn:hover {
-    background: #6B7FC5;
+    background: white;
   }
   
   .register {
@@ -358,6 +359,10 @@ header *{
     .acceptContainer form{
         width: 100%;
         height: 100%;
+    }
+
+    #inviteContainer .acceptContainer{
+        width: 0;
     }
 
     form h1 {
