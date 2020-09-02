@@ -1,0 +1,64 @@
+/* Header */
+header {
+    /* box-shadow: inset 0 0 0 3000px rgba(40, 43, 48, 0.75);
+    background: rgba(40, 43, 48, 0.75); */
+    background: #18181b;
+    width: 100%;
+    height: 5vh;
+    z-index: 3;
+    position: fixed;
+    margin: 0;
+    top: 0;
+    border-bottom: 0.1vh solid black;
+}
+
+.icones {
+    display: inline-block;
+}
+
+.icones:hover {
+    cursor: pointer;
+}
+
+.imgIconesDiv {
+    float: left;
+    padding-top: 1vh;
+    
+}
+
+.imgIcones {
+    height: 3vh;
+    margin-right: 1vw;
+    margin-left: 1vw;
+    display: inline-block;
+}
+
+.loginIconesDiv {
+    padding-top: 0.4vh;
+    float: right;
+    margin-right: 1vw;
+    line-height: 4vh;
+}
+
+.loginIconesDiv:hover{
+    cursor: pointer;
+}
+
+.faIcones {
+    width: auto;
+    height: 4vh;
+    margin-right: 0.5vw;
+}
+
+.faIcones::before {
+    font-size: 4vh;
+    color: white;
+}
+
+.loginIconesDiv p {
+    margin: 0;
+    font-size: 2vh;
+    color: white;
+    vertical-align: top;
+    font-weight: bold;
+}

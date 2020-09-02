@@ -70,118 +70,111 @@ img {
 
 
 /* Main */
-
 main {
     margin-top: 5vh;
     z-index: 2;
 }
 
-/* imagemDiv */
-
-.imagemDiv {
+/* Fundo Perfil */
+.fundoPerfilDiv {
     z-index: 2;
     width: 100vw;
-    height: 60vh;
+    height: 40vh;
     margin-left: auto;
     margin-right: auto;
+    background: url(../img/rocketleague.jpg) no-repeat center / cover;
+    position: relative;
 }
 
-.fundo {
+/* Icone Config */
+.configIcon{
     position: absolute;
-    margin-top: 0;
-    top: 0%;
-    height: 100%;
-    width: 100%;
-    background-color: black;
-    text-align: center;
-    z-index: 0;
-    font-size: 0;
+    top: 2vh;
+    right: 2vh;
+    background: rgba(24, 24, 27, 0.75);
+    width: 6vh;
+    height: 6vh;
 }
 
-.fundoJogo {
-    height: 100%;
-    width: 33.33%;
-    display: inline-block;
-    transition: all 1s;
-    opacity: 25%;
-    filter: blur(1vh);
-    -webkit-filter: blur(1vh);
-}
-
-
-
-.divTituloBotao{
+.iconePerfil {
+    width: auto;
+    height: 4vh;
     position: absolute;
-    bottom: 2vh;
-    width: 100%;
-    text-align: center;
+    top: 1.1vh;
+    left: 1vh;
 }
-
-.divTituloBotao *{
-    text-align: center;
-    font-family: 'Burbank Big Condensed Bold';
-}
-
-.tituloCampeonato h1{
-    font-size: 8vw;
-    color: white;
-    margin-bottom: 12vh;
-    line-height: 100%;
-}
-
-.botaoInscricao{
-    text-transform: uppercase;
-    padding: 0;
-    border: 0px;
-    border-radius: 1vh;
-    background: #fff;
-    color: black;
-    font-size: 6vh;
-    margin: 0;
-    width: 40%;
-    height: 10vh;
-    clip-path: polygon(8% 0,100% 0,93% 93%,0 100%);
-    transition: all .3s ease-in-out;
-}
-
-.botaoInscricao *{
-    transition: all .3s ease-in-out;
-}
-
-.botaoInscricao:hover{
+.iconePerfil:hover {
     cursor: pointer;
 }
-.botaoInscricao:hover span{
-    margin-left: 15px;
+.iconePerfil::before {
+    font-size: 4vh;
+    color: white;
 }
 
-.botaoInscricao:active {
-    border-style: none;
-    outline: none;
+/* Imagem Perfil */
+.fundoPerfilImgDiv{
+    position: absolute;
+    bottom: -3vh;
+    left: 44.5vw;
 }
 
-.botaoInscricao:focus{
-    outline: none;
+.fundoPerfilImg{
+    width: 10vw;
 }
 
-.botaoInscricao span{
-    font-size: 9vh;
+.fundoPerfilImg img{
+    width: 10vw;
+    border-radius: 50%;
+    border: 0.5vw solid white;
+    background: #18181b;
+}
+
+/* Conteudo Perfil */
+.conteudoPerfil{
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    padding-top: 5vh;
+    background: #18181b;
+    height: 50vh;
+}
+
+.nomePerfil{
+    margin: 0;
+    font-size: 6vh;
+    color: white;
+    text-align: center;
     line-height: 100%;
 }
 
-/* Footer */
-footer{
-    z-index: 2;
-    background: #18181b;
-    position: absolute;
-    width: 100%;
-    height: 20vh;
-    bottom: 0;
+.jogosPerfil{
+    margin-top: 10vh;
+    text-align: center;
 }
 
+.iconeJogoPerfil{
+    width: 5vh;
+    display: inline-block;
+}
+
+.jogoPerfil{
+    display: inline-block;
+    font-size: 4vh;
+    color: white;
+    margin: 0;
+    line-height: 5vh;
+    vertical-align: top;
+    margin-left: 1vh;
+}
+
+.jogoCampoPerfil{
+    display: inline-block;
+    margin-left: 3vh;
+    margin-right: 3vh;
+    margin-bottom: 3vh;
+}
 
 /* Mobile */
-
 @media (max-width: 1650px) {}
 
 @media (max-width: 1080px) {

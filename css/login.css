@@ -399,6 +399,10 @@ header *{
         margin-top: 30vh;
     }
 
+    .cadastro .repetir{
+      margin-left: 0px;
+    }
+
     .acceptBtn{
         font-size: 40px;
         margin-bottom: 50px;
