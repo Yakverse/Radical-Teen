@@ -129,7 +129,7 @@ header *{
   #inviteContainer .acceptContainer {
     padding: 45px 30px;
     box-sizing: border-box;
-    width: 600px;
+    width: 650px;
     margin-left: -400px;
     overflow: hidden;
     height: 0;
@@ -138,6 +138,7 @@ header *{
   .login #inviteContainer .acceptContainer{
     width: 400px;
   }
+
   #inviteContainer .acceptContainer.loadIn {
     opacity: 1;
     margin-left: 0;
@@ -193,6 +194,15 @@ header *{
     transition: 0.5s ease;
     position: relative;
   }
+
+
+  .cadastro .senha, .senha *{
+    display: inline-block;
+  }
+  .cadastro .repetir{
+    margin-left: 25px;
+  }
+
   .formContainer .formDiv.loadIn {
     opacity: 1;
     left: 0;

@@ -1,37 +1,51 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Campeonatos Radical Teen</title>
-        <link rel="stylesheet" href="css/index.css">
-        <link rel="shortcut icon" href="img/icon.png" />
-        <!-- Font Awesome -->
-        <script src="https://kit.fontawesome.com/72ea4166fa.js" crossorigin="anonymous"></script>
-        <!-- JQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
-    </head>
-    <body>
-        <div class="fundo">
-            <div class="fundoJogo" id="csgo"></div>
-            <div class="fundoJogo" id="fortnite"></div>
-            <div class="fundoJogo" id="fifa"></div>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Campeonatos Radical Teen</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="shortcut icon" href="img/icon.png" />
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/72ea4166fa.js" crossorigin="anonymous"></script>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+</head>
+
+<body>
+    <header>
+        <div class="iconesDiv">
+            <div class="imgIconesDiv">
+                <a href="index.html"><img src="img/rtbrancosembordarecortado.png" class="icones imgIcones"></a>
+                <a href="index.html"><img src="img/rtlogobranco.png" class="icones imgIcones"></a>
+            </div>
+
+            <div class="loginIconesDiv">
+                <i class="icones faIcones fas fa-user-circle"></i>
+                <p class="icones">INICIAR SESSÃO</p>
+            </div>
         </div>
-        <main>
-            <h1 class="titulo">Campeonatos Radical Teen</h1>
-            <a href="jogo.html"><button class="botaoEntrar">Selecione Um Jogo</button></a>
-            <div class="botaoInfoDiv">
-                <i class="fas fa-info-circle botaoInfo"></i>
+    </header>
+    <main>
+        <div class="imagemDiv">
+            <div class="fundo">
+                <div class="fundoJogo" id=fundoJogo1></div>
+                <div class="fundoJogo" id=fundoJogo2></div>
+                <div class="fundoJogo" id=fundoJogo3></div>
             </div>
-            <div class="mensagemInfo">
-                <i class="closeInfo fas fa-times"></i>
-                <p class="textoInfo">Bem-Vindo(a) ao nosso site! Ele foi feito com o objetivo de ajudar você a participar 
-                de nossos campeonatos. Clique no botão para selecionar o(s) jogo(s) que você quer competir. Lembrando que todos os
-                jogos possuem taxa de inscrição e premiações. Divirta-se!!!
-                </p>
+            
+            <div class="divTituloBotao">
+                <div class="tituloCampeonato">
+                    <h1>CAMPEONATOS RADICAL TEEN</h1>
+                </div>
+                <a href="pagamento.html?game=fortnite"><button class="botaoInscricao"><span>Inscreva-se</span></button></a>
             </div>
-        </main>
-        </script>
-        <script src="js/script.js"></script>
-    </body>
+        </div>
+    </main>
+    <!-- <footer></footer> -->
+    <script src="js/script.js"></script>
+</body>
+
 </html>
