@@ -6,12 +6,11 @@ exports.signin = async (req, res, next) => {
 
     // body = {
     //     nome = '',
+    //     usuario = '',
     //     email = '',
     //     cel = '',
     //     senha = '',
     // }
-
-    if (await verificaCadastroRepetido(req.body.email, req.body.cel)) return res.status(200).send({code: 409, sucess: false, message: 'Cadastro repetido.'})
 
     req.body.senha = auth.generateHash(req.body.senha)
 
@@ -19,9 +18,9 @@ exports.signin = async (req, res, next) => {
         var date = new Date();
         date.setDate(date.getDate() + 2);
         res.setHeader('Set-Cookie', `sessionID=${message.id};expires=${date.toUTCString()};path=/;HttpOnly`)
-        res.status(200).send({code: 200, sucess: true})
+        res.status(200).send({code: 200, sucess: true, user: message.usuario})
     }).catch(error => {
-        res.status(400).send({code: 400, sucess: false, error: error})
+        res.status(409).send({code: 409, sucess: false, error: error})
     })
 }
 
@@ -39,7 +38,7 @@ exports.login = async (req, res, next) => {
         var date = new Date();
         date.setDate(date.getDate() + 2);
         res.setHeader('Set-Cookie', `sessionID=${data[0]._id};expires=${date.toUTCString()};path=/;HttpOnly`)
-        res.status(200).send({code: 200, sucess: true})
+        res.status(200).send({code: 200, sucess: true, nome: data[0].usuario})
     })
 }
 
@@ -47,8 +46,8 @@ exports.saveAccount = async (req, res, next) => {
 
     // header = {sessionID: ''}
     // body = {
-    //     userType: '',
-    //     account: ''
+    //     userType: [''],
+    //     account: ['']
     // }
 
     User.findById(req.headers.cookie.split('=')[1]).then(data => {
@@ -72,12 +71,47 @@ exports.saveAccount = async (req, res, next) => {
                 data.userSteam = account
             }
         }
-        userTypes[req.body.userType](req.body.account)
+        for (let i = 0; i < req.body.userType.length; i++) {
+            userTypes[req.body.userType[i]](req.body.account[i])
+        }
         User.replaceOne({_id: req.headers.cookie.split('=')[1]}, data).then(() => {
             res.status(201).send()
         }).catch(() => {
             res.status(500).send()
         })
+    }).catch(() => {
+        res.clearCookie('sessionID', {path: '/'})
+        res.status(400).send()
+    })
+}
+
+exports.userInfo = (req, res, next) => {
+
+    // header = {sessionID: ''}
+
+    if (!req.headers.cookie) return res.status(400).send({code: 400, sucess: false})
+    User.findById(req.headers.cookie.split('=')[1], {_id: 0}).then(data => {
+        data.admin = undefined
+        data.senha = undefined
+        res.status(200).send({code: 200, sucess: true, data})
+    }).catch(() => {
+        res.clearCookie('sessionID', {path: '/'})
+        res.status(400).send({code: 400, sucess: false})
+    })
+}
+
+exports.userAccounts = (req, res, next) => {
+    if (Object.keys(req.query).length == 0) {
+        res.status(400).send()
+        return
+    }
+    User.find({usuario: req.query.p}, {_id: 0}).then(data => {
+        data[0].email = undefined
+        data[0].cel = undefined
+        data[0].senha = undefined
+        data[0].admin = undefined
+        data[0].usuario = undefined
+        res.status(200).send(data[0])
     }).catch(() => {
         res.status(400).send()
     })
@@ -102,27 +136,7 @@ exports.changePassword = (req, res, next) => {
             res.status(500).send({code: 500, sucess: false})
         })
     }).catch(() => {
+        res.clearCookie('sessionID', {path: '/'})
         res.status(400).send({code: 400, sucess: false})
-    })
-}
-
-verificaCadastroRepetido = async (email, cel) => {
-    var dataUserCel = await getUser(null, cel || null);
-    var dataUserEmail = await getUser(email || null);
-
-    if (dataUserCel.length !== 0 || dataUserEmail.length !== 0) return true
-    else return false
-}
-
-getUser = async (email, cel) => {
-    if (email) var payload = {email: email}
-    else var payload = {cel: cel}
-
-    return new Promise((resolve, rejected) => {
-        User.find(payload).then(data => {
-            resolve(data)
-        }).catch(() => {
-            rejected(false)
-        })
     })
 }

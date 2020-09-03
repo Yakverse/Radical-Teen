@@ -32,13 +32,16 @@ mongoose.connect(settings.connectionStrig, { useNewUrlParser: true, useUnifiedTo
 
 //Models
 const User = require('./models/userModel');
+const Camp = require('./models/campModel')
 
 //Rotes
-const cuidadoresRoute = require('./routes/appRoutes');
+const userRoute = require('./routes/userRoutes');
+const campRoute = require('./routes/campRoutes')
 
 app.use(bodyParser.json());
 app.unsubscribe(bodyParser.urlencoded({ extended: false }));
 
-app.use('/', cuidadoresRoute);
+app.use('/', userRoute);
+app.use('/', campRoute);
 
 module.exports = app;

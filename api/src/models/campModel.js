@@ -6,17 +6,22 @@ const schema = new Schema({
         type: String,
         required: true
     },
+    data: {
+        type: String,
+        required: false,
+        default: 0 //Indefinido
+    },
     maxPlayers: {
         type: Number,
         required: false,
         default: 0 //ilimitado
     },
-    listaDePlayers: [{
+    listaPlayers: [{
         type: String,
         require: false
     }],
     limiteDataInscrições: {
-        type: Date,
+        type: String,
         required: false,
         default: 0 //sem limite
     },
@@ -25,17 +30,16 @@ const schema = new Schema({
         required: false,
         default: true
     },
-    eventoOn: {
-        type: Boolean,
-        required: false,
-        default: false
-    },
     premiacao: {
         type: Number,
         required: true
     },
     inscricao: {
         type: Number,
+        required: true
+    },
+    campType: {
+        type: String,
         required: true
     }
 })

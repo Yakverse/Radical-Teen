@@ -5,6 +5,7 @@ const form = document.getElementById('formCadastro')
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    const user = document.getElementById('userForm').value
     const nome = document.getElementById('nomeForm').value
     const email = document.getElementById('emailForm').value
     const cel = document.getElementById('celForm').value
@@ -17,6 +18,7 @@ form.addEventListener('submit', async (e) => {
     }
 
     var payload = JSON.stringify({
+        usuario: user,
         nome: nome,
         email: email,
         cel: cel,
@@ -30,7 +32,10 @@ form.addEventListener('submit', async (e) => {
         headers: {"Content-Type": "application/json; charset=UTF-8"}
     })
     await cadastro.json().then(data => {
-        if (data.sucess) window.alert('Cadastrado') //TEMP
+        if (data.sucess) {
+            sessionStorage.setItem('sessionName', data.user)
+            window.location.href = `perfil.html?p=${data.user}`
+        }
         else if (data.code == 409) window.alert('Cadastro repetido') //TEMP
         else window.alert('Server Error') //TEMP
     })

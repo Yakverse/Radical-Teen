@@ -20,8 +20,11 @@ form.addEventListener('submit', async (e) => {
         headers: {"Content-Type": "application/json; charset=UTF-8"}
     })
     await login.json().then(data => {
-        if (data.sucess) window.alert('Logado') //TEMP
-        else if (data.code == 401) window.alert('Senha inválida') //TEMP
+        console.log(data)
+        if (data.sucess) {
+            sessionStorage.setItem('sessionName', data.nome)
+            window.location.href = `perfil.html?p=${data.nome}`
+        } else if (data.code == 401) window.alert('Senha inválida') //TEMP
         else window.alert('Nenhum cadastro encontrado com esse email') //TEMP
     })
 })

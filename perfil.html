@@ -23,9 +23,12 @@
             </div>
 
             <div class="loginIconesDiv">
-                <i class="icones faIcones fas fa-user-circle"></i>
-                <p class="icones">INICIAR SESSÃO</p>
+                <a href="login.html" id="sessionLink">
+                    <i class="icones faIcones fas fa-user-circle"></i>
+                    <p class="icones" id="sessionName">INICIAR SESSÃO</p>
+                </a>
             </div>
+            <script src="js/autologin.js"></script>
         </div>
     </header>
     <main>
@@ -39,39 +42,15 @@
         </div>
         <div class="conteudoPerfil">
             <div class="nomeDivPerfil">
-                <h2 class="nomePerfil" id="outputNome">Nome do Usuário</h2>
-                <i class="iconePerfil fas fa-cog" id="botaoEdit"></i>
+                <h2 class="nomePerfil topoPerfil" id="outputNome"></h2>
+                <i class="iconePerfil fas fa-cog" id="botaoEdit" style="display: none;"></i>
                 <!-- <input type="text" class="nomePerfilEdit"><i class="nomeEditIcon fas fa-pencil-alt"></i> -->
             </div>
-            <div class="jogosPerfil">
-                <div class="jogoCampoPerfil">
-                    <img src="img/fortniteicon.png" class="iconeJogoPerfil"><p class="jogoPerfil">Mogdobola</p>
-                    <input type="text" class="jogoPerfilEdit"><i class="jogoEditIcon fas fa-pencil-alt"></i>
-                </div>
-                <div class="jogoCampoPerfil">
-                    <img src="img/rocketleagueicon.png" class="iconeJogoPerfil"><p class="jogoPerfil">Mogdobola</p>
-                    <input type="text" class="jogoPerfilEdit"><i class="jogoEditIcon fas fa-pencil-alt"></i>
-                </div>
-                <div class="jogoCampoPerfil">
-                    <img src="img/fifaicon.png" class="iconeJogoPerfil"><p class="jogoPerfil">Mogdobola</p>
-                    <input type="text" class="jogoPerfilEdit"><i class="jogoEditIcon fas fa-pencil-alt"></i>
-                </div>
-                <div class="jogoCampoPerfil">
-                    <img src="img/lolicon.png" class="iconeJogoPerfil"><p class="jogoPerfil">Mogdobola</p>
-                    <input type="text" class="jogoPerfilEdit"><i class="jogoEditIcon fas fa-pencil-alt"></i>
-                </div>
-                <div class="jogoCampoPerfil">
-                    <img src="img/freefireicon.png" class="iconeJogoPerfil"><p class="jogoPerfil">Mogdobola</p>
-                    <input type="text" class="jogoPerfilEdit"><i class="jogoEditIcon fas fa-pencil-alt"></i>
-                </div>
-                <div class="jogoCampoPerfil">
-                    <img src="img/steamicon.png" class="iconeJogoPerfil"><p class="jogoPerfil">Mogdobola</p>
-                    <input type="text" class="jogoPerfilEdit"><i class="jogoEditIcon fas fa-pencil-alt"></i>
-                </div>
-            </div>
+            <div class="jogosPerfil" id="jogosPerfil"></div>
             <div class="botaoDivPerfil">
-                <button class="botaoInscricao"><span>Salvar</span></button>
+                <button class="botaoInscricao" id="btnSubmit"><span>Salvar</span></button>
             </div>
+            <script src="js/profile.js"></script>
         </div>
     </main>
     <!-- <footer></footer> -->
