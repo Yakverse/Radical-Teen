@@ -12,7 +12,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.js" integrity="sha256-mkdmXjMvBcpAyyFNCVdbwg4v+ycJho65QLDwVE3ViDs=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
-        <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
+        <script src="js/jquery.mask.min.js"></script>
     </head>
     <body class="cadastro">
         <!-- <header>
@@ -42,24 +42,28 @@
                     <h1>CADASTRO</h1>
                     <div class="formContainer">
                     <div class="formDiv" style="transition-delay: 0.2s">
+                        <p>NOME DE USUÁRIO</p>
+                        <input type="text" required="" id="userForm" minlength="5" maxlength="20"/>
+                    </div>
+                    <div class="formDiv" style="transition-delay: 0.2s">
                         <p>NOME COMPLETO</p>
-                        <input type="text" required="" id="nomeForm"/>
+                        <input type="text" required="" id="nomeForm" minlength="8" maxlength="50"/>
                     </div>
                     <div class="formDiv" style="transition-delay: 0.2s">
                         <p>EMAIL</p>
                         <input type="email" required="" id="emailForm"/>
                     </div>
                     <div class="formDiv" style="transition-delay: 0.3s">
-                        <p>TEL/CEL</p>
-                        <input type="tel" required="" id="celForm"/>
+                        <p>CEL</p>
+                        <input type="tel" required="" id="celForm"  minlength="8"/>
                     </div>
                     <div class="formDiv senha" style="transition-delay: 0.4s">
                         <p>SENHA</p>
-                        <input type="password" required="" id="senhaForm"/>
+                        <input type="password" required="" id="senhaForm" minlength="8"/>
                     </div>
                     <div class="formDiv repetir senha" style="transition-delay: 0.4s">
                         <p>REPETIR SENHA</p>
-                        <input type="password" required="" id="repetirSenha"/>
+                        <input type="password" required="" id="repetirSenha" minlength="8"/>
                     </div>
                     <div class="formDiv" style="transition-delay: 0.6s">
                         <button class="acceptBtn" type="submit">Cadastro</button><span class="register">Já tem uma conta?<a href="login.html">Login</a></span>
@@ -69,7 +73,10 @@
                 </div>
             </div>
             </div>
-        </script>
         <script src="js/animacao.js"></script>
+        <script>
+            //Input
+            $("#celForm").mask("(00) 000000000")
+        </script>
     </body>
 </html>

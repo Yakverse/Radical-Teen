@@ -30,40 +30,56 @@
     </header>
     <main>
         <div class="fundoPerfilDiv">
-            <div class="configIcon">
-                <i class="iconePerfil fas fa-cog"></i>
-            </div>
             <div class="fundoPerfilImgDiv">
                 <div class="fundoPerfilImg">
-                    <img src="img/gato.jpg">
+                    <!-- <i class="iconeImagemPerfil fas fa-cog"></i> -->
+                    <img src="img/rtbrancosembordafundopreto.png">
                 </div>
             </div>  
         </div>
         <div class="conteudoPerfil">
-            <h2 class="nomePerfil topoPerfil" id="outputNome">Nome Completo do Usuário</h2>
+            <div class="nomeDivPerfil">
+                <h2 class="nomePerfil" id="outputNome">Nome do Usuário</h2>
+                <i class="iconePerfil fas fa-cog" id="botaoEdit"></i>
+                <!-- <input type="text" class="nomePerfilEdit"><i class="nomeEditIcon fas fa-pencil-alt"></i> -->
+            </div>
             <div class="jogosPerfil">
                 <div class="jogoCampoPerfil">
                     <img src="img/fortniteicon.png" class="iconeJogoPerfil"><p class="jogoPerfil">Mogdobola</p>
+                    <input type="text" class="jogoPerfilEdit"><i class="jogoEditIcon fas fa-pencil-alt"></i>
                 </div>
                 <div class="jogoCampoPerfil">
                     <img src="img/rocketleagueicon.png" class="iconeJogoPerfil"><p class="jogoPerfil">Mogdobola</p>
+                    <input type="text" class="jogoPerfilEdit"><i class="jogoEditIcon fas fa-pencil-alt"></i>
                 </div>
                 <div class="jogoCampoPerfil">
                     <img src="img/fifaicon.png" class="iconeJogoPerfil"><p class="jogoPerfil">Mogdobola</p>
+                    <input type="text" class="jogoPerfilEdit"><i class="jogoEditIcon fas fa-pencil-alt"></i>
                 </div>
                 <div class="jogoCampoPerfil">
                     <img src="img/lolicon.png" class="iconeJogoPerfil"><p class="jogoPerfil">Mogdobola</p>
+                    <input type="text" class="jogoPerfilEdit"><i class="jogoEditIcon fas fa-pencil-alt"></i>
                 </div>
                 <div class="jogoCampoPerfil">
                     <img src="img/freefireicon.png" class="iconeJogoPerfil"><p class="jogoPerfil">Mogdobola</p>
+                    <input type="text" class="jogoPerfilEdit"><i class="jogoEditIcon fas fa-pencil-alt"></i>
                 </div>
                 <div class="jogoCampoPerfil">
                     <img src="img/steamicon.png" class="iconeJogoPerfil"><p class="jogoPerfil">Mogdobola</p>
+                    <input type="text" class="jogoPerfilEdit"><i class="jogoEditIcon fas fa-pencil-alt"></i>
                 </div>
+            </div>
+            <div class="botaoDivPerfil">
+                <button class="botaoInscricao"><span>Salvar</span></button>
             </div>
         </div>
     </main>
     <!-- <footer></footer> -->
+    <script>
+        $("#botaoEdit").click(function(){
+            $("body").attr("id", "edit")
+        });
+    </script>
 </body>
 
 </html>

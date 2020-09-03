@@ -20,7 +20,7 @@ $(function() {
                 setTimeout(function() {
                     if (detectMob() == false){
                         if ($('body').hasClass("cadastro")){
-                            $('.acceptContainer').transition({height: '600px'});
+                            $('.acceptContainer').transition({height: '700px'});
                         }
                         else{
                             $('.acceptContainer').transition({height: '450px'});
