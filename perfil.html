@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Campeonatos Radical Teen</title>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/perfil.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="shortcut icon" href="img/icon.png" />
     <!-- Font Awesome -->
@@ -32,23 +32,33 @@
         </div>
     </header>
     <main>
-        <div class="imagemDiv">
-            <div class="fundo">
-                <div class="fundoJogo" id=fundoJogo1></div>
-                <div class="fundoJogo" id=fundoJogo2></div>
-                <div class="fundoJogo" id=fundoJogo3></div>
-            </div>
-            
-            <div class="divTituloBotao">
-                <div class="tituloCampeonato">
-                    <h1>CAMPEONATOS RADICAL TEEN</h1>
+        <div class="fundoPerfilDiv">
+            <div class="fundoPerfilImgDiv">
+                <div class="fundoPerfilImg">
+                    <!-- <i class="iconeImagemPerfil fas fa-cog"></i> -->
+                    <img src="img/rtbrancosembordafundopreto.png">
                 </div>
-                <a href="pagamento.html?game=fortnite"><button class="botaoInscricao"><span>Inscreva-se</span></button></a>
+            </div>  
+        </div>
+        <div class="conteudoPerfil">
+            <div class="nomeDivPerfil">
+                <h2 class="nomePerfil topoPerfil" id="outputNome"></h2>
+                <i class="iconePerfil fas fa-cog" id="botaoEdit" style="display: none;"></i>
+                <!-- <input type="text" class="nomePerfilEdit"><i class="nomeEditIcon fas fa-pencil-alt"></i> -->
             </div>
+            <div class="jogosPerfil" id="jogosPerfil"></div>
+            <div class="botaoDivPerfil">
+                <button class="botaoInscricao" id="btnSubmit"><span>Salvar</span></button>
+            </div>
+            <script src="js/profile.js"></script>
         </div>
     </main>
     <!-- <footer></footer> -->
-    <script src="js/script.js"></script>
+    <script>
+        $("#botaoEdit").click(function(){
+            $("body").attr("id", "edit")
+        });
+    </script>
 </body>
 
 </html>

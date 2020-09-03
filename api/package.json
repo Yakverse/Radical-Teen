@@ -1,0 +1,22 @@
+{
+  "name": "radicalcamp-api",
+  "version": "1.0.0",
+  "description": "",
+  "bin": {
+    "api": "server.js"
+  },
+  "scripts": {
+    "start": "node bin/server.js"
+  },
+  "keywords": [],
+  "author": "Rodrigo Hernandez - RodrigoHernandez26",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "mongoose": "^5.10.2"
+  }
+}

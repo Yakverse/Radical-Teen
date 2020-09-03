@@ -1,0 +1,339 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Work+Sans:300,400,700,900");
+@font-face {
+    font-family: Burbank Big Condensed Bold;
+    src: url(../font/burbank-big-condensed-bold.otf);
+}
+
+* {
+    font-size: 0;
+    outline-width: 0;
+    font-family: 'Montserrat';
+}
+
+body {
+    margin: 0;
+    font-size: 100%;
+    line-height: 100%;
+    min-height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+    /* background-color: #2a2a2a; */
+    background-color: #18181b;
+    position: relative;
+}
+
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    /* Remove scrollbar space */
+}
+
+/* Optional: show position indicator in red */
+
+::-webkit-scrollbar-thumb {
+    background: white;
+}
+
+
+
+
+#csgo {
+    background: url(../img/csgo.jpg) no-repeat center / cover;
+}
+
+#fortnite {
+    background: url(../img/fortnite.jpg) no-repeat center / cover;
+}
+
+#freefire {
+    background: url(../img/freefire.jpg) no-repeat center / cover;
+}
+
+#fifa {
+    background: url(../img/fifa.jpg) no-repeat center / cover;
+}
+
+#lol {
+    background: url(../img/lol.jpg) no-repeat center / cover;
+}
+
+#rocketleague {
+    background: url(../img/rocketleague.jpg) no-repeat center / cover;
+}
+
+
+
+/* Main */
+main {
+    margin-top: 5vh;
+    z-index: 2;
+}
+
+/* Fundo Perfil */
+.fundoPerfilDiv {
+    z-index: 2;
+    width: 100vw;
+    height: 40vh;
+    margin-left: auto;
+    margin-right: auto;
+    background: url(../img/rocketleague.jpg) no-repeat center / cover;
+    position: relative;
+}
+
+/* Imagem Perfil */
+.fundoPerfilImgDiv{
+    position: absolute;
+    bottom: -3vh;
+    width: 100%;
+}
+
+.fundoPerfilImg{
+    width: 11vw;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.fundoPerfilImg img{
+    width: 10vw;
+    border-radius: 50%;
+    border: 0.5vw solid white;
+}
+
+/* #edit .fundoPerfilImg img{
+    filter: brightness(50%);
+}
+
+
+.iconeImagemPerfil{
+    position: absolute;
+    z-index: 3;
+    left: 5vh;
+    top: 9vh;
+}
+
+.iconeImagemPerfil::before{
+    display: none;
+    font-size: 5vh;
+    color: white;
+    margin-left: 3vh;
+}
+
+#edit .iconeImagemPerfil::before{
+    display: block;
+} */
+
+
+/* Conteudo Perfil */
+.conteudoPerfil{
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    padding-top: 5vh;
+    background: #18181b;
+}
+
+/* Nome do Perfil */
+.nomeDivPerfil{
+    text-align: center;
+}
+
+.nomePerfil{
+    margin: 0;
+    font-size: 6vh;
+    color: white;
+    line-height: 100%;
+    display: inline-block;
+}
+
+/* Icone Config */
+.iconePerfil {
+    width: 4vh;
+    height: 4.5vh;
+    display: inline-block;
+}
+.iconePerfil:hover {
+    cursor: pointer;
+}
+.iconePerfil::before {
+    display: inline-block;
+    margin-top: 1vh;
+    font-size: 5vh;
+    color: white;
+    margin-left: 2vh;
+}
+
+/* .nomePerfilEdit{
+    display: inline-block;
+    background: transparent;
+    border: none;
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 5vh;
+    margin: 0;
+    line-height: 5vh;
+    vertical-align: top;
+    margin-left: 1vh;
+    width: 65%;
+    text-align: center;
+    font-weight: bold;
+    display: none;
+}
+
+.nomePerfilEdit:focus{
+    box-shadow: inset 0 -2px 0 #fff;
+}
+
+.nomeEditIcon::before{
+    display: inline-block;
+    font-size: 5vh;
+    margin-top: 1vh;
+    color: white;
+    line-height: 5vh;
+    vertical-align: top;
+    margin-left: 1vh;
+    display: none;
+} */
+
+.jogosPerfil{
+    margin-top: 5vh;
+    text-align: center;
+}
+
+.jogoCampoPerfil{
+    display: inline-block;
+    margin-left: 3vh;
+    margin-right: 3vh;
+    margin-bottom: 3vh;
+    padding: 1.5vh;
+    background: #0c0e0f;
+    border-radius: 1.5vh;
+    box-shadow: 1vh 1vh 0.5vh 0vh rgba(0,0,0,0.75);
+    font-weight: bold;
+}
+
+.iconeJogoPerfil{
+    width: 5vh;
+    display: inline-block;
+}
+
+.jogoPerfil{
+    display: inline-block;
+    font-size: 3vh;
+    color: white;
+    margin: 0;
+    line-height: 5vh;
+    vertical-align: top;
+    margin-left: 1vh;
+    min-width: 25vh;
+}
+
+.jogoPerfilEdit{
+    display: inline-block;
+    background: transparent;
+    border: none;
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 3vh;
+    margin: 0;
+    line-height: 5vh;
+    vertical-align: top;
+    margin-left: 1vh;
+    width: 25vh;
+    font-weight: bold;
+    display: none;
+}
+
+.jogoPerfilEdit:focus{
+    box-shadow: inset 0 -2px 0 #fff;
+}
+
+.jogoEditIcon{
+    margin-top: 1vh;
+    font-size: 3.5vh;
+    color: white;
+    line-height: 5vh;
+    vertical-align: top;
+    margin-left: 1vh;
+}
+
+.jogoEditIcon::before{
+    display: none;
+}
+
+/* Botão */
+.botaoDivPerfil{
+    text-align: center;
+    display: none;
+}
+.botaoInscricao{
+    text-transform: uppercase;
+    padding: 0;
+    border: 0px;
+    border-radius: 1vh;
+    color: white;
+    margin: 0;
+    margin-top: 5vh;
+    width: 40%;
+    height: 10vh;
+    clip-path: polygon(8% 0,100% 0,93% 93%,0 100%);
+    background: #0c0e0f;
+    box-shadow: 1vh 1vh 0.5vh 0vh rgba(0,0,0,0.75);
+}
+
+.botaoInscricao *{
+    transition: all .3s ease-in-out;
+}
+
+.botaoInscricao:hover{
+    cursor: pointer;
+}
+.botaoInscricao:hover span{
+    margin-left: 15px;
+}
+
+.botaoInscricao:active {
+    border-style: none;
+    outline: none;
+}
+
+.botaoInscricao:focus{
+    outline: none;
+}
+
+.botaoInscricao span{
+    font-size: 5vh;
+    line-height: 100%;
+}
+
+
+/* Edit */
+#edit .jogoCampoPerfil p{
+    display: none;
+}
+#edit .jogoEditIcon::before, #edit .jogoPerfilEdit{
+    display: inline-block;
+}
+
+#edit .botaoDivPerfil{
+    display: block;
+}
+
+/* Mobile */
+@media (max-width: 1650px) {}
+
+@media (max-width: 1080px) {
+    #fifa {
+        background: url(../img/fifamobile.jpg) no-repeat center / cover;
+    }
+}
+
+@media (max-height: 1600px) {}
