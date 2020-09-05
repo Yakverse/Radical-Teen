@@ -1,0 +1,223 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Work+Sans:300,400,700,900");
+@font-face {
+    font-family: Burbank Big Condensed Bold;
+    src: url(../font/burbank-big-condensed-bold.otf);
+}
+
+* {
+    font-size: 0;
+    outline-width: 0;
+    font-family: 'Montserrat';
+}
+
+body {
+    margin: 0;
+    font-size: 100%;
+    line-height: 100%;
+    min-height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+    /* background-color: #2a2a2a; */
+    background-color: #18181b;
+    position: relative;
+    transition: all 1s;
+}
+
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    /* Remove scrollbar space */
+}
+
+/* Optional: show position indicator in red */
+
+::-webkit-scrollbar-thumb {
+    background: white;
+}
+
+
+
+
+#csgo {
+    background: url(../img/csgo.jpg) no-repeat center / cover;
+}
+
+#fortnite {
+    background: url(../img/fortnite.jpg) no-repeat center / cover;
+}
+
+#freefire {
+    background: url(../img/freefire.jpg) no-repeat center / cover;
+}
+
+#fifa {
+    background: url(../img/fifa.jpg) no-repeat center / cover;
+}
+
+#lol {
+    background: url(../img/lol.jpg) no-repeat center / cover;
+}
+
+#rocketleague {
+    background: url(../img/rocketleague.jpg) no-repeat center / cover;
+}
+
+
+
+/* Main */
+
+main {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    z-index: 2;
+    height: 100%;
+}
+
+.campeonatosDiv{
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10vh;
+    height: 100%;
+}
+
+.blocoCampeonato{
+    display: inline-block;
+    width: 32.33%;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    border-radius: 1vh;
+    position: relative;
+    background: #2C2F33;
+}
+
+.blocoCampeonatoCompleto{
+    width: 100%;
+    height: 100%;
+}
+
+.blocoCampeonatoImg{
+    width: 90%;
+    height: 90%;
+    /* box-sizing: border-box;
+    border: solid 0.5vh white; */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    display: block;
+}
+
+/* .blocoCampeonato:hover .blocoCampeonatoImg{
+    filter: brightness(50%);
+} */
+
+.blocoCampeonatoImgAdicionar{
+    width: 100%;
+    height: 100%;
+    transition: transform .5s ease;
+}
+
+.editBloco{
+    background: transparent;
+}
+.editBloco .botaoBlocoCampeonato{
+    display: none;
+}
+
+
+.blocoCampeonatoImgAdicionar:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+
+
+
+
+/* Botão */
+.blocoCampeonatoBotoes{
+    text-align: center;
+    height: 100%;
+    width: 91%;
+    margin-left: 4.5%;
+    margin-right: 4.5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.botaoBlocoCampeonato{
+    text-transform: uppercase;
+    padding: 0;
+    border: 0px;
+    color: black;
+    margin: 0;
+    height: 6vh;
+    width: 49%;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    box-sizing: border-box;
+    background: #3b3e42;
+}
+
+.botaoBlocoCampeonato::before{
+    font-family: "Font Awesome 5 Free";
+    font-size: 4vh;
+    font-weight: 900;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    line-height: 100%;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.botaoDeletar::before{
+    content: "\f2ed";
+    color: white;
+}
+
+.botaoEditar::before{
+    content: "\f044";
+    color: white;
+}
+
+.botaoBlocoCampeonato:hover{
+    cursor: pointer;
+}
+
+.botaoBlocoCampeonato:active {
+    border-style: none;
+    outline: none;
+}
+
+.botaoBlocoCampeonato:focus{
+    outline: none;
+}
+
+.botaoBlocoCampeonato:hover{
+    transform: scale(0.98);
+}
+
+
+
+/* Mobile */
+
+@media (max-width: 1650px) {}
+
+@media (max-width: 1080px) {
+    #fifa {
+        background: url(../img/fifamobile.jpg) no-repeat center / cover;
+    }
+}
+
+@media (max-height: 1600px) {}

@@ -8,6 +8,7 @@
     font-size: 0;
     outline-width: 0;
     font-family: 'Montserrat';
+    transition: all 1s;
 }
 
 body {
@@ -250,6 +251,7 @@ main {
     width: 25vh;
     font-weight: bold;
     display: none;
+    text-align: center;
 }
 
 .jogoPerfilEdit:focus{
