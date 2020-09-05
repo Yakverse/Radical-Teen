@@ -24,6 +24,7 @@ form.addEventListener('submit', async (e) => {
             sessionStorage.setItem('sessionName', data.nome)
             window.location.href = `perfil.html?p=${data.nome}`
         } else if (data.code == 401) window.alert('Senha inválida') //TEMP
-        else window.alert('Nenhum cadastro encontrado com esse email') //TEMP
+        else if (data.code == 404) window.alert('Nenhum cadastro encontrado com esse email') //TEMP
+        else window.location.href = 'index.html'
     })
 })

@@ -13,7 +13,6 @@ app.use((req, res, next) => {
     if(allowedOrigins.indexOf(origin) > -1){
         res.setHeader('Access-Control-Allow-Origin', origin);
     }
-    // res.header("Access-Control-Allow-Origin", "https://lucasmodolo22.github.io/Campeonato-Radical-Teen/");
     res.header("Access-Control-Allow-Credentials", "true");
     res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
     res.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Access-Control-Allow-Origin");
