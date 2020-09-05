@@ -329,6 +329,20 @@ main {
     display: block;
 }
 
+
+.perfilNaoEncontrado{
+    width: 100%;
+    margin-top: 15vh;
+}
+.perfilNaoEncontrado h2{
+    font-size: 8vh;
+    color: white;
+    line-height: 100%;
+    text-align: center;
+}
+
+
+
 /* Mobile */
 @media (max-width: 1650px) {}
 
