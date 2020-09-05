@@ -15,8 +15,6 @@ body {
     font-size: 100%;
     line-height: 100%;
     min-height: 100%;
-    overflow: scroll;
-    overflow-x: hidden;
     /* background-color: #2a2a2a; */
     background-color: #18181b;
     position: relative;
@@ -29,17 +27,7 @@ img {
     -moz-user-drag: none;
     -o-user-drag: none;
 }
-
-::-webkit-scrollbar {
-    width: 0px;
-    /* Remove scrollbar space */
-}
-
-/* Optional: show position indicator in red */
-
-::-webkit-scrollbar-thumb {
-    background: white;
-}
+  
 
 
 
@@ -79,8 +67,58 @@ main {
     height: 100%;
 }
 
+/* Bloco por Jogo */
+.campeonatoJogo{
+    width: 100%;
+    height: 100%;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+.nomeJogoCampeonato{
+    font-size: 4vh;
+    color: white;
+    cursor: pointer;
+}
+
+.nomeJogoCampeonato span::before{
+    font-family: "Font Awesome 5 Free";
+    font-size: 4vh;
+    font-weight: 900;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    line-height: 100%;
+    font-weight: bold;
+    margin-left: 3vh;
+}
+
+
+.iconeArroRight::before{
+    content: "\f105";
+}
+
+.iconeArrowDown::before{
+    content: "\f107";
+}
+
+
+.blocoJogosCampeonato{
+    display: none;
+}
+
+
+
+
+
+
+
+/* Bloco por Campeonato */
 .campeonatosDiv{
-    width: 85%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10vh;
@@ -128,7 +166,7 @@ main {
 .editBloco{
     background: transparent;
 }
-.editBloco .botaoBlocoCampeonato{
+.editBloco .botaoBlocoCampeonato, .editBloco .blocoNomeCampeonato{
     display: none;
 }
 
@@ -139,7 +177,37 @@ main {
 }
 
 
-
+/* Nome do Jogo */
+.blocoNomeCampeonato{
+    text-align: center;
+    height: 100%;
+    width: 91%;
+    margin-left: 4.5%;
+    margin-right: 4.5%;
+    margin-bottom: 5%;
+    margin-top: 3%;
+}
+.nomeCampeonatoDiv{
+    text-transform: uppercase;
+    padding: 0;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    border: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    background: #3b3e42;
+}
+.nomeCampeonato{
+    margin: 0;
+    font-size: 4vh;
+    color: white;
+    line-height: 100%;
+    vertical-align: bottom;
+    margin-left: 1vh;
+    margin-right: 1vh;
+}
 
 
 /* Botão */
@@ -149,14 +217,12 @@ main {
     width: 91%;
     margin-left: 4.5%;
     margin-right: 4.5%;
-    margin-top: 5%;
     margin-bottom: 5%;
 }
 .botaoBlocoCampeonato{
     text-transform: uppercase;
     padding: 0;
     border: 0px;
-    color: black;
     margin: 0;
     height: 6vh;
     width: 49%;

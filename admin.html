@@ -6,6 +6,7 @@
     <title>Campeonatos Radical Teen</title>
     <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/scrollbar.css">
     <link rel="shortcut icon" href="img/icon.png" />
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/72ea4166fa.js" crossorigin="anonymous"></script>
@@ -34,78 +35,55 @@
     <main>
         <div class="campeonatosDiv">
 
-            <div class="blocoCampeonato">
-                <div class="blocoCampeonatoCompleto">
-                    <img class="blocoCampeonatoImg" src="img/rocketleague.jpg">
-                    <div class="blocoCampeonatoBotoes">
-                        <button class="botaoDeletar botaoBlocoCampeonato"><span></span></button>
-                        <button class="botaoEditar botaoBlocoCampeonato"><span></span></button>
+            <!-- Inicio do Bloco de Cada Campeonato -->
+            <div class="campeonatoJogo">
+                <h2 class="nomeJogoCampeonato">NOME DO JOGO<span class="iconeClicar iconeArroRight"></span></h2>
+                <div class="blocoJogosCampeonato">
+                    <div class="blocoCampeonato">
+                        <div class="blocoCampeonatoCompleto">
+                            <img class="blocoCampeonatoImg" src="img/rocketleague.jpg">
+                            <div class="blocoNomeCampeonato">
+                                <div class="nomeCampeonatoDiv">
+                                    <h2 class="nomeCampeonato">NOME DO CAMPEONATO</h2>
+                                </div>
+                            </div>
+                            <div class="blocoCampeonatoBotoes">
+                                <button class="botaoDeletar botaoBlocoCampeonato"><span></span></button>
+                                <button class="botaoEditar botaoBlocoCampeonato"><span></span></button>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Botão Add -->
+                    <div class="blocoCampeonato editBloco">
+                        <div class="blocoCampeonatoCompleto">
+                            <img class="blocoCampeonatoImgAdicionar" src="img/plus.png">
+                            <div class="blocoNomeCampeonato">
+                                <div class="nomeCampeonatoDiv">
+                                    <h2 class="nomeCampeonato">NOME DO CAMPEONATO</h2>
+                                </div>
+                            </div>
+                            <div class="blocoCampeonatoBotoes">
+                                <button class="botaoDeletar botaoBlocoCampeonato"><span></span></button>
+                                <button class="botaoEditar botaoBlocoCampeonato"><span></span></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="blocoCampeonato">
-                <div class="blocoCampeonatoCompleto">
-                    <img class="blocoCampeonatoImg" src="img/fortnite.jpg">
-                    <div class="blocoCampeonatoBotoes">
-                        <button class="botaoDeletar botaoBlocoCampeonato"><span></span></button>
-                        <button class="botaoEditar botaoBlocoCampeonato"><span></span></button>
-                    </div>
-                </div>
-            </div>
-            <div class="blocoCampeonato">
-                <div class="blocoCampeonatoCompleto">
-                    <img class="blocoCampeonatoImg" src="img/fifa.jpg">
-                    <div class="blocoCampeonatoBotoes">
-                        <button class="botaoDeletar botaoBlocoCampeonato"><span></span></button>
-                        <button class="botaoEditar botaoBlocoCampeonato"><span></span></button>
-                    </div>
-                </div>
-            </div>
-            <div class="blocoCampeonato">
-                <div class="blocoCampeonatoCompleto">
-                    <img class="blocoCampeonatoImg" src="img/lol.jpg">
-                    <div class="blocoCampeonatoBotoes">
-                        <button class="botaoDeletar botaoBlocoCampeonato"><span></span></button>
-                        <button class="botaoEditar botaoBlocoCampeonato"><span></span></button>
-                    </div>
-                </div>
-            </div>
-            <div class="blocoCampeonato">
-                <div class="blocoCampeonatoCompleto">
-                    <img class="blocoCampeonatoImg" src="img/freefire.jpg">
-                    <div class="blocoCampeonatoBotoes">
-                        <button class="botaoDeletar botaoBlocoCampeonato"><span></span></button>
-                        <button class="botaoEditar botaoBlocoCampeonato"><span></span></button>
-                    </div>
-                </div>
-            </div>
-            <div class="blocoCampeonato">
-                <div class="blocoCampeonatoCompleto">
-                    <img class="blocoCampeonatoImg" src="img/csgo.jpg">
-                    <div class="blocoCampeonatoBotoes">
-                        <button class="botaoDeletar botaoBlocoCampeonato"><span></span></button>
-                        <button class="botaoEditar botaoBlocoCampeonato"><span></span></button>
-                    </div>
-                </div>
-            </div>
-            
+                 <!-- Fim do Bloco de Cada Campeonato -->
 
 
+                
 
-            <!-- Botão Add -->
-            <div class="blocoCampeonato editBloco">
-                <div class="blocoCampeonatoCompleto">
-                    <img class="blocoCampeonatoImgAdicionar" src="img/plus.png">
-                    <div class="blocoCampeonatoBotoes">
-                        <button class="botaoDeletar botaoBlocoCampeonato"><span></span></button>
-                        <button class="botaoEditar botaoBlocoCampeonato"><span></span></button>
-                    </div>
-                </div>
-            </div>
         </div>
     </main>
     <!-- <footer></footer> -->
-    <script src="js/script.js"></script>
+    <script>
+        $(".nomeJogoCampeonato").click(function(){
+            $(this).find(".iconeClicar").toggleClass("iconeArrowDown ")
+            $(this).parent().children(".blocoJogosCampeonato").toggle()
+        });
+    </script>
 </body>
 
 </html>
