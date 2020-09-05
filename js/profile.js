@@ -90,7 +90,6 @@ document.getElementById('btnSubmit').addEventListener('click', async () => {
         userType: ['fortnite', 'rl', 'fifa', 'lol', 'ff', 'steam'],
         account: [document.getElementById('inputFortnite').value, document.getElementById('inputRL').value, document.getElementById('inputFifa').value, document.getElementById('inputLoL').value, document.getElementById('inputFF').value, document.getElementById('inputSteam').value]
     })
-    console.log(payload)
     await fetch(`${URL_API}/user/account`, {
         credentials: 'include',
         method: 'PUT',

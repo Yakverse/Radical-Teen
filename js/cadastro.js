@@ -1,16 +1,14 @@
 const URL_API = 'https://radicalcamp-api.herokuapp.com'
 
-const form = document.getElementById('formCadastro')
+submitCadastro = async () => {
+    document.getElementById('formCadastro').elements[4].setCustomValidity("")
 
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const user = document.getElementById('userForm').value
-    const nome = document.getElementById('nomeForm').value
-    const email = document.getElementById('emailForm').value
-    const cel = document.getElementById('celForm').value
-    const senha = document.getElementById('senhaForm').value
-    const repetirSenha = document.getElementById('repetirSenha').value
+    var user = document.getElementById('userForm').value
+    var nome = document.getElementById('nomeForm').value
+    var email = document.getElementById('emailForm').value
+    var cel = document.getElementById('celForm').value
+    var senha = document.getElementById('senhaForm').value
+    var repetirSenha = document.getElementById('repetirSenha').value
 
     if (senha != repetirSenha){
         document.getElementById('formCadastro').elements[4].setCustomValidity("Senhas diferentes!")
@@ -33,10 +31,10 @@ form.addEventListener('submit', async (e) => {
     })
     await cadastro.json().then(data => {
         if (data.sucess) {
-            sessionStorage.setItem('sessionName', data.user)
-            window.location.href = `perfil.html?p=${data.user}`
+            sessionStorage.setItem('sessionName', user)
+            window.location.href = `perfil.html?p=${user}`
         }
         else if (data.code == 409) window.alert('Cadastro repetido') //TEMP
         else window.alert('Server Error') //TEMP
     })
-})
+}

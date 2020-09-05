@@ -38,35 +38,35 @@
             <div id="inviteContainer">
                 <div class="logoContainer"><img class="logo" src="img/rtpretosemborda.png"/><img class="text" src="img/rtlogopreto.png"/></div>
                 <div class="acceptContainer">
-                <form id="formCadastro" action="/" method="GET">
+                <form id="formCadastro" action="#" method="GET">
                     <h1>CADASTRO</h1>
                     <div class="formContainer">
                     <div class="formDiv" style="transition-delay: 0.2s">
                         <p>NOME DE USUÁRIO</p>
-                        <input type="text" required="" id="userForm" minlength="5" maxlength="20"/>
+                        <input type="text" required="" id="userForm" name="usuario" minlength="5" maxlength="20"/>
                     </div>
                     <div class="formDiv" style="transition-delay: 0.2s">
                         <p>NOME COMPLETO</p>
-                        <input type="text" required="" id="nomeForm" minlength="8" maxlength="50"/>
+                        <input type="text" required="" id="nomeForm" name="nome" minlength="8" maxlength="50"/>
                     </div>
                     <div class="formDiv" style="transition-delay: 0.2s">
                         <p>EMAIL</p>
-                        <input type="email" required="" id="emailForm"/>
+                        <input type="email" required="" id="emailForm" name="email"/>
                     </div>
                     <div class="formDiv" style="transition-delay: 0.3s">
                         <p>CEL</p>
-                        <input type="tel" required="" id="celForm"  minlength="8"/>
+                        <input type="tel" required="" id="celForm" name="cel" minlength="8"/>
                     </div>
                     <div class="formDiv senha" style="transition-delay: 0.4s">
                         <p>SENHA</p>
-                        <input type="password" required="" id="senhaForm" minlength="8"/>
+                        <input type="password" required="" id="senhaForm" name="senha" minlength="8"/>
                     </div>
                     <div class="formDiv repetir senha" style="transition-delay: 0.4s">
                         <p>REPETIR SENHA</p>
-                        <input type="password" required="" id="repetirSenha" minlength="8"/>
+                        <input type="password" required="" id="repetirSenha" name="repSenha" minlength="8"/>
                     </div>
                     <div class="formDiv" style="transition-delay: 0.6s">
-                        <button class="acceptBtn" type="submit">Cadastro</button><span class="register">Já tem uma conta?<a href="login.html">Login</a></span>
+                        <button class="acceptBtn" type="submit" onclick="submitCadastro()">Cadastro</button><span class="register">Já tem uma conta?<a href="login.html">Login</a></span>
                     </div>
                     </div>
                 </form>
