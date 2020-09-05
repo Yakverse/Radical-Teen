@@ -8,7 +8,7 @@ const app = express();
 
 //Middleware CORS
 app.use((req, res, next) => {
-    var allowedOrigins = ['http://127.0.0.1:8080', 'http://localhost:8080', "https://lucasmodolo22.github.io/Campeonato-Radical-Teen/"];
+    var allowedOrigins = ['http://127.0.0.1:8080', 'http://localhost:8080', "https://lucasmodolo22.github.io"];
     var origin = req.headers.origin;
     if(allowedOrigins.indexOf(origin) > -1){
         res.setHeader('Access-Control-Allow-Origin', origin);
