@@ -61,6 +61,65 @@ exports.inscriçãoCamp = (req, res, next) => {
     })
 }
 
+exports.editCamp = (req, res, next) => {
+
+    // header = {sessionID: ''}
+    // body = {
+    //     campID: '',
+    //     campProp: [],
+    //     info: [],
+    // }
+
+    User.findById(req.headers.cookie.split('=')[1]).then(userData => {
+        if (!userData.admin) return res.status(401).send()
+
+        Camp.findById(req.body.campID).then(campData => {
+            campInfos = {
+                nome(info) {
+                    campData.nome = info
+                },
+                data(info) {
+                    campData.data = info
+                },
+                maxPlayers(info) {
+                    campData.maxPlayers = info
+                },
+                listaPlayers(info) {
+                    campData.listaPlayers = info
+                },
+                limiteDataInscrições(info) {
+                    campData.limiteDataInscrições = info
+                },
+                inscricoesOn(info) {
+                    campData.inscricoesOn = info
+                },
+                premiacao(info) {
+                    campData.premiacao = info
+                },
+                inscricao(info) {
+                    campData.inscricao = info
+                },
+                campType(info) {
+                    campData.campType = info
+                }
+            }
+
+            req.body.campProp.forEach((value, i) => {
+                campInfos[value](req.body.info[i])
+            })
+            Camp.replaceOne({_id: req.body.campID}, campData).then(() => {
+                res.status(201).send()
+            }).catch(() => {
+                res.status(500).send()
+            })
+        }).catch(() => {
+            res.status(400).send()
+        })
+    }).catch(() => {
+        res.status(400).send()
+    })
+}
+
 exports.allCamps = (req, res, next) => {
     var payload = {}
     if (Object.keys(req.query).length != 0) {

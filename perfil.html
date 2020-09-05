@@ -6,6 +6,7 @@
     <title>Campeonatos Radical Teen</title>
     <link rel="stylesheet" href="css/perfil.css">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/scrollbar.css">
     <link rel="shortcut icon" href="img/icon.png" />
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/72ea4166fa.js" crossorigin="anonymous"></script>
@@ -44,13 +45,15 @@
             <div class="nomeDivPerfil">
                 <h2 class="nomePerfil topoPerfil" id="outputNome"></h2>
                 <i class="iconePerfil fas fa-cog" id="botaoEdit" style="display: none;"></i>
-                <!-- <input type="text" class="nomePerfilEdit"><i class="nomeEditIcon fas fa-pencil-alt"></i> -->
+                <!-- <input type="text" class="nomePerfilEdit" autocomplete="off"><i class="nomeEditIcon fas fa-pencil-alt"></i> -->
             </div>
             <div class="jogosPerfil" id="jogosPerfil"></div>
             <div class="botaoDivPerfil">
                 <button class="botaoInscricao" id="btnSubmit"><span>Salvar</span></button>
             </div>
             <script src="js/profile.js"></script>
+
+            <div class="perfilNaoEncontrado" id="perfilNaoEncontrado"></div>
         </div>
     </main>
     <!-- <footer></footer> -->

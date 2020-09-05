@@ -13,15 +13,13 @@ autoLogin = async () => {
         method: 'POST',
         headers: {"Content-Type": "application/json; charset=UTF-8"}
     }).then(async response => {
-        var data = await response.json()
-        if (response.ok) {
+        if (response.status == 200) {
+            var data = await response.json()
             sessionStorage.setItem('sessionName', JSON.stringify(data.data.usuario))
             document.getElementById('sessionName').innerHTML = data.data.usuario
             document.getElementById('sessionLink').href = `perfil.html?p=${data.data.usuario}`
-        } else {
-            if (sessionStorage.getItem('sessionName')){
-                sessionStorage.removeItem('sessionName')
-            }
+        } else if (response.status == 404 || response.status == 400) {
+            if (sessionStorage.getItem('sessionName')) sessionStorage.removeItem('sessionName')
             if(!window.location.pathname == '/index.html') window.location.href = 'index.html'
         }
     })

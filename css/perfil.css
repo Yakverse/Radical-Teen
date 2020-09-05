@@ -8,6 +8,7 @@
     font-size: 0;
     outline-width: 0;
     font-family: 'Montserrat';
+    transition: all 1s;
 }
 
 body {
@@ -15,8 +16,6 @@ body {
     font-size: 100%;
     line-height: 100%;
     min-height: 100%;
-    overflow: scroll;
-    overflow-x: hidden;
     /* background-color: #2a2a2a; */
     background-color: #18181b;
     position: relative;
@@ -27,17 +26,6 @@ img {
     -khtml-user-drag: none;
     -moz-user-drag: none;
     -o-user-drag: none;
-}
-
-::-webkit-scrollbar {
-    width: 0px;
-    /* Remove scrollbar space */
-}
-
-/* Optional: show position indicator in red */
-
-::-webkit-scrollbar-thumb {
-    background: white;
 }
 
 
@@ -250,6 +238,7 @@ main {
     width: 25vh;
     font-weight: bold;
     display: none;
+    text-align: center;
 }
 
 .jogoPerfilEdit:focus{
@@ -326,6 +315,20 @@ main {
 #edit .botaoDivPerfil{
     display: block;
 }
+
+
+.perfilNaoEncontrado{
+    width: 100%;
+    margin-top: 15vh;
+}
+.perfilNaoEncontrado h2{
+    font-size: 8vh;
+    color: white;
+    line-height: 100%;
+    text-align: center;
+}
+
+
 
 /* Mobile */
 @media (max-width: 1650px) {}

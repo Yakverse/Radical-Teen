@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Campeonatos Radical Teen</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/scrollbar.css">
+    <link rel="shortcut icon" href="img/icon.png" />
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/72ea4166fa.js" crossorigin="anonymous"></script>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+</head>
+
+<body>
+    <header>
+        <div class="iconesDiv">
+            <div class="imgIconesDiv">
+                <a href="index.html"><img src="img/rtbrancosembordarecortado.png" class="icones imgIcones"></a>
+                <a href="index.html"><img src="img/rtlogobranco.png" class="icones imgIcones"></a>
+            </div>
+
+            <div class="loginIconesDiv">
+                <a href="login.html" id="sessionLink">
+                    <i class="icones faIcones fas fa-user-circle"></i>
+                    <p class="icones" id="sessionName">INICIAR SESSÃO</p>
+                </a>
+            </div>
+            <script src="js/autologin.js"></script>
+        </div>
+    </header>
+    <main>
+        <div class="campeonatosDiv">
+
+            <!-- Inicio do Bloco de Cada Campeonato -->
+            <div class="campeonatoJogo">
+                <h2 class="nomeJogoCampeonato">NOME DO JOGO<span class="iconeClicar iconeArroRight"></span></h2>
+                <div class="blocoJogosCampeonato">
+                    <div class="blocoCampeonato">
+                        <div class="blocoCampeonatoCompleto">
+                            <img class="blocoCampeonatoImg" src="img/rocketleague.jpg">
+                            <div class="blocoNomeCampeonato">
+                                <div class="nomeCampeonatoDiv">
+                                    <h2 class="nomeCampeonato">NOME DO CAMPEONATO</h2>
+                                </div>
+                            </div>
+                            <div class="blocoCampeonatoBotoes">
+                                <button class="botaoDeletar botaoBlocoCampeonato"><span></span></button>
+                                <button class="botaoEditar botaoBlocoCampeonato"><span></span></button>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Botão Add -->
+                    <div class="blocoCampeonato editBloco">
+                        <div class="blocoCampeonatoCompleto">
+                            <img class="blocoCampeonatoImgAdicionar" src="img/plus.png">
+                            <div class="blocoNomeCampeonato">
+                                <div class="nomeCampeonatoDiv">
+                                    <h2 class="nomeCampeonato">NOME DO CAMPEONATO</h2>
+                                </div>
+                            </div>
+                            <div class="blocoCampeonatoBotoes">
+                                <button class="botaoDeletar botaoBlocoCampeonato"><span></span></button>
+                                <button class="botaoEditar botaoBlocoCampeonato"><span></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Fim do Bloco de Cada Campeonato -->
+
+
+                
+
+        </div>
+    </main>
+    <!-- <footer></footer> -->
+    <script>
+        $(".nomeJogoCampeonato").click(function(){
+            $(this).find(".iconeClicar").toggleClass("iconeArrowDown ")
+            $(this).parent().children(".blocoJogosCampeonato").toggle()
+        });
+    </script>
+</body>
+
+</html>
