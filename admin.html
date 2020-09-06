@@ -29,61 +29,12 @@
                     <p class="icones" id="sessionName">INICIAR SESSÃO</p>
                 </a>
             </div>
-            <script src="js/autologin.js"></script>
+            <script src="js/loginAdmin.js"></script>
         </div>
     </header>
     <main>
-        <div class="campeonatosDiv">
-
-            <!-- Inicio do Bloco de Cada Campeonato -->
-            <div class="campeonatoJogo">
-                <h2 class="nomeJogoCampeonato">NOME DO JOGO<span class="iconeClicar iconeArroRight"></span></h2>
-                <div class="blocoJogosCampeonato">
-                    <div class="blocoCampeonato">
-                        <div class="blocoCampeonatoCompleto">
-                            <img class="blocoCampeonatoImg" src="img/rocketleague.jpg">
-                            <div class="blocoNomeCampeonato">
-                                <div class="nomeCampeonatoDiv">
-                                    <h2 class="nomeCampeonato">NOME DO CAMPEONATO</h2>
-                                </div>
-                            </div>
-                            <div class="blocoCampeonatoBotoes">
-                                <button class="botaoDeletar botaoBlocoCampeonato"><span></span></button>
-                                <button class="botaoEditar botaoBlocoCampeonato"><span></span></button>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <!-- Botão Add -->
-                    <div class="blocoCampeonato editBloco">
-                        <div class="blocoCampeonatoCompleto">
-                            <img class="blocoCampeonatoImgAdicionar" src="img/plus.png">
-                            <div class="blocoNomeCampeonato">
-                                <div class="nomeCampeonatoDiv">
-                                    <h2 class="nomeCampeonato">NOME DO CAMPEONATO</h2>
-                                </div>
-                            </div>
-                            <div class="blocoCampeonatoBotoes">
-                                <button class="botaoDeletar botaoBlocoCampeonato"><span></span></button>
-                                <button class="botaoEditar botaoBlocoCampeonato"><span></span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                 <!-- Fim do Bloco de Cada Campeonato -->
-
-
-                
-
-        </div>
+        <div class="campeonatosDiv" id="campeonatosDiv"></div>
     </main>
-    <!-- <footer></footer> -->
-    <script>
-        $(".nomeJogoCampeonato").click(function(){
-            $(this).find(".iconeClicar").toggleClass("iconeArrowDown ")
-            $(this).parent().children(".blocoJogosCampeonato").toggle()
-        });
-    </script>
+    <script src="js/admin.js"></script>
 </body>
-
 </html>

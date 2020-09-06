@@ -27,45 +27,16 @@ img {
     -moz-user-drag: none;
     -o-user-drag: none;
 }
-  
-
-
-
-
-#csgo {
-    background: url(../img/csgo.jpg) no-repeat center / cover;
-}
-
-#fortnite {
-    background: url(../img/fortnite.jpg) no-repeat center / cover;
-}
-
-#freefire {
-    background: url(../img/freefire.jpg) no-repeat center / cover;
-}
-
-#fifa {
-    background: url(../img/fifa.jpg) no-repeat center / cover;
-}
-
-#lol {
-    background: url(../img/lol.jpg) no-repeat center / cover;
-}
-
-#rocketleague {
-    background: url(../img/rocketleague.jpg) no-repeat center / cover;
-}
-
 
 
 /* Main */
-
 main {
     margin-top: 5vh;
     margin-bottom: 5vh;
     z-index: 2;
     height: 100%;
 }
+
 
 /* Bloco por Jogo */
 .campeonatoJogo{
@@ -96,7 +67,6 @@ main {
     margin-left: 3vh;
 }
 
-
 .iconeArroRight::before{
     content: "\f105";
 }
@@ -105,15 +75,9 @@ main {
     content: "\f107";
 }
 
-
 .blocoJogosCampeonato{
     display: none;
 }
-
-
-
-
-
 
 
 /* Bloco por Campeonato */
@@ -169,7 +133,6 @@ main {
 .editBloco .botaoBlocoCampeonato, .editBloco .blocoNomeCampeonato{
     display: none;
 }
-
 
 .blocoCampeonatoImgAdicionar:hover{
     transform: scale(1.2);
@@ -273,8 +236,6 @@ main {
 .botaoBlocoCampeonato:hover{
     transform: scale(0.98);
 }
-
-
 
 /* Mobile */
 
