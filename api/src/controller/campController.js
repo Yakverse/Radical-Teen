@@ -14,6 +14,10 @@ exports.createCamp = (req, res, next) => {
     // }
 
     User.findById(req.headers.cookie.split('=')[1]).then(data => {
+        if (Object.keys(data).length == 0) {
+            res.clearCookie('sessionID', {path: '/'})
+            return res.status(404).send()
+        }
         if (!data.admin) return res.status(401).send({code: 401, sucess: false})
 
         new Camp(req.body).save().then(() => {
@@ -43,6 +47,10 @@ exports.inscriçãoCamp = (req, res, next) => {
         }
 
         User.findById(req.headers.cookie.split('=')[1]).then(dataUser => {
+            if (Object.keys(dataUser).length == 0) {
+                res.clearCookie('sessionID', {path: '/'})
+                return res.status(404).send()
+            }
             for (users in dataUser.listaPlayers) {
                 if (dataUser.listaPlayers[users] == req.headers.cookie.split('=')[1]) return res.status(409).send({code: 409, sucess: false, error: 'Ja cadastrado'})
             }
@@ -71,6 +79,10 @@ exports.editCamp = (req, res, next) => {
     // }
 
     User.findById(req.headers.cookie.split('=')[1]).then(userData => {
+        if (Object.keys(userData).length == 0) {
+            res.clearCookie('sessionID', {path: '/'})
+            return res.status(404).send()
+        }
         if (!userData.admin) return res.status(401).send()
 
         Camp.findById(req.body.campID).then(campData => {
@@ -116,6 +128,31 @@ exports.editCamp = (req, res, next) => {
             res.status(400).send()
         })
     }).catch(() => {
+        res.status(400).send()
+    })
+}
+
+exports.deleteCamp = (req, res, next) => {
+
+    // header = {sessionID: ''}
+    // body = {
+    //     campID: ''
+    // }
+
+    User.findById(req.headers.cookie.split('=')[1]).then(data => {
+        if (Object.keys(data).length == 0) {
+            res.clearCookie('sessionID', {path: '/'})
+            return res.status(404).send()
+        }
+        if (!data.admin) return res.status(401).send()
+
+        Camp.deleteOne({_id: req.body.campID}).then(() => {
+            res.status(200).send()
+        }).catch(() => {
+            res.status(404).send()
+        })
+    }).catch(() => {
+        res.clearCookie('sessionID', {path: '/'})
         res.status(400).send()
     })
 }

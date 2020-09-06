@@ -9,4 +9,6 @@ router.post('/inscrever', campController.inscriçãoCamp);
 
 router.put('/edit-camp', campController.editCamp);
 
+router.delete('/delete-camp', campController.deleteCamp);
+
 module.exports = router;

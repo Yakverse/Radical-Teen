@@ -1,3 +1,18 @@
+deleteCamp = async (campID, campName) => {
+    if (confirm(`Deseja deletar o campeonato ${campName}?`)){
+        var payload = JSON.stringify({campID: campID})
+        await fetch(`${URL_API}/delete-camp`, {
+            credentials: 'include',
+            method: 'DELETE',
+            body: payload,
+            headers: {"Content-Type": "application/json; charset=UTF-8"}
+        }).then(response => {
+            if (!response.ok) window.location.href = 'index.html'
+            window.location.reload(true)
+        })
+    }
+}
+
 loadCamps = async () => {
     await fetch(`${URL_API}/camps`, {
         credentials: 'include',
@@ -18,7 +33,7 @@ loadCamps = async () => {
                                 </div>
                             </div>
                             <div class="blocoCampeonatoBotoes">
-                                <button class="botaoDeletar botaoBlocoCampeonato"><span></span></button>
+                                <button class="botaoDeletar botaoBlocoCampeonato" onclick="deleteCamp('${value._id}', '${value.nome}')"><span></span></button>
                                 <a href="admin_edit.html?c=${value._id}"><button class="botaoEditar botaoBlocoCampeonato"><span></span></button></a>
                             </div>
                         </div>
@@ -39,7 +54,7 @@ loadCamps = async () => {
                                 </div>
                             </div>
                             <div class="blocoCampeonatoBotoes">
-                                <button class="botaoDeletar botaoBlocoCampeonato"><span></span></button>
+                                <button class="botaoDeletar botaoBlocoCampeonato" onclick="deleteCamp('${value._id}', '${value.nome}')"><span></span></button>
                                 <a href="admin_edit.html?c=${value._id}"><button class="botaoEditar botaoBlocoCampeonato"><span></span></button></a>
                             </div>
                         </div>
