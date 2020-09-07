@@ -79,10 +79,10 @@ tr:hover {
     font-size: 4vh;
 }
 .inscrito::before{
-    color: green;
+    color: rgb(12, 185, 12);
 }
 .aguardo::before{
-    color: yellow;
+    color: rgb(231, 231, 1);
 }
 
 
@@ -97,10 +97,10 @@ tr:hover {
     cursor: pointer;
 }
 .add::before{
-    color: green;
+    color: rgb(12, 185, 12);
 }
 .exclude::before{
-    color: red;
+    color: rgb(238, 27, 27);
 }
 
 /* Mobile */
