@@ -41,15 +41,25 @@ main {
 .blocoDeDadosDoCampeonato{
     margin-top: 10vh;
     margin-bottom: 10vh;
-    margin-left: 5vh;
-    margin-right: 5vh;
+    margin-left: 10vh;
+    margin-right: 10vh;
+}
+
+.imgJogo{
+    width: 100%;
+    margin-bottom: 5vh;
+    text-align: center;
+}
+.imgJogo input{
+    height: 40vh;
+}
+.imgJogo:hover{
+    filter: brightness(50%);
 }
 
 .blocoDoInput{
     margin-bottom: 5vh;
 }
-
-
 .blocoDoInput p{
     font-size: 4vh;
     color: white;
@@ -82,19 +92,69 @@ main {
     box-shadow: inset 0 -2px 0 #fff;
 }
 
-
-
-
+#campType .campoInput{
+    width: 30%;
+}
 #maxPlayer .campoInput{
     width: 5%;
 }
-
 #limiteDataInscrições .campoInput{
     width: 10%;
 }
-
 .dinheiro .campoInput{
-    width: 20%;
+    width: 10%;
+}
+
+
+/* Botão */
+.botaoAdicionarCampeonatoDiv{
+    text-align: center;
+}
+.botaoAdicionarCampeonato{
+    text-transform: uppercase;
+    padding: 0;
+    border: 0px;
+    border-radius: 1vh;
+    color: white;
+    margin: 0;
+    margin-top: 5vh;
+    width: 50%;
+    height: 10vh;
+    clip-path: polygon(8% 0,100% 0,93% 93%,0 100%);
+    background: #0c0e0f;
+}
+
+.botaoAdicionarCampeonato *{
+    transition: all .3s ease-in-out;
+}
+
+.botaoAdicionarCampeonato:hover{
+    cursor: pointer;
+}
+.botaoAdicionarCampeonato:hover span{
+    margin-left: 15px;
+}
+
+.botaoAdicionarCampeonato:active {
+    border-style: none;
+    outline: none;
+}
+
+.botaoAdicionarCampeonato:focus{
+    outline: none;
+}
+
+.botaoAdicionarCampeonato span{
+    font-size: 5vh;
+    line-height: 100%;
+}
+
+#adicionarCampeonato:hover{
+    background-color: #618b25;
+}
+
+#excluirCampeonato:hover{
+    background-color: #F13030;
 }
 
 

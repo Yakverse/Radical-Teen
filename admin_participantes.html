@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Campeonatos Radical Teen</title>
+    <link rel="stylesheet" href="css/adminParticipantes.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/scrollbar.css">
+    <link rel="shortcut icon" href="img/icon.png" />
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/72ea4166fa.js" crossorigin="anonymous"></script>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <script src="js/jquery.mask.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="iconesDiv">
+            <div class="imgIconesDiv">
+                <a href="index.html"><img src="img/rtbrancosembordarecortado.png" class="icones imgIcones"></a>
+                <a href="index.html"><img src="img/rtlogobranco.png" class="icones imgIcones"></a>
+            </div>
+
+            <div class="loginIconesDiv">
+                <a href="login.html" id="sessionLink">
+                    <i class="icones faIcones fas fa-user-circle"></i>
+                    <p class="icones" id="sessionName">INICIAR SESSÃO</p>
+                </a>
+            </div>
+            <script src="js/autologin.js"></script>
+        </div>
+    </header>
+    <main>
+        <div class="blocoDeDadosDosParticipantes">
+
+            <table>
+                <!-- Inicio do Header -->
+                <tr class="Header cadaUsuario">
+                  <th>Usuário</th>
+                  <th>Nome do Usuário</th>
+                  <th>Email</th>
+                  <th>Estado</th>
+                  <th></th>
+                </tr>
+                <!-- Fim do Header -->
+
+                <tr class="cadaUsuario">
+                  <td>Nick do Usuário</td>
+                  <td>Nome do Usuário</td>
+                  <td>email@email.com</td>
+                  <td class="estadoDoUsuario"><i class="fas fa-circle inscrito"></i></td>
+                  <td class="botoesUsuario">
+                      <i class="fas fa-trash-alt exclude"></i>
+                    </td>
+                </tr>
+
+                <tr class="cadaUsuario">
+                    <td>Nick do Usuário</td>
+                    <td>Nome do Usuário</td>
+                    <td>email@email.com</td>
+                    <td class="estadoDoUsuario"><i class="fas fa-circle aguardo"></i></td>
+                    <td class="botoesUsuario">
+                        <i class="fas fa-check add"></i>
+                        <i class="fas fa-trash-alt exclude"></i>
+                    </td>
+                </tr>
+
+
+            </table>
+
+        </div>
+    </main>
+    <!-- <footer></footer> -->
+    <script>
+        // Máscaras
+        $("#limiteDataInscrições input").mask("00/00/0000")
+        $(".dinheiro input").mask("##0.00", {reverse: true});
+
+        // Adicionar Imagem
+        $("input[type='image']").click(function() {
+            $("input[id='my_file']").click();
+        });
+    </script>
+</body>
+
+</html>

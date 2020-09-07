@@ -36,50 +36,70 @@
     <main>
         <div class="blocoDeDadosDoCampeonato">
 
+            <div class="imgJogo">
+                <input type="image" src="img/rtadicionarimagem.png"/>
+                <input type="file" id="my_file" style="display: none;" />
+            </div>
 
             <div class="blocoDoInput">
                 <p>Nome do Campeonato</p>
                 <div class="campoInput">
-                    <input type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
+                    <input placeholder="Ex.: Campeonato de Fortnite!!!" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
+                </div>
+            </div>
+
+            <div class="blocoDoInput" id="campType">
+                <p>Jogo do Campeonato</p>
+                <div class="campoInput">
+                    <input placeholder="Ex.: Fortnite" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
                 </div>
             </div>
 
             <div class="blocoDoInput" id="maxPlayer">
                 <p>Número Máximo de Jogadores</p>
                 <div class="campoInput">
-                    <input class="maxPlayersInput" maxlength="3" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
+                    <input placeholder="0" class="maxPlayersInput" maxlength="3" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
                 </div>
             </div>
 
             <div class="blocoDoInput" id="limiteDataInscrições">
                 <p>Limite de Data das Inscrições</p>
                 <div class="campoInput">
-                    <input type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
+                    <input placeholder="XX/XX/XXXX" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
                 </div>
             </div>
 
             <div class="blocoDoInput dinheiro">
                 <p>Valor da Premiação</p>
                 <div class="campoInput">
-                    <input type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
+                    <input placeholder="100.00" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
                 </div>
             </div>
 
             <div class="blocoDoInput dinheiro">
                 <p>Valor da Inscrição</p>
                 <div class="campoInput">
-                    <input type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
+                    <input placeholder="15.00" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
                 </div>
             </div>
 
+            <div class="botaoAdicionarCampeonatoDiv">
+                <button class="botaoAdicionarCampeonato" id="adicionarCampeonato"><span>Salvar Campeonato</span></button>
+                <button class="botaoAdicionarCampeonato" id="excluirCampeonato"><span>Excluir Campeonato</span></button>
+            </div>
 
         </div>
     </main>
     <!-- <footer></footer> -->
     <script>
+        // Máscaras
         $("#limiteDataInscrições input").mask("00/00/0000")
-
         $(".dinheiro input").mask("##0.00", {reverse: true});
+
+        // Adicionar Imagem
+        $("input[type='image']").click(function() {
+            $("input[id='my_file']").click();
+        });
     </script>
 </body>
 
