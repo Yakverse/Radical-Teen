@@ -61,15 +61,15 @@ main {
     margin-bottom: 5vh;
 }
 .blocoDoInput p{
-    font-size: 4vh;
+    font-size: 3vh;
     color: white;
     margin-bottom: 3vh;
 }
 
 .campoInput{
-    padding: 1.5vh;
+    padding: 1vh;
     background: #2C2F33;
-    border-radius: 1.5vh;
+    border-radius: 1vh;
     font-weight: bold;
     width: 70%;
 }
@@ -80,9 +80,9 @@ main {
     box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.15);
     box-sizing: border-box;
     color: #fff;
-    font-size: 3vh;
+    font-size: 2vh;
     margin: 0;
-    line-height: 5vh;
+    line-height: 3vh;
     vertical-align: top;
     font-weight: bold;
     height: 5vh;
@@ -96,13 +96,13 @@ main {
     width: 30%;
 }
 #maxPlayer .campoInput{
-    width: 5%;
+    width: 3%;
 }
 #limiteDataInscrições .campoInput{
-    width: 10%;
+    width: 8%;
 }
 .dinheiro .campoInput{
-    width: 10%;
+    width: 5%;
 }
 
 
@@ -117,9 +117,9 @@ main {
     border-radius: 1vh;
     color: white;
     margin: 0;
-    margin-top: 5vh;
-    width: 50%;
-    height: 10vh;
+    margin-top: 3vh;
+    width: 30%;
+    height: 7vh;
     clip-path: polygon(8% 0,100% 0,93% 93%,0 100%);
     background: #0c0e0f;
 }
@@ -145,7 +145,7 @@ main {
 }
 
 .botaoAdicionarCampeonato span{
-    font-size: 5vh;
+    font-size: 3vh;
     line-height: 100%;
 }
 

@@ -26,15 +26,16 @@ loadCamps = async () => {
                     document.getElementById(value.campType).innerHTML += 
                     `<div class="blocoCampeonato">
                         <div class="blocoCampeonatoCompleto">
-                            <img class="blocoCampeonatoImg" src="img/${value.campType}.jpg">
+                            <img class="blocoCampeonatoImg" title="${value['nome'].toUpperCase()}" src="img/${value.campType}.jpg">
                             <div class="blocoNomeCampeonato">
                                 <div class="nomeCampeonatoDiv">
-                                    <h2 class="nomeCampeonato">${value['nome'].toUpperCase()}</h2>
+                                    <h2 class="nomeCampeonato" title="${value['nome'].toUpperCase()}">${value['nome'].toUpperCase()}</h2>
                                 </div>
                             </div>
                             <div class="blocoCampeonatoBotoes">
                                 <button class="botaoDeletar botaoBlocoCampeonato" onclick="deleteCamp('${value._id}', '${value.nome}')"><span></span></button>
                                 <a href="admin_edit.html?c=${value._id}"><button class="botaoEditar botaoBlocoCampeonato"><span></span></button></a>
+                                <a href="admin_participantes.html?c=${value._id}"><button class="botaoParticipantes botaoBlocoCampeonato"><span></span></button></a>
                             </div>
                         </div>
                     </div>`
@@ -47,15 +48,16 @@ loadCamps = async () => {
                     document.getElementById(value.campType).innerHTML += 
                     `<div class="blocoCampeonato">
                         <div class="blocoCampeonatoCompleto">
-                            <img class="blocoCampeonatoImg" src="img/${value.campType}.jpg">
+                            <img class="blocoCampeonatoImg" title="${value['nome'].toUpperCase()}" src="img/${value.campType}.jpg">
                             <div class="blocoNomeCampeonato">
                                 <div class="nomeCampeonatoDiv">
-                                    <h2 class="nomeCampeonato">${value['nome'].toUpperCase()}</h2>
+                                    <h2 class="nomeCampeonato" title="${value['nome'].toUpperCase()}">${value['nome'].toUpperCase()}</h2>
                                 </div>
                             </div>
                             <div class="blocoCampeonatoBotoes">
                                 <button class="botaoDeletar botaoBlocoCampeonato" onclick="deleteCamp('${value._id}', '${value.nome}')"><span></span></button>
                                 <a href="admin_edit.html?c=${value._id}"><button class="botaoEditar botaoBlocoCampeonato"><span></span></button></a>
+                                <a href="admin_participantes.html?c=${value._id}"><button class="botaoParticipantes botaoBlocoCampeonato"><span></span></button></a>
                             </div>
                         </div>
                     </div>`
@@ -77,6 +79,7 @@ loadCamps = async () => {
                             <div class="blocoCampeonatoBotoes">
                                 <button class="botaoDeletar botaoBlocoCampeonato"><span></span></button>
                                 <button class="botaoEditar botaoBlocoCampeonato"><span></span></button>
+                                <button class="botaoParticipantes botaoBlocoCampeonato"><span></span></button>
                             </div>
                         </div>
                     </div>`
