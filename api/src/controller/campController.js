@@ -6,10 +6,6 @@ exports.createCamp = (req, res, next) => {
 
     // header = (sessionID: '')
     // body = {
-    //     nome = '',
-    //     maxPlayers = '',
-    //     premiacao = XXX,
-    //     inscricao = XXX,
     //     campType = ''
     // }
 
@@ -20,12 +16,13 @@ exports.createCamp = (req, res, next) => {
         }
         if (!data.admin) return res.status(401).send({code: 401, sucess: false})
 
-        new Camp(req.body).save().then(() => {
-            res.status(201).send({code: 201, sucess: true})
+        new Camp(req.body).save().then(message => {
+            res.status(201).send({code: 201, sucess: true, id: message.id})
         }).catch(error => {
             res.status(400).send({code: 400, sucess: false, error: error})
         })
     }).catch(() => {
+        res.clearCookie('sessionID', {path: '/'})
         res.status(401).send({code: 401, sucess: false, error: 'Invalid SessionID'})
     })
 }
@@ -163,8 +160,31 @@ exports.allCamps = (req, res, next) => {
         payload = {campType: req.query.tag}
     }
     Camp.find(payload).then(data => {
+        data.forEach(value => {value.listaPlayers = undefined})
         res.status(200).send(data)
     }).catch(() => {
         res.status(500).send()
+    })
+}
+
+exports.getCamp = (req, res, next) => {
+    // header = {sessionID: ''}
+    // body = {
+    //     campID: ''
+    // }
+
+    User.findById(req.headers.cookie.split('=')[1]).then(data => {
+        if (Object.keys(data).length == 0) {
+            res.clearCookie('sessionID', {path: '/'})
+            return res.status(404).send()
+        }
+        if (!data.admin) return res.status(401).send()
+
+        Camp.findById(req.body.campID, {_id: 0}).then(data => {
+            if (Object.keys(data).length == 0) return res.status(404).send()
+            res.status(200).send(data)
+        }).catch(() => {
+            res.status(400).send()
+        })
     })
 }

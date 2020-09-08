@@ -89,9 +89,29 @@ loadCamps = async () => {
 document.addEventListener('readystatechange', async () => {
     if (document.readyState == 'complete'){
         await loadCamps()
-        $(".nomeJogoCampeonato").click(function(){
+        
+        $(".nomeJogoCampeonato").click(async function(){
             $(this).find(".iconeClicar").toggleClass("iconeArrowDown ")
             $(this).parent().children(".blocoJogosCampeonato").toggle()
-        }); 
+        });
+
+        $('.blocoCampeonato').click(async function() {
+            var payload = JSON.stringify({campType: this['id'].replace('btnAdd', '')})
+
+            await fetch(`${URL_API}/create-camp`, {
+                credentials: 'include',
+                method: "POST",
+                body: payload,
+                headers: {"Content-Type": "application/json; charset=UTF-8"}
+            }).then(async response => {
+                if (!response.ok) {
+                    window.alert('Erro') //TEMP
+                    window.location.reload(true)
+                } else {
+                    var data = await response.json()
+                    window.location.href = `admin_edit.html?c=${data.id}`
+                }
+            })
+        });
     }
 });

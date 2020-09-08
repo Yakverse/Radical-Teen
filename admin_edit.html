@@ -30,7 +30,7 @@
                     <p class="icones" id="sessionName">INICIAR SESSÃO</p>
                 </a>
             </div>
-            <script src="js/autologin.js"></script>
+            <script src="js/loginAdmin.js"></script>
         </div>
     </header>
     <main>
@@ -44,42 +44,49 @@
             <div class="blocoDoInput">
                 <p>Nome do Campeonato</p>
                 <div class="campoInput">
-                    <input placeholder="Ex.: Campeonato de Fortnite!!!" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
+                    <input id="nomeCamp" placeholder="Ex.: Campeonato de Fortnite!!!" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
                 </div>
             </div>
 
             <div class="blocoDoInput" id="campType">
                 <p>Jogo do Campeonato</p>
                 <div class="campoInput">
-                    <input placeholder="Ex.: Fortnite" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
+                    <input id="tipoCamp" placeholder="Ex.: Fortnite" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
                 </div>
             </div>
 
             <div class="blocoDoInput" id="maxPlayer">
                 <p>Número Máximo de Jogadores</p>
                 <div class="campoInput">
-                    <input placeholder="0" class="maxPlayersInput" maxlength="3" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
+                    <input id="maxCamp" placeholder="0" class="maxPlayersInput" maxlength="3" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
+                </div>
+            </div>
+
+            <div class="blocoDoInput" id="limiteDataInscrições">
+                <p>Data do Campeonato</p>
+                <div class="campoInput">
+                    <input id="dataCamp" placeholder="XX/XX/XXXX" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
                 </div>
             </div>
 
             <div class="blocoDoInput" id="limiteDataInscrições">
                 <p>Limite de Data das Inscrições</p>
                 <div class="campoInput">
-                    <input placeholder="XX/XX/XXXX" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
+                    <input id="dataLimiteCamp" placeholder="XX/XX/XXXX" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
                 </div>
             </div>
 
             <div class="blocoDoInput dinheiro">
                 <p>Valor da Premiação</p>
                 <div class="campoInput">
-                    <input placeholder="100.00" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
+                    <input id="premiacaoCamp" placeholder="100.00" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
                 </div>
             </div>
 
             <div class="blocoDoInput dinheiro">
                 <p>Valor da Inscrição</p>
                 <div class="campoInput">
-                    <input placeholder="15.00" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
+                    <input id="inscricaoCamp" placeholder="15.00" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
                 </div>
             </div>
 
@@ -90,6 +97,7 @@
 
         </div>
     </main>
+    <script src="js/admin_edit.js"></script>
     <!-- <footer></footer> -->
     <script>
         // Máscaras

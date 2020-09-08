@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const schema = new Schema({
     nome: {
         type: String,
-        required: true
+        required: false,
+        default: "Campeonato sem nome"
     },
     data: {
         type: String,
@@ -20,7 +21,7 @@ const schema = new Schema({
         type: String,
         require: false
     }],
-    limiteDataInscrições: {
+    limiteDataInscricoes: {
         type: String,
         required: false,
         default: 0 //sem limite
@@ -32,11 +33,13 @@ const schema = new Schema({
     },
     premiacao: {
         type: Number,
-        required: true
+        required: false,
+        default: 0
     },
     inscricao: {
         type: Number,
-        required: true
+        required: false,
+        default: 0
     },
     campType: {
         type: String,

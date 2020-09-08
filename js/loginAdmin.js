@@ -1,4 +1,5 @@
 const URL_API = 'https://radicalcamp-api.herokuapp.com'
+// const URL_API = 'http://127.0.0.1:3000'
 
 autoLogin = async () => {
     await fetch(`${URL_API}/user/info`,{

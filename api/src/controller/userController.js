@@ -17,7 +17,7 @@ exports.signin = async (req, res, next) => {
     new User(req.body).save().then(message => {
         var date = new Date();
         date.setDate(date.getDate() + 2);
-        res.setHeader('Set-Cookie', `sessionID=${message.id};expires=${date.toUTCString()};path=/;HttpOnly`)
+        res.setHeader('Set-Cookie', `sessionID=${message.id};expires=${date.toUTCString()};path=/; HttpOnly; SameSite=None; Secure`)
         res.status(200).send({code: 200, sucess: true, user: message.usuario})
     }).catch(error => {
         res.status(409).send({code: 409, sucess: false, error: error})
@@ -37,7 +37,7 @@ exports.login = async (req, res, next) => {
 
         var date = new Date();
         date.setDate(date.getDate() + 2);
-        res.setHeader('Set-Cookie', `sessionID=${data[0]._id};expires=${date.toUTCString()};path=/;HttpOnly`)
+        res.setHeader('Set-Cookie', `sessionID=${data[0]._id};expires=${date.toUTCString()};path=/; HttpOnly; SameSite=None; Secure`)
         res.status(200).send({code: 200, sucess: true, nome: data[0].usuario})
     }).catch(() => {
         res.status(400).send({code: 400, sucess: false})
