@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { userInfo } = require('./userController');
 const User = mongoose.model('User');
 const Camp = mongoose.model('Camp');
 
@@ -35,7 +36,7 @@ exports.inscriçãoCamp = (req, res, next) => {
     // }
 
     Camp.findById(req.body.campID).then(dataCamp => {
-        if ((!dataCamp.inscricoesOn) || (dataCamp['listaPlayers'].length >= dataCamp.maxPlayers && dataCamp.maxPlayers != "0") || (dataCamp.limiteDataInscrições != "0")) {
+        if ((!dataCamp.inscricoesOn) || (dataCamp['listaPlayers'].length >= dataCamp.maxPlayers && dataCamp.maxPlayers != "0")) {
             if (dataCamp.inscricoesOn){
                 dataCamp.inscricoesOn = false
                 Camp.replaceOne({_id: req.body.campID}, dataCamp).then()
@@ -52,7 +53,7 @@ exports.inscriçãoCamp = (req, res, next) => {
                 if (dataUser.listaPlayers[users] == req.headers.cookie.split('=')[1]) return res.status(409).send({code: 409, sucess: false, error: 'Ja cadastrado'})
             }
 
-            dataCamp['listaPlayers'].push(req.headers.cookie.split('=')[1])
+            dataCamp['listaPlayers'].push({id: req.headers.cookie.split('=')[1], status: false})
             Camp.replaceOne({_id: req.body.campID}, dataCamp).then(() => {
                 res.status(200).send({code: 200, sucess: true})
             }).catch(() => {
@@ -63,6 +64,98 @@ exports.inscriçãoCamp = (req, res, next) => {
         })
     }).catch(() => {
         res.status(400).send({code: 400, sucess: false, error: 'Campeonato nao encontrado'})
+    })
+}
+
+exports.editStatus = (req, res, next) => {
+
+    // header = {sessionID: ''}
+    // body = {
+    //     userID: '',
+    //     campID: ''
+    // }
+
+    User.findById(req.headers.cookie.split('=')[1]).then(dataAdmin => {
+        if (Object.keys(dataAdmin).length == 0) {
+            res.clearCookie('sessionID', {path: '/'})
+            return res.status(404).send()
+        }
+        if (!dataAdmin.admin) return res.status(401).send()
+
+        User.findById(req.body.userID).then(dataUser => {
+            if (Object.keys(dataUser).length == 0) return res.status(404).send()
+
+            Camp.findById(req.body.campID).then(dataCamp => {
+                if (Object.keys(dataCamp).length == 0) return res.status(404).send()
+
+                var find = false
+                dataCamp.listaPlayers.forEach(value => {
+                    if (value.id == req.body.userID) {
+                        value.status = true
+                        find = true
+                    }
+                });
+                if (!find) return res.status(404).send()
+                Camp.replaceOne({_id: req.body.campID}, dataCamp).then(() => {
+                    return res.status(200).send()
+                }).catch(() => {
+                    res.status(500).send()
+                })                
+            }).catch(() => {
+                res.status(404).send()
+            })
+        }).catch(() => {
+            res.status(404).send()
+        })
+    }).catch(() => {
+        res.clearCookie('sessionID', {path: '/'})
+        res.status(404).send()
+    })
+}
+
+exports.deleteUser = (req, res, next) => {
+
+    // header = {sessionID: ''}
+    // body = {
+    //     userID: '',
+    //     campID: ''
+    // }
+
+    User.findById(req.headers.cookie.split('=')[1]).then(dataAdmin => {
+        if (Object.keys(dataAdmin).length == 0) {
+            res.clearCookie('sessionID', {path: '/'})
+            return res.status(404).send()
+        }
+        if (!dataAdmin.admin) return res.status(401).send()
+
+        User.findById(req.body.userID).then(dataUser => {
+            if (Object.keys(dataUser).length == 0) return res.status(404).send()
+
+            Camp.findById(req.body.campID).then(dataCamp => {
+                if (Object.keys(dataCamp).length == 0) return res.status(404).send()
+
+                var find = false
+                dataCamp.listaPlayers.forEach((value, i) => {
+                    if (value.id == req.body.userID) {
+                        dataCamp['listaPlayers'].splice(i, 1)
+                        find = true
+                    }
+                });
+                if (!find) return res.status(404).send()
+                Camp.replaceOne({_id: req.body.campID}, dataCamp).then(() => {
+                    return res.status(200).send()
+                }).catch(() => {
+                    res.status(500).send()
+                })                
+            }).catch(() => {
+                res.status(404).send()
+            })
+        }).catch(() => {
+            res.status(404).send()
+        })
+    }).catch(() => {
+        res.clearCookie('sessionID', {path: '/'})
+        res.status(404).send()
     })
 }
 
@@ -168,23 +261,35 @@ exports.allCamps = (req, res, next) => {
 }
 
 exports.getCamp = (req, res, next) => {
+
     // header = {sessionID: ''}
     // body = {
     //     campID: ''
     // }
 
-    User.findById(req.headers.cookie.split('=')[1]).then(data => {
-        if (Object.keys(data).length == 0) {
+    User.findById(req.headers.cookie.split('=')[1]).then(async dataAdmin => {
+        if (Object.keys(dataAdmin).length == 0) {
             res.clearCookie('sessionID', {path: '/'})
             return res.status(404).send()
         }
-        if (!data.admin) return res.status(401).send()
+        if (!dataAdmin.admin) return res.status(401).send()
 
-        Camp.findById(req.body.campID, {_id: 0}).then(data => {
-            if (Object.keys(data).length == 0) return res.status(404).send()
-            res.status(200).send(data)
+        Camp.findById(req.body.campID, {_id: 0}).then(async dataCamp => {
+            if (Object.keys(dataCamp).length == 0) return res.status(404).send()
+            var infoUsers = []
+            for await (user of dataCamp.listaPlayers){
+                await User.findById(user.id).then(dataUser => {
+                    if (!user.status) infoUsers.push({id: dataUser.id, nome: dataUser.nome, user: dataUser.usuario, email: dataUser.email, cel: dataUser.cel, status: false})
+                    else infoUsers.push({id: dataUser.id, nome: dataUser.nome, user: dataUser.usuario, email: dataUser.email, cel: dataUser.cel, status: true})
+                })
+            }
+            dataCamp.listaPlayers = infoUsers
+            res.status(200).send(dataCamp)
         }).catch(() => {
             res.status(400).send()
         })
+    }).catch(() => {
+        res.clearCookie('sessionID', {path: '/'})
+        res.status(400).send()
     })
 }

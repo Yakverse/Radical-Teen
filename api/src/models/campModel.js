@@ -17,10 +17,7 @@ const schema = new Schema({
         required: false,
         default: 0 //ilimitado
     },
-    listaPlayers: [{
-        type: String,
-        require: false
-    }],
+    listaPlayers: [{type: Object}],
     limiteDataInscricoes: {
         type: String,
         required: false,

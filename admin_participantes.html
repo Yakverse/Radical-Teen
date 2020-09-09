@@ -36,7 +36,7 @@
     <main>
         <div class="blocoDeDadosDosParticipantes">
 
-            <table>
+            <table id="table">
                 <!-- Inicio do Header -->
                 <tr class="Header cadaUsuario">
                   <th>Usuário</th>
@@ -47,33 +47,7 @@
                   <th>Ações</th>
                 </tr>
                 <!-- Fim do Header -->
-
-                <tr class="cadaUsuario">
-                  <td>Nick do Usuário</td>
-                  <td>Nome do Usuário</td>
-                  <td>email@email.com</td>
-                  <td>(11) XXXXX-XXX</td>
-                  <td class="estadoDoUsuario"><i class="fas fa-circle inscrito"></i></td>
-                  <td class="botoesUsuario">
-                      <i class="fas fa-trash-alt exclude"></i>
-                    </td>
-                </tr>
-
-                <tr class="cadaUsuario">
-                    <td>Nick do Usuário</td>
-                    <td>Nome do Usuário</td>
-                    <td>email@email.com</td>
-                    <td>(11) XXXXX-XXX</td>
-                    <td class="estadoDoUsuario"><i class="fas fa-circle aguardo"></i></td>
-                    <td class="botoesUsuario">
-                        <i class="fas fa-check add"></i>
-                        <i class="fas fa-trash-alt exclude"></i>
-                    </td>
-                </tr>
-
-
             </table>
-
         </div>
     </main>
     <!-- <footer></footer> -->
@@ -87,6 +61,7 @@
             $("input[id='my_file']").click();
         });
     </script>
+    <script src="js/admin_participantes.js"></script>
 </body>
 
 </html>
