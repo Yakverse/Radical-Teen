@@ -62,14 +62,21 @@
                 </div>
             </div>
 
-            <div class="blocoDoInput" id="limiteDataInscrições">
+            <div class="blocoDoInput limiteDataInscrições">
                 <p>Data do Campeonato</p>
                 <div class="campoInput">
                     <input id="dataCamp" placeholder="XX/XX/XXXX" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
                 </div>
             </div>
 
-            <div class="blocoDoInput" id="limiteDataInscrições">
+            <div class="blocoDoInput" id="horarioInscrições">
+                <p>Horário do Campeonato</p>
+                <div class="campoInput">
+                    <input id="horaCamp" placeholder="00:00" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
+                </div>
+            </div>
+
+            <div class="blocoDoInput limiteDataInscrições">
                 <p>Limite de Data das Inscrições</p>
                 <div class="campoInput">
                     <input id="dataLimiteCamp" placeholder="XX/XX/XXXX" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required=""/>
@@ -101,7 +108,8 @@
     <!-- <footer></footer> -->
     <script>
         // Máscaras
-        $("#limiteDataInscrições input").mask("00/00/0000")
+        $(".limiteDataInscrições input").mask("00/00/0000")
+        $("#horarioInscrições input").mask("00:00")
         $(".dinheiro input").mask("##0.00", {reverse: true});
 
         // Adicionar Imagem

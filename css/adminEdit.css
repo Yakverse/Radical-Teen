@@ -4,6 +4,10 @@
     src: url(../font/burbank-big-condensed-bold.otf);
 }
 
+html{
+    height: 100%;
+}
+
 * {
     font-size: 0;
     outline-width: 0;
@@ -14,9 +18,9 @@ body {
     margin: 0;
     font-size: 100%;
     line-height: 100%;
-    min-height: 100%;
+    /* min-height: 100%; */
     /* background-color: #2a2a2a; */
-    background-color: #18181b;
+    background-color: #0e0e10;
     position: relative;
     transition: all 1s;
 }
@@ -53,7 +57,7 @@ main {
 .imgJogo input{
     height: 40vh;
 }
-.imgJogo:hover{
+.imgJogo input:hover{
     filter: brightness(50%);
 }
 
@@ -98,8 +102,11 @@ main {
 #maxPlayer .campoInput{
     width: 3%;
 }
-#limiteDataInscrições .campoInput{
-    width: 8%;
+.limiteDataInscrições .campoInput{
+    width: 10%;
+}
+#horarioInscrições .campoInput{
+    width: 10%;
 }
 .dinheiro .campoInput{
     width: 5%;
@@ -118,10 +125,10 @@ main {
     color: white;
     margin: 0;
     margin-top: 3vh;
-    width: 30%;
+    width: 40%;
     height: 7vh;
     clip-path: polygon(8% 0,100% 0,93% 93%,0 100%);
-    background: #0c0e0f;
+    background: #2C2F33;
 }
 
 .botaoAdicionarCampeonato *{

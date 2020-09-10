@@ -4,6 +4,10 @@
     src: url(../font/burbank-big-condensed-bold.otf);
 }
 
+html{
+    height: 100%;
+}
+
 * {
     font-size: 0;
     outline-width: 0;
@@ -14,9 +18,9 @@ body {
     margin: 0;
     font-size: 100%;
     line-height: 100%;
-    min-height: 100%;
+    /* min-height: 100%; */
     /* background-color: #2a2a2a; */
-    background-color: #18181b;
+    background-color: #0e0e10;
     position: relative;
     transition: all 1s;
 }
@@ -41,13 +45,14 @@ main {
 .blocoDeDadosDosParticipantes{
     margin-top: 10vh;
     margin-bottom: 10vh;
-    margin-left: 10vh;
-    margin-right: 10vh;
 }
 
 table {
     border-collapse: collapse;
-    width: 100%;
+    width: 80%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     background: #2C2F33;
     color: white;
   }
@@ -57,10 +62,13 @@ th{
     text-align: center !important;
 }
 th, td {
-    padding: 4vh;
+    padding: 3vh;
     text-align: left;
     border: 1px solid rgba(255, 255, 255, 0.15);
-    font-size: 3vh;
+    font-size: 2vh;
+    white-space: nowrap;                 
+    overflow: hidden;              
+    text-overflow:    ellipsis;
 }
 
 tr:nth-child(even) {
@@ -76,7 +84,7 @@ tr:hover {
     text-align: center;
 }
 .estadoDoUsuario i::before{
-    font-size: 4vh;
+    font-size: 3vh;
 }
 .inscrito::before{
     color: rgb(12, 185, 12);
@@ -93,7 +101,7 @@ tr:hover {
 .botoesUsuario i::before{
     margin-left: 2vh;
     margin-right: 2vh;
-    font-size: 4vh;
+    font-size: 3vh;
     cursor: pointer;
 }
 .add::before{

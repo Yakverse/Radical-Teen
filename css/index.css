@@ -16,7 +16,7 @@ body {
     line-height: 100%;
     min-height: 100%;
     /* background-color: #2a2a2a; */
-    background-color: #18181b;
+    background-color: #0e0e10;
     position: relative;
 }
 
@@ -72,10 +72,10 @@ main {
     height: 60vh;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
 }
 
 .fundo {
-    position: absolute;
     margin-top: 0;
     top: 0%;
     height: 100%;
@@ -88,12 +88,11 @@ main {
 
 .fundoJogo {
     height: 100%;
-    width: 33.33%;
-    display: inline-block;
+    /* width: 33.33%;
+    display: inline-block; */
     transition: all 1s;
     opacity: 25%;
-    filter: blur(1vh);
-    -webkit-filter: blur(1vh);
+    z-index: 0;
 }
 
 
@@ -124,10 +123,9 @@ main {
     border-radius: 1vh;
     background: #fff;
     color: black;
-    font-size: 6vh;
     margin: 0;
-    width: 40%;
-    height: 10vh;
+    width: 25%;
+    height: 8vh;
     clip-path: polygon(8% 0,100% 0,93% 93%,0 100%);
     transition: all .3s ease-in-out;
     text-align: center;
@@ -154,9 +152,41 @@ main {
 }
 
 .botaoInscricao span{
-    font-size: 9vh;
+    font-size: 6vh;
     line-height: 100%;
 }
+
+
+/* Sobre */
+.sobreDiv{
+    height: 35vh;
+    width: 100%;
+    background: black;
+    color: white;
+    text-align: center;
+}
+
+.sobreTituloDiv .sobreTitulo{
+    padding-top: 10vh;
+    margin: 0;
+    font-size: 7vh;
+    text-transform: uppercase;
+    font-style: italic;
+    font-family: 'Burbank Big Condensed Bold';
+    font-weight: bold;
+}
+
+.sobreDiv .sobreTexto{
+    margin: 0;
+    margin-top: 5vh;
+    font-size: 2vh;
+    width: 40%;
+    line-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 
 /* Footer */
 footer{
