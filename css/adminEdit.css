@@ -16,7 +16,7 @@ body {
     line-height: 100%;
     min-height: 100%;
     /* background-color: #2a2a2a; */
-    background-color: #18181b;
+    background-color: #0e0e10;
     position: relative;
     transition: all 1s;
 }
@@ -53,7 +53,7 @@ main {
 .imgJogo input{
     height: 40vh;
 }
-.imgJogo:hover{
+.imgJogo input:hover{
     filter: brightness(50%);
 }
 
@@ -121,7 +121,7 @@ main {
     width: 30%;
     height: 7vh;
     clip-path: polygon(8% 0,100% 0,93% 93%,0 100%);
-    background: #0c0e0f;
+    background: #2C2F33;
 }
 
 .botaoAdicionarCampeonato *{

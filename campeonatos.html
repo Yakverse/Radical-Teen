@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Campeonatos Radical Teen</title>
+    <link rel="stylesheet" href="css/campeonatos.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/scrollbar.css">
+    <link rel="shortcut icon" href="img/icon.png" />
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/72ea4166fa.js" crossorigin="anonymous"></script>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+</head>
+
+<body>
+    <header>
+        <div class="iconesDiv">
+            <div class="imgIconesDiv">
+                <a href="index.html"><img src="img/rtbrancosembordarecortado.png" class="icones imgIcones"></a>
+                <a href="index.html"><img src="img/rtlogobranco.png" class="icones imgIcones"></a>
+            </div>
+
+            <div class="loginIconesDiv">
+                <a href="login.html" id="sessionLink">
+                    <i class="icones faIcones fas fa-user-circle"></i>
+                    <p class="icones" id="sessionName">INICIAR SESSÃO</p>
+                </a>
+            </div>
+            <script src="js/autologin.js"></script>
+        </div>
+    </header>
+    <main>
+        <!-- Campeonatos -->
+        <div class="campeonatos">
+
+            <div class="tituloJogos">
+                <h2>Nome do Jogo</h2>
+            </div>
+
+
+            <!-- Começo do Campeonato-->
+            <div class="campeonato">
+                <div class="imagemCampeonato" style="background: url(img/fifa.jpg) no-repeat center / cover;">
+                    <div class="premiacaoEInscricao">
+                        <div class="premiacao">
+                            <i class="fas fa-trophy"></i><p>R$ 100,00</p>
+                        </div>
+                        <div class="inscricao">
+                            <i class="fas fa-ticket-alt"></i><p>R$ 15,00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="campoTitutloCampeonato"> 
+                    <h3 class="tituloCampeonato">Titulo do Campeonato</h3>
+                </div>
+                <div class="informacoesCampeonato">
+                    <div class="data">
+                        <i class="far fa-calendar"></i><p>XX/XX/XXXX</p>
+                    </div>
+                    <div class="horario">
+                        <i class="far fa-clock"></i><p>15:21</p>
+                    </div>
+                </div>
+                <div class="botaoCampeonato">
+                    <button class="botaoCampeonatoInscreva-se"><span>Inscreva-se</span></button>
+                </div>
+            </div>
+            <!-- Fim do Campeonato -->
+            
+        </div>
+    </main>
+    <!-- <footer></footer> -->
+</body>
+
+</html>
