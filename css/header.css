@@ -55,6 +55,10 @@ header {
     color: white;
 }
 
+.logout{
+    margin-left: 0.5vw;
+}
+
 .loginIconesDiv p {
     margin: 0;
     font-size: 2vh;
