@@ -1,4 +1,5 @@
-const URL_API = 'https://radicalcamp-api.herokuapp.com'
+// const URL_API = 'http://127.0.0.1:3000'
+const URL_API = 'http://34.74.80.166:3000'
 
 autoLogin = async () => {
 

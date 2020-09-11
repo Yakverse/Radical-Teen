@@ -4,6 +4,10 @@
     src: url(../font/burbank-big-condensed-bold.otf);
 }
 
+html{
+    height: 100%;
+}
+
 * {
     font-size: 0;
     outline-width: 0;
@@ -14,9 +18,9 @@ body {
     margin: 0;
     font-size: 100%;
     line-height: 100%;
-    min-height: 100%;
+    /* min-height: 100%; */
     /* background-color: #2a2a2a; */
-    background-color: #18181b;
+    background-color: #0e0e10;
     position: relative;
     transition: all 1s;
 }
@@ -27,45 +31,16 @@ img {
     -moz-user-drag: none;
     -o-user-drag: none;
 }
-  
-
-
-
-
-#csgo {
-    background: url(../img/csgo.jpg) no-repeat center / cover;
-}
-
-#fortnite {
-    background: url(../img/fortnite.jpg) no-repeat center / cover;
-}
-
-#freefire {
-    background: url(../img/freefire.jpg) no-repeat center / cover;
-}
-
-#fifa {
-    background: url(../img/fifa.jpg) no-repeat center / cover;
-}
-
-#lol {
-    background: url(../img/lol.jpg) no-repeat center / cover;
-}
-
-#rocketleague {
-    background: url(../img/rocketleague.jpg) no-repeat center / cover;
-}
-
 
 
 /* Main */
-
 main {
     margin-top: 5vh;
     margin-bottom: 5vh;
     z-index: 2;
     height: 100%;
 }
+
 
 /* Bloco por Jogo */
 .campeonatoJogo{
@@ -96,7 +71,6 @@ main {
     margin-left: 3vh;
 }
 
-
 .iconeArroRight::before{
     content: "\f105";
 }
@@ -105,15 +79,9 @@ main {
     content: "\f107";
 }
 
-
 .blocoJogosCampeonato{
     display: none;
 }
-
-
-
-
-
 
 
 /* Bloco por Campeonato */
@@ -127,7 +95,8 @@ main {
 
 .blocoCampeonato{
     display: inline-block;
-    width: 32.33%;
+    width: 24%;
+    height: 24%;
     margin-top: 0.5%;
     margin-bottom: 0.5%;
     margin-left: 0.5%;
@@ -170,7 +139,6 @@ main {
     display: none;
 }
 
-
 .blocoCampeonatoImgAdicionar:hover{
     transform: scale(1.2);
     cursor: pointer;
@@ -194,19 +162,23 @@ main {
     padding-bottom: 1vh;
     border: 0;
     margin: 0;
-    height: 100%;
+    max-height: 5vh;
     width: 100%;
     box-sizing: border-box;
     background: #3b3e42;
 }
 .nomeCampeonato{
     margin: 0;
-    font-size: 4vh;
+    font-size: 3vh;
     color: white;
     line-height: 100%;
     vertical-align: bottom;
     margin-left: 1vh;
     margin-right: 1vh;
+
+    white-space: nowrap;                 
+    overflow: hidden;              
+    text-overflow:    ellipsis;
 }
 
 
@@ -225,7 +197,7 @@ main {
     border: 0px;
     margin: 0;
     height: 6vh;
-    width: 49%;
+    width: 32.335%;
     margin-left: 0.5%;
     margin-right: 0.5%;
     box-sizing: border-box;
@@ -234,7 +206,7 @@ main {
 
 .botaoBlocoCampeonato::before{
     font-family: "Font Awesome 5 Free";
-    font-size: 4vh;
+    font-size: 3vh;
     font-weight: 900;
     font-family: "Font Awesome 5 Free";
     -webkit-font-smoothing: antialiased;
@@ -251,9 +223,12 @@ main {
     content: "\f2ed";
     color: white;
 }
-
 .botaoEditar::before{
     content: "\f044";
+    color: white;
+}
+.botaoParticipantes::before{
+    content: "\f0c0";
     color: white;
 }
 
@@ -274,15 +249,12 @@ main {
     transform: scale(0.98);
 }
 
-
-
 /* Mobile */
 
 @media (max-width: 1650px) {}
 
 @media (max-width: 1080px) {
     #fifa {
-        background: url(../img/fifamobile.jpg) no-repeat center / cover;
     }
 }
 
