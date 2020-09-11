@@ -1,4 +1,4 @@
-const URL_API = 'https://radicalcamp-api.herokuapp.com'
+const URL_API = 'http://34.74.80.166:3000'
 
 submitCadastro = async () => {
     document.getElementById('formCadastro').elements[4].setCustomValidity("")

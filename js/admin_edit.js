@@ -33,14 +33,15 @@ document.getElementById('adicionarCampeonato').addEventListener('click', async (
     var tipoCamp = document.getElementById('tipoCamp').value
     var maxCamp = document.getElementById('maxCamp').value
     var dataCamp = document.getElementById('dataCamp').value
+    var horaCamp = document.getElementById('horaCamp').value
     var dataLimiteCamp = document.getElementById('dataLimiteCamp').value
     var premiacaoCamp = document.getElementById('premiacaoCamp').value
     var inscricaoCamp = document.getElementById('inscricaoCamp').value
 
     var payload = JSON.stringify({
         campID: campID,
-        campProp: ["nome", "data", "maxPlayers", "limiteDataInscrições", "premiacao", "inscricao", "campType"],
-        info: [nomeCamp, dataCamp, maxCamp, dataLimiteCamp, premiacaoCamp, inscricaoCamp, tipoCamp]
+        campProp: ["nome", "data", "hora", "maxPlayers", "limiteDataInscrições", "premiacao", "inscricao", "campType"],
+        info: [nomeCamp, dataCamp, horaCamp, maxCamp, dataLimiteCamp, premiacaoCamp, inscricaoCamp, tipoCamp]
     })
 
     await fetch(`${URL_API}/edit-camp`, {
@@ -73,6 +74,7 @@ loadCamp = async () => {
         document.getElementById('tipoCamp').value = data.campType
         document.getElementById('maxCamp').value = data.maxPlayers
         document.getElementById('dataCamp').value = data.data
+        document.getElementById('horaCamp').value = data.hora
         document.getElementById('dataLimiteCamp').value = data.limiteDataInscricoes
         document.getElementById('premiacaoCamp').value = data.premiacao
         document.getElementById('inscricaoCamp').value = data.inscricao

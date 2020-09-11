@@ -10,7 +10,12 @@ const schema = new Schema({
     data: {
         type: String,
         required: false,
-        default: 0 //Indefinido
+        default: "01/01/1970" //Indefinido
+    },
+    hora: {
+        type: String,
+        required: false,
+        default: "00:00"
     },
     maxPlayers: {
         type: Number,
@@ -21,7 +26,7 @@ const schema = new Schema({
     limiteDataInscricoes: {
         type: String,
         required: false,
-        default: 0 //sem limite
+        default: "01/01/1970" //sem limite
     },
     inscricoesOn: {
         type: Boolean,

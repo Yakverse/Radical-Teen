@@ -1,5 +1,4 @@
-const URL_API = 'https://radicalcamp-api.herokuapp.com'
-
+const URL_API = 'http://34.74.80.166:3000'
 const form = document.getElementById('formLogin')
 
 form.addEventListener('submit', async (e) => {
@@ -22,7 +21,8 @@ form.addEventListener('submit', async (e) => {
     await login.json().then(data => {
         if (data.sucess) {
             sessionStorage.setItem('sessionName', data.nome)
-            window.location.href = `perfil.html?p=${data.nome}`
+            if (link == 'perfil') window.location.href = `perfil.html?p=${data.nome}`
+            else window.location.href = document.referrer || 'index.html'
         } else if (data.code == 401) window.alert('Senha inválida') //TEMP
         else if (data.code == 404) window.alert('Nenhum cadastro encontrado com esse email') //TEMP
         else window.location.href = 'index.html'

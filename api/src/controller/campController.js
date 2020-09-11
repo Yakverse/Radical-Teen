@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { userInfo } = require('./userController');
 const User = mongoose.model('User');
 const Camp = mongoose.model('Camp');
 
@@ -183,6 +182,9 @@ exports.editCamp = (req, res, next) => {
                 data(info) {
                     campData.data = info
                 },
+                hora(info) {
+                    campData.hora = info
+                },
                 maxPlayers(info) {
                     campData.maxPlayers = info
                 },
@@ -279,8 +281,7 @@ exports.getCamp = (req, res, next) => {
             var infoUsers = []
             for await (user of dataCamp.listaPlayers){
                 await User.findById(user.id).then(dataUser => {
-                    if (!user.status) infoUsers.push({id: dataUser.id, nome: dataUser.nome, user: dataUser.usuario, email: dataUser.email, cel: dataUser.cel, status: false})
-                    else infoUsers.push({id: dataUser.id, nome: dataUser.nome, user: dataUser.usuario, email: dataUser.email, cel: dataUser.cel, status: true})
+                    infoUsers.push({id: dataUser.id, nome: dataUser.nome, user: dataUser.usuario, email: dataUser.email, cel: dataUser.cel, status: user.status})
                 })
             }
             dataCamp.listaPlayers = infoUsers
