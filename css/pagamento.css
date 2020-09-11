@@ -55,37 +55,37 @@ main {
 }
 
 /* Topo Pagamento */
-.topoPagamento{
+.paginaPagamento1{
     padding-top: 2vh;
     color: white;
     text-align: center;
 }
-.topoPagamento .cart::before{
+.paginaPagamento1 .cart::before{
     font-size: 4vh;
     color: #A7C957;
 }
 
-.topoPagamento .nomeInscricao{
+.paginaPagamento1 .nomeInscricao{
     padding-top: 1vh;
 }
 
-.topoPagamento .textoPrincipal{
+.paginaPagamento1 .textoPrincipal{
     display: inline-block;
     margin-right: 1vh;
 }
-.topoPagamento .textoPrincipal h2{
+.paginaPagamento1 .textoPrincipal h2{
     font-size: 1.5vh;
     font-weight: bold;
     margin: 1vh;
 }
 
-.topoPagamento .inscricao{
+.paginaPagamento1 .inscricao{
     display: inline-block;
 }
-.topoPagamento .inscricao{
+.paginaPagamento1 .inscricao{
     color: #A7C957;
 }
-.topoPagamento .inscricao p, .topoPagamento .inscricao i::before, .topoPagamento .inscricao span{
+.paginaPagamento1 .inscricao p, .paginaPagamento1 .inscricao i::before, .paginaPagamento1 .inscricao span{
     display: inline-block;
     font-size: 1.5vh;
     font-weight: bold;
@@ -94,17 +94,15 @@ main {
 }
 
 /* Conteudo Pagamento */
-.conteudoPagamento{
+.conteudoOpcaoPagamento{
     margin-top: 1%;
     width: 85%;
-    height: 80%;
     margin-left: auto;
     margin-right: auto;
 }
 
 .opcoesPagamento{
     width: 100%;
-    height: 10vh;
     text-align: center;
 }
 
@@ -119,9 +117,20 @@ main {
     width: 20vh;
     transition: all .5s;
 }
+
 .opcoesPagamento .opcao:hover{
     border: 1px solid rgba(255, 255, 255, 0.75);
     cursor: pointer;
+}
+.opcoesPagamento .opcao:hover p{
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.ativo{
+    border: 1px solid rgba(255, 255, 255, 1) !important;
+}
+.ativo p{
+    color: rgba(255, 255, 255, 1) !important;
 }
 
 .opcoesPagamento .opcao i::before{
@@ -133,14 +142,70 @@ main {
     margin-top: 2vh;
     font-size: 2vh;
     text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);;
 }
 .opcoesPagamento .opcao img{
-    width: 5vh;
+    height: 5vh;
+    border-radius: 1vh;
+}
+
+/* Opção Deposito */
+.conteudoPagamento{
+    padding-top: 3vh;
+    width: 85%;
+    height: 45vh;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.conteudoPagamento p{
+    font-size: 24px;
 }
 
 
+/* Botão */
+.botaoPagamento{
+    margin-left: auto;
+    margin-right: auto;
+}
+.botaoPagamentoConfirmar{
+    text-transform: uppercase;
+    padding: 1vh;
+    padding-left: 0.5vh;
+    padding-right: 0.5vh;
+    border: 0px;
+    color: black;
+    margin: 0;
+    background: #2ebb62;
+    transition: all .5s;
+    height: 8vh;
+    width: 35vh;
+    border-radius: 1vh;
+}
+
+.botaoPagamentoConfirmar:hover{
+    cursor: pointer;
+    color: white;
+}
+
+.botaoPagamentoConfirmar:active {
+    border-style: none;
+    outline: none;
+}
+
+.botaoPagamentoConfirmar:focus{
+    outline: none;
+}
+
+.botaoPagamentoConfirmar span{
+    font-size: 2vh;
+    line-height: 100%;
+}
 
 
+#picpay{
+    display: none;
+}
 
 
 

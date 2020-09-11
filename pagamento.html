@@ -18,7 +18,8 @@
     <main>
         <div class="pagamentosBloco">
             <div class="fundoPagamento">
-                <div class="topoPagamento">
+
+                <div class="paginaPagamento1">
                     <i class="cart fas fa-shopping-cart"></i>
                     <div class="nomeInscricao">
                         <div class="textoPrincipal">
@@ -28,25 +29,53 @@
                             <i class="fas fa-ticket-alt"></i><span>Inscrição -</span><p>R$ 15,00</p>
                         </div>
                     </div>
-                </div>
 
-                <div class="conteudoPagamento">
-                    <div class="opcoesPagamento">
-                        <div class="opcao">
-                            <i class="fas fa-donate"></i>
-                            <p>Depósito</p>
-                        </div>
-                        <div class="opcao">
-                            <img src="img/picpaylogo.png">
-                            <p>PicPay</p>
+                    <div class="conteudoOpcaoPagamento">
+                        <div class="opcoesPagamento">
+                            <div class="opcao ativo" id="opcaoDeposito">
+                                <img src="img/bancodobrasil.png">
+                                <p>Depósito</p>
+                            </div>
+                            <div class="opcao" id="opcaoPicPay">
+                                <img src="img/picpaylogo.png">
+                                <p>PicPay</p>
+                            </div>
                         </div>
                     </div>
+    
+                    <div class="conteudoPagamento" id="deposito">
+                        <p>deposito</p>
+                    </div>
+    
+                    <div class="conteudoPagamento" id="picpay">
+                        <p>picpay</p>
+                    </div>
+
+                    <div class="botaoPagamento">
+                        <button class="botaoPagamentoConfirmar" href="#"><span>Confirmar Pagamento</span></button>
+                    </div>
+
                 </div>
 
             </div>
         </div>
     </main>
     <script src="js/pagamento.js"></script>
+    <script>
+        $("#opcaoDeposito").click(function(){
+            $("#opcaoDeposito").addClass("ativo")
+            $("#opcaoPicPay").removeClass("ativo")
+            $("#deposito").show()
+            $("#picpay").hide()
+        });
+
+        $("#opcaoPicPay").click(function(){
+            $("#opcaoDeposito").removeClass("ativo")
+            $("#opcaoPicPay").addClass("ativo")
+            $("#deposito").hide()
+            $("#picpay").show()
+        });
+    </script>
 </body>
 
 </html>
