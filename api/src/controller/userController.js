@@ -44,6 +44,11 @@ exports.login = async (req, res, next) => {
     })
 }
 
+exports.logout = (req, res, next) => {
+    res.clearCookie('sessionID', {path: '/'})
+    res.status(200).send()
+}
+
 exports.saveAccount = async (req, res, next) => {
 
     // header = {sessionID: ''}
