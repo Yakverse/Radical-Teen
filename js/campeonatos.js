@@ -13,6 +13,17 @@ $.extend({
 const campType = $.getUrlVars()['j']
 document.getElementById('tituloJogo').innerHTML = campType.toUpperCase()
 
+verifyLogin = async (campID, campInscricao) => {
+    await fetch(`${URL_API}/user/info`, {
+        credentials: 'include',
+        method: 'POST'
+    }).then(async response => {
+        if (response.status == 204) window.location.href = 'login.html'
+        else if (response.status != 200) window.location.reload(true)
+        else window.location.href= `pagamento.html?c=${campID}&i=${campInscricao}`
+    })
+}
+
 loadCamp = async () => {
     await fetch(`${URL_API}/camps?tag=${campType}`, {
         credentials: 'include',
@@ -25,7 +36,7 @@ loadCamp = async () => {
         
             data.forEach(value => {
                 campeonatos.innerHTML += 
-                `<div class="campeonato">
+                `<a  onclick="verifyLogin('${value._id}', '${value.inscricao}')"><div class="campeonato">
                 <div class="imagemCampeonato" style="background: url(img/${campType}.jpg) no-repeat center / cover;">
                     <div class="premiacaoEInscricao">
                         <div class="premiacao">
@@ -48,9 +59,9 @@ loadCamp = async () => {
                     </div>
                 </div>
                 <div class="botaoCampeonato">
-                    <button class="botaoCampeonatoInscreva-se" href="#"><span>Inscreva-se</span></button>
+                    <button class="botaoCampeonatoInscreva-se"><span>Inscreva-se</span></button>
                 </div>
-            </div>`
+            </div></a>`
             });
         }
     })
