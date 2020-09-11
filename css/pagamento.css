@@ -1,216 +1,154 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Work+Sans:300,400,700,900");
 @font-face {
     font-family: Burbank Big Condensed Bold;
     src: url(../font/burbank-big-condensed-bold.otf);
 }
 
+html{
+    height: 100%;
+}
 
+* {
+    font-size: 0;
+    outline-width: 0;
+    font-family: 'Montserrat';
+}
 
 body {
     margin: 0;
-    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 100%;
     line-height: 100%;
-    min-height: 100%;
-    background: black;
-    overflow: scroll;
-    overflow-x: hidden;
-    font-size: 0;
+    /* min-height: 100%; */
+    /* background-color: #2a2a2a; */
+    background-color: #0e0e10;
+    position: relative;
 }
 
-img{
+img {
     -webkit-user-drag: none;
     -khtml-user-drag: none;
     -moz-user-drag: none;
     -o-user-drag: none;
 }
 
-::-webkit-scrollbar {
-    width: 0px;  /* Remove scrollbar space */
-}
-/* Optional: show position indicator in red */
-::-webkit-scrollbar-thumb {
-    background: white;
-}
-
-/* Header */
-header{
-    top: 0;
-    height: auto;
-    width: 100%;
-    background: black;
-    position: fixed;
-    z-index: 999;
-    font-size: 0;
-}
-
-.icones{
-    width: auto;
-    height: 4.5vh;
-}
-.icones::before{
-    font-size: 4.5vh;
-    color: white;
-}
-.icones:hover{
-    cursor: pointer;
-    transform: scale(1.2);
-}
-
-/* Return */
-.voltar{
-    position: absolute;
-    top: 20%;
-    left: 1%;
-}
-.home{
-    display: none;
-}
-
-
-/* Título */
-.titulo{
-    margin-top: 2vh;
-    margin-bottom: 1vh;
-    font-size: 5vh;
-    font-family: 'Burbank Big Condensed Bold';
-    line-height: 100%;
-    color: white;
-    font-weight: bolder;
-    text-transform: uppercase;
-    text-align: center;
-    transition: all 1s;
-}
-
-
-/* Redes Sociais */
-.redesSociais{
-    position: absolute;
-    top: 20%;
-    right: 1%;
-}
-/* .redesSociais .fa-discord::before{
-    color: #7289dc;
-}
-.redesSociais .fa-twitch::before{
-    color:#9146ff;
-}
-.redesSociais .fa-whatsapp::before{
-    color: #2bb201;
-    font-size: 53px;
-} */
-/* .redesSociais .fa-instagram-square::before{
-    color: #44274c;
-} */
-.redesSociais .fa-whatsapp::before, .fa-instagram::before{
-    font-size: 5vh;
-}
-.redesSociais *{
-    margin-right: 0.2vh;
-}
-
-/* Barra */
-.barra{
-    position: absolute;
-    top: 20%;
-    right: 2%;
-    display: none;
-}
 
 
 /* Main */
-main{
-    position: absolute;
-    margin-top: 0;
-    top: 8vh;
-    height: 92%;
+
+main {
+    z-index: 2;
+}
+
+.pagamentosBloco{
+    height: 80vh;
+    width: 90vh;
+    margin-top: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    border-radius: 1vh;
+}
+.fundoPagamento{
+    height: 100%;
     width: 100%;
-    background-color: black;
-    font-size: 0;
-    scroll-behavior: smooth;
+    box-shadow: inset 0 0 0 3000px rgba(40, 43, 48, 0.8);
 }
 
-/* Conteúdo da Barra */
-.conteudoBarra{
-    right: 0;
-    top: -1%;
-    z-index: 1001;
-    position: absolute;
-    width: 30%;
-    height: 101%;
-    background: black;
-    opacity: 90%;
-    display: none;
-}
-
-.fecharBarra{
-    position: absolute;
-    top: 1%;
-    left: 2%;
+/* Topo Pagamento */
+.topoPagamento{
+    padding-top: 2vh;
     color: white;
+    text-align: center;
 }
-.fecharBarra::before{
-    font-size: 3vh;
+.topoPagamento .cart::before{
+    font-size: 4vh;
+    color: #A7C957;
 }
-.fecharBarra:hover{
+
+.topoPagamento .nomeInscricao{
+    padding-top: 1vh;
+}
+
+.topoPagamento .textoPrincipal{
+    display: inline-block;
+    margin-right: 1vh;
+}
+.topoPagamento .textoPrincipal h2{
+    font-size: 1.5vh;
+    font-weight: bold;
+    margin: 1vh;
+}
+
+.topoPagamento .inscricao{
+    display: inline-block;
+}
+.topoPagamento .inscricao{
+    color: #A7C957;
+}
+.topoPagamento .inscricao p, .topoPagamento .inscricao i::before, .topoPagamento .inscricao span{
+    display: inline-block;
+    font-size: 1.5vh;
+    font-weight: bold;
+    margin: 0;
+    margin-right: 0.5vh;
+}
+
+/* Conteudo Pagamento */
+.conteudoPagamento{
+    margin-top: 1%;
+    width: 85%;
+    height: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.opcoesPagamento{
+    width: 100%;
+    height: 10vh;
+    text-align: center;
+}
+
+.opcoesPagamento .opcao{
+    padding-top: 2vh;
+    color: white;
+    display: inline-block;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    height: 10vh;
+    width: 20vh;
+    transition: all .5s;
+}
+.opcoesPagamento .opcao:hover{
+    border: 1px solid rgba(255, 255, 255, 0.75);
     cursor: pointer;
 }
 
-.redesSociaisBarra{
-    position: absolute;
-    top: 6%;
-    width: 100%;
-    text-align: center;
-    font-size: 3vw;
+.opcoesPagamento .opcao i::before{
+    font-size: 5vh;
+    color: #A7C957;
 }
-.siganosBarra{
-    font-size: 6vh;
-    color: white;
-    font-family: 'Burbank Big Condensed Bold';
-    line-height: 100%;
+.opcoesPagamento .opcao p{
+    margin: 0;
+    margin-top: 2vh;
+    font-size: 2vh;
+    text-transform: uppercase;
 }
-.iconesRedesSociaisBarra i::before{
-    font-size: 8vh;
+.opcoesPagamento .opcao img{
+    width: 5vh;
 }
 
 
-
-#csgo{
-    background: url(../img/csgo.jpg) no-repeat center / cover;
-}
-#fortnite{
-    background: url(../img/fortnite.jpg) no-repeat center / cover;
-}
-#freefire{
-    background: url(../img/freefire.jpg) no-repeat center / cover;
-}
-#fifa{
-    background: url(../img/fifa.jpg) no-repeat center / cover;
-}
-#lol{
-    background: url(../img/lol.jpg) no-repeat center / cover;
-}
-#rocketleague{
-    background: url(../img/rocketleague.jpg) no-repeat center / cover;
-}
 
 
 
 
 
 /* Mobile */
-@media (max-width: 1650px ){
 
-    
+@media (max-width: 1650px) {}
+
+@media (max-width: 1080px) {
 }
-@media (max-width: 1080px ){
-    .redesSociais{
-        display: none;
-    }
-    .barra{
-        display: inline-block;
-    }
-    .conteudoBarra{
-        width: 80%;
-    }
-}
-@media (max-height: 1600px){
-}
+
+@media (max-height: 1600px) {}

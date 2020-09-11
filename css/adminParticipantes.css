@@ -45,6 +45,11 @@ main {
 .blocoDeDadosDosParticipantes{
     margin-top: 10vh;
     margin-bottom: 10vh;
+<<<<<<< HEAD
+=======
+    margin-left: 10%;
+    margin-right: 10%;
+>>>>>>> 51c4656594bd044b1ce04d35ca6935c5382b7c5b
 }
 
 table {
