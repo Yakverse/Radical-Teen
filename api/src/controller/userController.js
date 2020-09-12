@@ -86,7 +86,7 @@ exports.saveAccount = async (req, res, next) => {
         req.body.userType.forEach((value, i) => {
             userTypes[value](req.body.account[i])
         })
-        User.replaceOne({_id: req.headers.cookie.split('=')[1]}, data).then(() => {
+        User.replaceOne({_id: req.cookies['sessionID']}, data).then(() => {
             res.status(201).send()
         }).catch(() => {
             res.status(500).send()
@@ -102,7 +102,7 @@ exports.userInfo = (req, res, next) => {
     // header = {sessionID: ''}
 
     if (!req.cookies['sessionID']) return res.status(204).send({code: 204, sucess: false})
-    User.findById(req.headers.cookie.split('=')[1], {_id: 0}).then(data => {
+    User.findById(req.cookies['sessionID'], {_id: 0}).then(data => {
         if (Object.keys(data).length == 0) {
             res.clearCookie('sessionID', {path: '/'})
             res.status(404).send({code: 404, sucess: false})
@@ -155,7 +155,7 @@ exports.changePassword = (req, res, next) => {
 
             data.senha = auth.generateHash(req.body.senhaNova)
             
-            User.replaceOne({_id: req.headers.cookie.split('=')[1]}, data).then(() => {
+            User.replaceOne({_id: req.cookies['sessionID']}, data).then(() => {
                 return res.status(200).send({code: 200, sucess: true})
             }).catch(() => {
                 res.status(500).send({code: 500, sucess: false})
