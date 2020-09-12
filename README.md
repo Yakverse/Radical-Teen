@@ -1,5 +1,5 @@
-<a href="https://wwww.radicalteen.com.br"><p align="center">
-<img width="50%" src="./img/rtpreto.png">
+<a href="https://radicalteen.com.br"><p align="center">
+<img width="25%" src="./img/rtpreto.png">
 <br></a>
 
 # RadicalTeen
