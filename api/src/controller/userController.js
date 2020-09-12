@@ -57,7 +57,7 @@ exports.saveAccount = async (req, res, next) => {
     //     account: ['']
     // }
 
-    User.findById(req.headers.cookie.split('=')[1]).then(data => {
+    User.findById(req.cookies['sessionID']).then(data => {
         if (Object.keys(data).length == 0) {
             res.clearCookie('sessionID', {path: '/'})
             res.status(404).send()
@@ -101,7 +101,7 @@ exports.userInfo = (req, res, next) => {
 
     // header = {sessionID: ''}
 
-    if (!req.headers.cookie) return res.status(204).send({code: 204, sucess: false})
+    if (!req.cookies['sessionID']) return res.status(204).send({code: 204, sucess: false})
     User.findById(req.headers.cookie.split('=')[1], {_id: 0}).then(data => {
         if (Object.keys(data).length == 0) {
             res.clearCookie('sessionID', {path: '/'})
@@ -146,7 +146,7 @@ exports.changePassword = (req, res, next) => {
     //     senhaNova: ''
     // }
 
-    User.findById(req.headers.cookie.split('=')[1]).then(data => {
+    User.findById(req.cookies['sessionID']).then(data => {
         if (Object.keys(data).length == 0) {
             res.clearCookie('sessionID', {path: '/'})
             res.status(404).send()
