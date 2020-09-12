@@ -56,8 +56,11 @@ header {
 }
 
 .logout{
-    margin-left: 0.5vw;
+    margin-right: 0.5vw;
+    margin-left: 1.5vw;
 }
+
+
 
 .loginIconesDiv p {
     margin: 0;

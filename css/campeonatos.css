@@ -196,6 +196,11 @@ footer{
 @media (max-width: 1650px) {}
 
 @media (max-width: 1080px) {
+    .campeonatos{
+        padding-top: 1vh;
+        width: 100%;
+        text-align: center;
+    }
 }
 
 @media (max-height: 1600px) {}
