@@ -94,6 +94,7 @@ main {
 
 .fundoPerfilImg img{
     width: 10vw;
+    height: 10vw;
     border-radius: 50%;
     border: 0.5vw solid white;
 }
@@ -137,7 +138,9 @@ main {
 
 .nomePerfil{
     margin: 0;
-    font-size: 6vh;
+    margin-left: 2vh;
+    margin-right: 2vh;
+    font-size: 4vh;
     color: white;
     line-height: 100%;
     display: inline-block;
@@ -145,8 +148,6 @@ main {
 
 /* Icone Config */
 .iconePerfil {
-    width: 4vh;
-    height: 4.5vh;
     display: inline-block;
 }
 .iconePerfil:hover {
@@ -155,9 +156,8 @@ main {
 .iconePerfil::before {
     display: inline-block;
     margin-top: 1vh;
-    font-size: 5vh;
+    font-size: 3.5vh;
     color: white;
-    margin-left: 2vh;
 }
 
 /* .nomePerfilEdit{
@@ -337,8 +337,15 @@ main {
 @media (max-width: 1650px) {}
 
 @media (max-width: 1080px) {
-    #fifa {
-        background: url(../img/fifamobile.jpg) no-repeat center / cover;
+    .fundoPerfilImg{
+        width: 21vw;
+    }
+    
+    .fundoPerfilImg img{
+        width: 20vw;
+        height: 20vw;
+        border-radius: 50%;
+        border: 0.5vw solid white;
     }
 }
 

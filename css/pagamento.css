@@ -33,6 +33,7 @@ img {
 
 
 
+
 /* Main */
 
 main {
@@ -59,6 +60,8 @@ main {
     padding-top: 2vh;
     color: white;
     text-align: center;
+    position: relative;
+    height: 100%;
 }
 .paginaPagamento1 .cart::before{
     font-size: 4vh;
@@ -99,6 +102,7 @@ main {
     width: 85%;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
 }
 
 .opcoesPagamento{
@@ -167,6 +171,10 @@ main {
 .botaoPagamento{
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 3vh;
 }
 .botaoPagamentoConfirmar{
     text-transform: uppercase;
@@ -214,6 +222,11 @@ main {
 @media (max-width: 1650px) {}
 
 @media (max-width: 1080px) {
+    .pagamentosBloco{
+        height: 100vh;
+        width: 100%;
+        margin-top: 0;
+    }
 }
 
 @media (max-height: 1600px) {}

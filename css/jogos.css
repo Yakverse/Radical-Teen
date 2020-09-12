@@ -95,8 +95,10 @@ footer{
 @media (max-width: 1650px) {}
 
 @media (max-width: 1080px) {
-    #fifa {
-        background: url(../img/fifamobile.jpg) no-repeat center / cover;
+    .jogos{
+        padding-top: 1vh;
+        width: 100%;
+        text-align: center;
     }
 }
 

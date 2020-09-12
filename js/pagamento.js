@@ -32,4 +32,4 @@ confirmaIncricao = async () => {
 
 document.getElementById('nomeOutput').innerHTML = sessionStorage.getItem('sessionName').replace(/\"/g, "")
 document.getElementById('inscricaoOutput').innerHTML = `R$ ${$.getUrlVars()['i']}`
-$('body').append(`<style>body{background: url(img/${$.getUrlVars()['t']}.jpg) no-repeat center / cover}`)
+$('body').append(`<style>body{background: linear-gradient(90deg, rgba(6, 28, 51, 1), rgba(0,0,0,0)), url(img/${$.getUrlVars()['t']}.jpg) no-repeat center / cover}`)

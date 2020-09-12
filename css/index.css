@@ -35,7 +35,7 @@ img {
 
 
 
-#csgo {
+/* #csgo {
     background: url(../img/csgo.jpg) no-repeat center / cover;
 }
 
@@ -57,7 +57,7 @@ img {
 
 #rocketleague {
     background: url(../img/rocketleague.jpg) no-repeat center / cover;
-}
+} */
 
 
 
@@ -128,7 +128,7 @@ main {
     background: #fff;
     color: black;
     margin: 0;
-    width: 25%;
+    min-width: 30%;
     height: 8vh;
     clip-path: polygon(8% 0,100% 0,93% 93%,0 100%);
     transition: all .3s ease-in-out;
@@ -158,12 +158,14 @@ main {
 .botaoInscricao span{
     font-size: 6vh;
     line-height: 100%;
+    padding-left: 3vh;
+    padding-right: 3vh;
 }
 
 
 /* Sobre */
 .sobreDiv{
-    height: 35vh;
+    min-height: 35vh;
     width: 100%;
     background: black;
     color: white;
@@ -171,18 +173,20 @@ main {
 }
 
 .sobreTituloDiv .sobreTitulo{
-    padding-top: 10vh;
+    padding-top: 4vh;
     margin: 0;
     font-size: 7vh;
     text-transform: uppercase;
     font-style: italic;
     font-family: 'Burbank Big Condensed Bold';
     font-weight: bold;
+    line-height: 100%;
 }
 
 .sobreDiv .sobreTexto{
     margin: 0;
-    margin-top: 5vh;
+    margin-top: 2vh;
+    padding-bottom: 3vh;
     font-size: 2vh;
     width: 40%;
     line-height: 100%;
@@ -208,8 +212,8 @@ footer{
 @media (max-width: 1650px) {}
 
 @media (max-width: 1080px) {
-    #fifa {
-        background: url(../img/fifamobile.jpg) no-repeat center / cover;
+    .sobreDiv .sobreTexto{
+        width: 90%;
     }
 }
 
