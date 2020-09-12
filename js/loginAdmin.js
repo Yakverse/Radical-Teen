@@ -1,5 +1,14 @@
-// const URL_API = 'http://127.0.0.1:3000'
-const URL_API = 'http://34.74.80.166:3000'
+const URL_API = 'https://api.radicalteen.com.br'
+
+logout = async () => {
+    await fetch(`${URL_API}/logout`, {
+        credentials: 'include',
+        method: 'POST'
+    }).then(() => {
+        sessionStorage.removeItem('sessionName')
+        window.location.reload(true)
+    })
+}
 
 autoLogin = async () => {
     await fetch(`${URL_API}/user/info`,{
@@ -12,6 +21,7 @@ autoLogin = async () => {
             window.location.href = 'index.html'
         } else {
             var data = await response.json()
+            if (!data.data.admin) window.location.href = 'index.html'
             if (sessionStorage.getItem('sessionName')){
                 document.getElementById('sessionName').innerHTML = sessionStorage.getItem('sessionName').replace(/\"/g, "")
                 document.getElementById('sessionLink').href = `perfil.html?p=${sessionStorage.getItem('sessionName').replace(/\"/g, "")}`
@@ -20,7 +30,7 @@ autoLogin = async () => {
                 document.getElementById('sessionName').innerHTML = data.data.usuario
                 document.getElementById('sessionLink').href = `perfil.html?p=${data.data.usuario}`
             }
-            if (!data.data.admin) window.location.href = 'index.html'
+            document.getElementById('logoutOutput').innerHTML += `<i class="icones faIcones logout fas fa-sign-out-alt" onclick=logout()></i>`
         }
     })
 }

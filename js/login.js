@@ -1,4 +1,4 @@
-const URL_API = 'http://34.74.80.166:3000'
+const URL_API = 'https://api.radicalteen.com.br'
 const form = document.getElementById('formLogin')
 
 form.addEventListener('submit', async (e) => {
