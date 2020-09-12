@@ -1,6 +1,8 @@
 const URL_API = 'https://api.radicalteen.com.br'
 
-submitCadastro = async () => {
+document.getElementById('formCadastro').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
     document.getElementById('formCadastro').elements[4].setCustomValidity("")
 
     var user = document.getElementById('userForm').value
@@ -37,4 +39,4 @@ submitCadastro = async () => {
         else if (data.code == 409) window.alert('Cadastro repetido') //TEMP
         else window.alert('Server Error') //TEMP
     })
-}
+})
