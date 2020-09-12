@@ -2,3 +2,5 @@ node_modules/
 *.tmp
 package-lock.json
 settings.js
+*.cert
+*.key

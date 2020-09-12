@@ -7,7 +7,8 @@ router.get('/user', userController.userAccounts)
 router.post('/cadastro', userController.signin);
 router.post('/login', userController.login);
 router.post('/user/change-password', userController.changePassword);
-router.post('/user/info', userController.userInfo)
+router.post('/user/info', userController.userInfo);
+router.post('/logout', userController.logout);
 
 router.put('/user/account', userController.saveAccount);
 
