@@ -1,8 +1,8 @@
 $.extend({
-    getUrlVars: function(){
+    getUrlVars: function () {
         var vars = [], hash;
         var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-        for(var i = 0; i < hashes.length; i++){
+        for (var i = 0; i < hashes.length; i++) {
             hash = hashes[i].split('=');
             vars.push(hash[0]);
             vars[hash[0]] = hash[1];
@@ -29,7 +29,7 @@ infoUser = async () => {
         var jogosCadastrados = ''
 
         accounts.forEach((value) => {
-            if (data[value]){
+            if (data[value]) {
                 jogosCadastrados += `
                 <div class="jogoCampoPerfil">
                     <img src="img/${value}.png" class="iconeJogoPerfil"><p class="jogoPerfil">${data[value]}</p>
@@ -37,20 +37,20 @@ infoUser = async () => {
                 `
             }
         })
-        
+
         document.getElementById('jogosPerfil').innerHTML = jogosCadastrados
-    
+
         await fetch(`${URL_API}/user/info`, {
             credentials: 'include',
             method: 'POST',
-            headers: {"Content-Type": "application/json; charset=UTF-8"}
+            headers: { "Content-Type": "application/json; charset=UTF-8" }
         }).then(async responseVerif => {
             if (responseVerif.status == 400 || responseVerif.status == 404) {
                 if (sessionStorage.getItem('sessionName')) sessionStorage.removeItem('sessionName')
                 window.location.href = 'index.html'
             } else if (responseVerif.status == 200) {
                 var dataVerif = await responseVerif.json()
-                if(sessionStorage.getItem('sessionName').replace(/\"/g, "") != dataVerif.data.usuario){
+                if (sessionStorage.getItem('sessionName').replace(/\"/g, "") != dataVerif.data.usuario) {
                     sessionStorage.removeItem('sessionName')
                     window.location.href = 'index.html'
                 } else if (dataVerif.data.usuario == user) document.getElementById('botaoEdit').style.display = ''
@@ -85,7 +85,7 @@ infoUser = async () => {
                 </div>
             `
         })
-    }) 
+    })
 }
 infoUser()
 
@@ -98,13 +98,13 @@ document.getElementById('btnSubmit').addEventListener('click', async () => {
         credentials: 'include',
         method: 'PUT',
         body: payload,
-        headers: {"Content-Type": "application/json; charset=UTF-8"}
+        headers: { "Content-Type": "application/json; charset=UTF-8" }
     }).then(response => {
         if (response.status == 404 || response.status == 400) {
             if (sessionStorage.getItem('sessionName')) sessionStorage.removeItem('sessionName')
             window.location.href = 'index.html'
         }
-        if (response.ok)  window.location.reload()
+        if (response.ok) window.location.reload()
         else window.alert('Erro') //TEMP
     })
 })

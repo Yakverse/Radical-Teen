@@ -22,7 +22,7 @@
 
 // })
 
-$(document).ready(function() {
+$(document).ready(function () {
     var images = ['img/fortinitebanner.png', 'img/lolbanner.png', 'img/rocketleaguebanner.png']
 
     $('#fundoJogo').append('<style>#fundoJogo{background: url(' + images[Math.floor(Math.random() * images.length)] + ') no-repeat center / cover}')

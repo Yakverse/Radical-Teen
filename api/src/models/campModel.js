@@ -22,7 +22,7 @@ const schema = new Schema({
         required: false,
         default: 0 //ilimitado
     },
-    listaPlayers: [{type: Object}],
+    listaPlayers: [{ type: Object }],
     limiteDataInscricoes: {
         type: String,
         required: false,

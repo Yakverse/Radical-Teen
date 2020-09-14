@@ -12,17 +12,17 @@ logout = async () => {
 
 autoLogin = async () => {
 
-    if (sessionStorage.getItem('sessionName')){
+    if (sessionStorage.getItem('sessionName')) {
         document.getElementById('sessionName').innerHTML = sessionStorage.getItem('sessionName').replace(/\"/g, "")
         document.getElementById('sessionLink').href = `perfil.html?p=${sessionStorage.getItem('sessionName').replace(/\"/g, "")}`
         document.getElementById('logoutOutput').innerHTML += `<i class="icones faIcones logout fas fa-sign-out-alt" onclick=logout()></i>`
         return
-    } 
+    }
 
-    await fetch(`${URL_API}/user/info`,{
+    await fetch(`${URL_API}/user/info`, {
         credentials: 'include',
         method: 'POST',
-        headers: {"Content-Type": "application/json; charset=UTF-8"}
+        headers: { "Content-Type": "application/json; charset=UTF-8" }
     }).then(async response => {
         if (response.status == 200) {
             var data = await response.json()
@@ -32,7 +32,7 @@ autoLogin = async () => {
             document.getElementById('logoutOutput').innerHTML += `<i class="icones faIcones logout fas fa-sign-out-alt" onclick=logout()></i>`
         } else if (response.status == 404 || response.status == 400) {
             if (sessionStorage.getItem('sessionName')) sessionStorage.removeItem('sessionName')
-            if(!window.location.pathname == '/index.html') window.location.href = 'index.html'
+            if (!window.location.pathname == '/index.html') window.location.href = 'index.html'
         }
     })
 }

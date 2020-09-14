@@ -16,7 +16,7 @@ form.addEventListener('submit', async (e) => {
         credentials: 'include',
         method: 'POST',
         body: payload,
-        headers: {"Content-Type": "application/json; charset=UTF-8"}
+        headers: { "Content-Type": "application/json; charset=UTF-8" }
     })
     await login.json().then(data => {
         if (data.sucess) {

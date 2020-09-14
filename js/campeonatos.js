@@ -1,8 +1,8 @@
 $.extend({
-    getUrlVars: function(){
+    getUrlVars: function () {
         var vars = [], hash;
         var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-        for(var i = 0; i < hashes.length; i++){
+        for (var i = 0; i < hashes.length; i++) {
             hash = hashes[i].split('=');
             vars.push(hash[0]);
             vars[hash[0]] = hash[1];
@@ -20,7 +20,7 @@ verifyLogin = async (campID, campInscricao, campType) => {
     }).then(async response => {
         if (response.status == 204) window.location.href = 'login.html'
         else if (response.status != 200) window.location.reload(true)
-        else window.location.href= `pagamento.html?c=${campID}&i=${campInscricao}&t=${campType}`
+        else window.location.href = `pagamento.html?c=${campID}&i=${campInscricao}&t=${campType}`
     })
 }
 
@@ -33,10 +33,10 @@ loadCamp = async () => {
         else {
             var data = await response.json()
             var campeonatos = document.getElementById('campeonatos')
-        
+
             data.forEach(value => {
-                campeonatos.innerHTML += 
-                `<a  onclick="verifyLogin('${value._id}', '${value.inscricao}', '${value.campType}')"><div class="campeonato">
+                campeonatos.innerHTML +=
+                    `<a  onclick="verifyLogin('${value._id}', '${value.inscricao}', '${value.campType}')"><div class="campeonato">
                 <div class="imagemCampeonato" style="background: url(img/${campType}.jpg) no-repeat center / cover;">
                     <div class="premiacaoEInscricao">
                         <div class="premiacao">
