@@ -75,11 +75,18 @@ main {
 .paginaPagamento1 .textoPrincipal{
     display: inline-block;
     margin-right: 1vh;
+    text-align: left;
 }
 .paginaPagamento1 .textoPrincipal h2{
     font-size: 1.5vh;
     font-weight: bold;
     margin: 1vh;
+    display: inline-block;
+}
+.paginaPagamento1 .textoPrincipal span{
+    font-size: 1.5vh;
+    font-weight: bold;
+    display: inline-block;
 }
 
 .paginaPagamento1 .inscricao{

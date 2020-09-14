@@ -1,0 +1,31 @@
+#toast {
+    position: fixed;
+    z-index: 999;
+    top: 12px;
+    right: 12px;
+    background-color: #f8f8f8;
+    font-family: sans-serif;
+    font-weight: 300;
+  }
+  
+  .notification {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 20px;
+    width: 300px;
+    border-radius: 3px;
+    color: white;
+    right: -400px;
+  }
+  .normal {
+    background: #273140;
+  }
+  .success {
+    background: #44be75;
+  }
+  .error {
+    background: #c33c3c;
+  }
