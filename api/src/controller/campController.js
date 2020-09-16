@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const Camp = mongoose.model('Camp');
 
-exports.createCamp = (req, res, next) => {
+exports.createCamp = (req, res) => {
 
     // header = (sessionID: '')
     // body = {
@@ -10,24 +10,24 @@ exports.createCamp = (req, res, next) => {
     // }
 
     User.findById(req.cookies['sessionID']).then(data => {
-        if (Object.keys(data).length == 0) {
+        if (data == null || Object.keys(data).length == 0) {
             res.clearCookie('sessionID', { path: '/' })
             return res.status(404).send()
         }
         if (!data.admin) return res.status(401).send({ code: 401, sucess: false })
 
         new Camp(req.body).save().then(message => {
-            res.status(201).send({ code: 201, sucess: true, id: message.id })
+            return res.status(201).send({ code: 201, sucess: true, id: message.id })
         }).catch(error => {
-            res.status(400).send({ code: 400, sucess: false, error: error })
+            return res.status(400).send({ code: 400, sucess: false, error: error })
         })
     }).catch(() => {
         res.clearCookie('sessionID', { path: '/' })
-        res.status(401).send({ code: 401, sucess: false, error: 'Invalid SessionID' })
+        return res.status(401).send({ code: 401, sucess: false, error: 'Invalid SessionID' })
     })
 }
 
-exports.inscriçãoCamp = (req, res, next) => {
+exports.inscriçãoCamp = (req, res) => {
 
     // header = {sessionID: ''}
     // body = {
@@ -44,28 +44,35 @@ exports.inscriçãoCamp = (req, res, next) => {
         }
 
         User.findById(req.cookies['sessionID']).then(dataUser => {
-            if (Object.keys(dataUser).length == 0) {
+            if (dataUser == null || Object.keys(dataUser).length == 0) {
                 res.clearCookie('sessionID', { path: '/' })
                 return res.status(404).send()
             }
+            var find = false
             dataCamp['listaPlayers'].forEach(value => {
-                if (value.id == req.cookies['sessionID']) return res.status(409).send({ code: 409, sucess: false, error: 'Ja cadastrado' })
+                if (value.id == req.cookies['sessionID']) {
+                    find = true
+                    return res.status(409).send({ code: 409, sucess: false, error: 'Ja cadastrado' })
+                }
             });
-            dataCamp['listaPlayers'].push({ id: req.cookies['sessionID'], status: false })
-            Camp.replaceOne({ _id: req.body.campID }, dataCamp).then(() => {
-                res.status(200).send({ code: 200, sucess: true })
-            }).catch(() => {
-                res.status(500).send({ code: 500, sucess: false })
-            })
+            if (!find) {
+                dataCamp['listaPlayers'].push({ id: req.cookies['sessionID'], status: false })
+                Camp.replaceOne({ _id: req.body.campID }, dataCamp).then(() => {
+                    return res.status(200).send({ code: 200, sucess: true })
+                }).catch(() => {
+                    return res.status(500).send({ code: 500, sucess: false })
+                })
+            }
         }).catch(() => {
-            return res.status(401).send({ code: 401, sucess: false })
+            res.clearCookie('sessionID', { path: '/' })
+            return res.status(400).send({ code: 400, sucess: false })
         })
     }).catch(() => {
-        res.status(400).send({ code: 400, sucess: false, error: 'Campeonato nao encontrado' })
+        return res.status(400).send({ code: 400, sucess: false, error: 'Campeonato nao encontrado' })
     })
 }
 
-exports.editStatus = (req, res, next) => {
+exports.editStatus = (req, res) => {
 
     // header = {sessionID: ''}
     // body = {
@@ -74,17 +81,17 @@ exports.editStatus = (req, res, next) => {
     // }
 
     User.findById(req.cookies['sessionID']).then(dataAdmin => {
-        if (Object.keys(dataAdmin).length == 0) {
+        if (dataAdmin == null || Object.keys(dataAdmin).length == 0) {
             res.clearCookie('sessionID', { path: '/' })
             return res.status(404).send()
         }
         if (!dataAdmin.admin) return res.status(401).send()
 
         User.findById(req.body.userID).then(dataUser => {
-            if (Object.keys(dataUser).length == 0) return res.status(404).send()
+            if (dataUser == null || Object.keys(dataUser).length == 0) return res.status(404).send()
 
             Camp.findById(req.body.campID).then(dataCamp => {
-                if (Object.keys(dataCamp).length == 0) return res.status(404).send()
+                if (dataCamp == null || Object.keys(dataCamp).length == 0) return res.status(404).send()
 
                 var find = false
                 dataCamp.listaPlayers.forEach(value => {
@@ -97,21 +104,21 @@ exports.editStatus = (req, res, next) => {
                 Camp.replaceOne({ _id: req.body.campID }, dataCamp).then(() => {
                     return res.status(200).send()
                 }).catch(() => {
-                    res.status(500).send()
+                    return res.status(500).send()
                 })
             }).catch(() => {
-                res.status(404).send()
+                return res.status(400).send()
             })
         }).catch(() => {
-            res.status(404).send()
+            return res.status(400).send()
         })
     }).catch(() => {
         res.clearCookie('sessionID', { path: '/' })
-        res.status(404).send()
+        return res.status(400).send()
     })
 }
 
-exports.deleteUser = (req, res, next) => {
+exports.deleteUser = (req, res) => {
 
     // header = {sessionID: ''}
     // body = {
@@ -120,17 +127,17 @@ exports.deleteUser = (req, res, next) => {
     // }
 
     User.findById(req.cookies['sessionID']).then(dataAdmin => {
-        if (Object.keys(dataAdmin).length == 0) {
+        if (dataAdmin == null || Object.keys(dataAdmin).length == 0) {
             res.clearCookie('sessionID', { path: '/' })
             return res.status(404).send()
         }
         if (!dataAdmin.admin) return res.status(401).send()
 
         User.findById(req.body.userID).then(dataUser => {
-            if (Object.keys(dataUser).length == 0) return res.status(404).send()
+            if (dataUser == null || Object.keys(dataUser).length == 0) return res.status(404).send()
 
             Camp.findById(req.body.campID).then(dataCamp => {
-                if (Object.keys(dataCamp).length == 0) return res.status(404).send()
+                if (dataCamp == null || Object.keys(dataCamp).length == 0) return res.status(404).send()
 
                 var find = false
                 dataCamp.listaPlayers.forEach((value, i) => {
@@ -143,21 +150,21 @@ exports.deleteUser = (req, res, next) => {
                 Camp.replaceOne({ _id: req.body.campID }, dataCamp).then(() => {
                     return res.status(200).send()
                 }).catch(() => {
-                    res.status(500).send()
+                    return res.status(500).send()
                 })
             }).catch(() => {
-                res.status(404).send()
+                return res.status(400).send()
             })
         }).catch(() => {
-            res.status(404).send()
+            return res.status(400).send()
         })
     }).catch(() => {
         res.clearCookie('sessionID', { path: '/' })
-        res.status(404).send()
+        return res.status(400).send()
     })
 }
 
-exports.editCamp = (req, res, next) => {
+exports.editCamp = (req, res) => {
 
     // header = {sessionID: ''}
     // body = {
@@ -167,7 +174,7 @@ exports.editCamp = (req, res, next) => {
     // }
 
     User.findById(req.cookies['sessionID']).then(userData => {
-        if (Object.keys(userData).length == 0) {
+        if (userData == null || Object.keys(userData).length == 0) {
             res.clearCookie('sessionID', { path: '/' })
             return res.status(404).send()
         }
@@ -190,8 +197,8 @@ exports.editCamp = (req, res, next) => {
                 listaPlayers(info) {
                     campData.listaPlayers = info
                 },
-                limiteDataInscrições(info) {
-                    campData.limiteDataInscrições = info
+                limiteDataInscricoes(info) {
+                    campData.limiteDataInscricoes = info
                 },
                 inscricoesOn(info) {
                     campData.inscricoesOn = info
@@ -211,19 +218,19 @@ exports.editCamp = (req, res, next) => {
                 campInfos[value](req.body.info[i])
             })
             Camp.replaceOne({ _id: req.body.campID }, campData).then(() => {
-                res.status(201).send()
+                return res.status(201).send()
             }).catch(() => {
-                res.status(500).send()
+                return res.status(500).send()
             })
         }).catch(() => {
-            res.status(400).send()
+            return res.status(400).send()
         })
     }).catch(() => {
-        res.status(400).send()
+        return res.status(400).send()
     })
 }
 
-exports.deleteCamp = (req, res, next) => {
+exports.deleteCamp = (req, res) => {
 
     // header = {sessionID: ''}
     // body = {
@@ -231,37 +238,37 @@ exports.deleteCamp = (req, res, next) => {
     // }
 
     User.findById(req.cookies['sessionID']).then(data => {
-        if (Object.keys(data).length == 0) {
+        if (data == null || Object.keys(data).length == 0) {
             res.clearCookie('sessionID', { path: '/' })
             return res.status(404).send()
         }
         if (!data.admin) return res.status(401).send()
 
         Camp.deleteOne({ _id: req.body.campID }).then(() => {
-            res.status(200).send()
+            return res.status(200).send()
         }).catch(() => {
-            res.status(404).send()
+            return res.status(404).send()
         })
     }).catch(() => {
         res.clearCookie('sessionID', { path: '/' })
-        res.status(400).send()
+        return res.status(400).send()
     })
 }
 
-exports.allCamps = (req, res, next) => {
+exports.allCamps = (req, res) => {
     var payload = {}
     if (Object.keys(req.query).length != 0) {
         payload = { campType: req.query.tag }
     }
     Camp.find(payload).then(data => {
         data.forEach(value => { value.listaPlayers = undefined })
-        res.status(200).send(data)
+        return res.status(200).send(data)
     }).catch(() => {
-        res.status(500).send()
+        return res.status(500).send()
     })
 }
 
-exports.getCamp = (req, res, next) => {
+exports.getCamp = (req, res) => {
 
     // header = {sessionID: ''}
     // body = {
@@ -269,14 +276,14 @@ exports.getCamp = (req, res, next) => {
     // }
 
     User.findById(req.cookies['sessionID']).then(async dataAdmin => {
-        if (Object.keys(dataAdmin).length == 0) {
+        if (dataAdmin == null || Object.keys(dataAdmin).length == 0) {
             res.clearCookie('sessionID', { path: '/' })
             return res.status(404).send()
         }
         if (!dataAdmin.admin) return res.status(401).send()
 
         Camp.findById(req.body.campID, { _id: 0 }).then(async dataCamp => {
-            if (Object.keys(dataCamp).length == 0) return res.status(404).send()
+            if (dataCamp == null || Object.keys(dataCamp).length == 0) return res.status(404).send()
             var infoUsers = []
             for await (user of dataCamp.listaPlayers) {
                 await User.findById(user.id).then(dataUser => {
@@ -284,12 +291,12 @@ exports.getCamp = (req, res, next) => {
                 })
             }
             dataCamp.listaPlayers = infoUsers
-            res.status(200).send(dataCamp)
+            return res.status(200).send(dataCamp)
         }).catch(() => {
-            res.status(400).send()
+            return res.status(400).send()
         })
     }).catch(() => {
         res.clearCookie('sessionID', { path: '/' })
-        res.status(400).send()
+        return res.status(400).send()
     })
 }
