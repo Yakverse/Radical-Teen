@@ -42,7 +42,7 @@ main {
 
 .pagamentosBloco{
     height: 80vh;
-    width: 90vh;
+    width: 80vh;
     margin-top: 10vh;
     margin-left: auto;
     margin-right: auto;
@@ -75,11 +75,18 @@ main {
 .paginaPagamento1 .textoPrincipal{
     display: inline-block;
     margin-right: 1vh;
+    text-align: left;
 }
 .paginaPagamento1 .textoPrincipal h2{
     font-size: 1.5vh;
     font-weight: bold;
     margin: 1vh;
+    display: inline-block;
+}
+.paginaPagamento1 .textoPrincipal span{
+    font-size: 1.5vh;
+    font-weight: bold;
+    display: inline-block;
 }
 
 .paginaPagamento1 .inscricao{
@@ -99,7 +106,6 @@ main {
 /* Conteudo Pagamento */
 .conteudoOpcaoPagamento{
     margin-top: 1%;
-    width: 85%;
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -116,14 +122,14 @@ main {
     display: inline-block;
     margin-left: 1vh;
     margin-right: 1vh;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     height: 10vh;
     width: 20vh;
     transition: all .5s;
 }
 
 .opcoesPagamento .opcao:hover{
-    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.75);
     cursor: pointer;
 }
 .opcoesPagamento .opcao:hover p{
@@ -131,7 +137,7 @@ main {
 }
 
 .ativo{
-    border: 1px solid rgba(255, 255, 255, 1) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 1) !important;
 }
 .ativo p{
     color: rgba(255, 255, 255, 1) !important;
@@ -156,15 +162,40 @@ main {
 /* Opção Deposito */
 .conteudoPagamento{
     padding-top: 3vh;
-    width: 85%;
-    height: 45vh;
+    width: 70%;
+    min-height: 40vh;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
-.conteudoPagamento p{
-    font-size: 24px;
+.dadoPagamento{
+    margin-bottom: 2vh;
 }
+.dadoPagamento .bancoNome{
+    text-align: center;
+    margin-bottom: 3vh;
+}
+.dadoPagamento p, .dadoPagamento h3{
+    color: white;
+    line-height: 100%;
+    margin: 0;
+}
+.dadoPagamento p{
+    font-size: 2vh;
+}
+.dadoPagamento h3{
+    font-size: 2.5vh;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 0.5vh;
+}
+
+#picpay p{
+    font-size: 6vh;
+    color: white;
+}
+
+
 
 
 /* Botão */
@@ -172,9 +203,7 @@ main {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    position: absolute;
     width: 100%;
-    bottom: 3vh;
 }
 .botaoPagamentoConfirmar{
     text-transform: uppercase;
@@ -226,6 +255,9 @@ main {
         height: 100vh;
         width: 100%;
         margin-top: 0;
+    }
+    .botaoPagamentoConfirmar{
+        width: 90%;
     }
 }
 

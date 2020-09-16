@@ -199,9 +199,7 @@ header *{
   .cadastro .senha, .senha *{
     display: inline-block;
   }
-  .cadastro .repetir{
-    margin-left: 25px;
-  }
+ 
 
   .formContainer .formDiv.loadIn {
     opacity: 1;
