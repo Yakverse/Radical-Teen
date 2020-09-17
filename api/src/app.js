@@ -29,15 +29,15 @@ const router = express.Router();
 
 // Connect DB
 mongoose.set('useCreateIndex', true);
-mongoose.connect(settings.connectionStrig, { useNewUrlParser: true, useUnifiedTopology: true })
+if (!process.env.NODE_ENV) mongoose.connect(settings.connectionStrig, { useNewUrlParser: true, useUnifiedTopology: true })
 
 //Models
 const User = require('./models/userModel');
-const Camp = require('./models/campModel')
+const Camp = require('./models/campModel');
 
 //Rotes
 const userRoute = require('./routes/userRoutes');
-const campRoute = require('./routes/campRoutes')
+const campRoute = require('./routes/campRoutes');
 
 app.use(bodyParser.json());
 app.use(cookieParser());

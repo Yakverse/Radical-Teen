@@ -1,10 +1,10 @@
 const URL_API = 'https://api.radicalteen.com.br'
 
 $.extend({
-    getUrlVars: function(){
+    getUrlVars: function () {
         var vars = [], hash;
         var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-        for(var i = 0; i < hashes.length; i++){
+        for (var i = 0; i < hashes.length; i++) {
             hash = hashes[i].split('=');
             vars.push(hash[0]);
             vars[hash[0]] = hash[1];
@@ -14,12 +14,12 @@ $.extend({
 })
 
 confirmaIncricao = async () => {
-    var payload = JSON.stringify({campID: $.getUrlVars()['c']})
+    var payload = JSON.stringify({ campID: $.getUrlVars()['c'] })
     await fetch(`${URL_API}/inscrever`, {
         credentials: 'include',
         method: 'POST',
         body: payload,
-        headers: {"Content-Type": "application/json; charset=UTF-8"}
+        headers: { "Content-Type": "application/json; charset=UTF-8" }
     }).then(response => {
         if (response.status == 409) window.alert('Você já está cadastrado!')
         else if (response.status != 200) window.location.href = document.referrer

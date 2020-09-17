@@ -1,8 +1,8 @@
 $.extend({
-    getUrlVars: function(){
+    getUrlVars: function () {
         var vars = [], hash;
         var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-        for(var i = 0; i < hashes.length; i++){
+        for (var i = 0; i < hashes.length; i++) {
             hash = hashes[i].split('=');
             vars.push(hash[0]);
             vars[hash[0]] = hash[1];
@@ -13,12 +13,12 @@ $.extend({
 const campID = $.getUrlVars()['c']
 
 deleteUser = async userID => {
-    var payload = JSON.stringify({userID: userID, campID: campID})
+    var payload = JSON.stringify({ userID: userID, campID: campID })
     await fetch(`${URL_API}/delete-user`, {
         credentials: 'include',
         method: 'DELETE',
         body: payload,
-        headers: {"Content-Type": "application/json; charset=UTF-8"}
+        headers: { "Content-Type": "application/json; charset=UTF-8" }
     }).then(response => {
         if (!response.ok) window.location.href = 'admin.html'
         else window.location.reload(true) //TEMP
@@ -26,12 +26,12 @@ deleteUser = async userID => {
 }
 
 editStatus = async userID => {
-    var payload = JSON.stringify({userID: userID, campID: campID})
+    var payload = JSON.stringify({ userID: userID, campID: campID })
     await fetch(`${URL_API}/change-status`, {
         credentials: 'include',
         method: 'PUT',
         body: payload,
-        headers: {"Content-Type": "application/json; charset=UTF-8"}
+        headers: { "Content-Type": "application/json; charset=UTF-8" }
     }).then(response => {
         if (!response.ok) window.location.href = 'admin.html'
         else window.location.reload(true) //TEMP
@@ -39,13 +39,13 @@ editStatus = async userID => {
 }
 
 loadParticipantes = async () => {
-    var payload = JSON.stringify({campID: campID})
+    var payload = JSON.stringify({ campID: campID })
 
     await fetch(`${URL_API}/camp-admin`, {
         credentials: 'include',
         method: "POST",
         body: payload,
-        headers: {"Content-Type": "application/json; charset=UTF-8"}
+        headers: { "Content-Type": "application/json; charset=UTF-8" }
     }).then(async response => {
         if (!response.ok) {
             window.alert('Erro') //TEMP
@@ -55,8 +55,8 @@ loadParticipantes = async () => {
 
             var table = document.getElementById('table')
             data.listaPlayers.forEach(value => {
-                if (value.status) table.innerHTML += 
-                `<tr class="cadaUsuario">
+                if (value.status) table.innerHTML +=
+                    `<tr class="cadaUsuario">
                     <td>${value.nome}</td>
                     <td>${value.user}</td>
                     <td>${value.email}</td>
@@ -67,8 +67,8 @@ loadParticipantes = async () => {
                     </td>
                 </tr>
                 `
-                else table.innerHTML += 
-                `<tr class="cadaUsuario">
+                else table.innerHTML +=
+                    `<tr class="cadaUsuario">
                     <td>${value.nome}</td>
                     <td>${value.user}</td>
                     <td>${value.email}</td>

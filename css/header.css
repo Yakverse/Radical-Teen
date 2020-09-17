@@ -69,3 +69,32 @@ header {
     vertical-align: top;
     font-weight: bold;
 }
+
+/* Mobile */
+@media (max-width: 1650px) {}
+
+@media (max-width: 1080px) {
+    .imgIconesDiv {
+        padding-top: 1.5vh;
+        
+    }
+    .imgIcones {
+        height: 2vh;
+    }
+    
+    .loginIconesDiv {
+        padding-top: 0.9vh;
+        line-height: 3vh;
+    }
+    
+    .faIcones {
+        height: 3vh;
+    }
+    
+    .faIcones::before {
+        font-size: 3vh;
+        color: white;
+    }
+}
+
+@media (max-height: 1600px) {}

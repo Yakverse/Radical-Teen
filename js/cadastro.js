@@ -12,7 +12,7 @@ document.getElementById('formCadastro').addEventListener('submit', async (e) => 
     var senha = document.getElementById('senhaForm').value
     var repetirSenha = document.getElementById('repetirSenha').value
 
-    if (senha != repetirSenha){
+    if (senha != repetirSenha) {
         document.getElementById('formCadastro').elements[4].setCustomValidity("Senhas diferentes!")
         return
     }
@@ -29,7 +29,7 @@ document.getElementById('formCadastro').addEventListener('submit', async (e) => 
         credentials: 'include',
         method: 'POST',
         body: payload,
-        headers: {"Content-Type": "application/json; charset=UTF-8"}
+        headers: { "Content-Type": "application/json; charset=UTF-8" }
     })
     await cadastro.json().then(data => {
         if (data.sucess) {
