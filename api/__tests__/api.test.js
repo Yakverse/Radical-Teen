@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 //Models
 const User = require('../src/models/userModel');
 const Camp = require('../src/models/campModel');
-const { find } = require('../src/models/userModel');
 
 beforeAll(async done => {
     if (!process.env.MONGO_URL) throw new Error('MongoDB server not initialized')
