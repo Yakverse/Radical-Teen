@@ -22,8 +22,18 @@ form.addEventListener('submit', async (e) => {
         if (data.sucess) {
             sessionStorage.setItem('sessionName', data.nome)
             window.location.href = document.referrer || 'index.html'
-        } else if (data.code == 401) window.alert('Senha inválida') //TEMP
-        else if (data.code == 404) window.alert('Nenhum cadastro encontrado com esse email') //TEMP
+        } else if (data.code == 401) {
+            $("#toast").toast({
+                type: 'error',
+                message: 'Senha inválida!'
+            });
+        }
+        else if (data.code == 404) {
+            $("#toast").toast({
+                type: 'error',
+                message: 'Nenhum cadastro com esse email!'
+            });
+        }
         else window.location.href = 'index.html'
     })
 })

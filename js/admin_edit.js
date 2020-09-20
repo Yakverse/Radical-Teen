@@ -51,8 +51,11 @@ document.getElementById('adicionarCampeonato').addEventListener('click', async (
         headers: { "Content-Type": "application/json; charset=UTF-8" }
     }).then(response => {
         if (response.status != 201) {
-            window.alert('Error')
-            window.location.href = 'admin.html'
+            $("#toast").toast({
+                type: 'error',
+                message: 'Erro',
+                href: 'admin.html'
+            })
         } else {
             window.location.reload(true)
         }

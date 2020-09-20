@@ -21,11 +21,19 @@ confirmaIncricao = async () => {
         body: payload,
         headers: { "Content-Type": "application/json; charset=UTF-8" }
     }).then(response => {
-        if (response.status == 409) window.alert('Você já está cadastrado!')
+        if (response.status == 409) {
+            $("#toast").toast({
+                type: 'error',
+                message: 'Você já está cadastrado!'
+            });
+        }
         else if (response.status != 200) window.location.href = document.referrer
         else {
-            window.alert('Pagamento em análise.')
-            window.location.href = 'index.html'
+            $("#toast").toast({
+                type: 'success',
+                message: 'Pagamento em análise',
+                href: 'index.html'
+            })
         }
     })
 }

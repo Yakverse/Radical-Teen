@@ -48,8 +48,11 @@ loadParticipantes = async () => {
         headers: { "Content-Type": "application/json; charset=UTF-8" }
     }).then(async response => {
         if (!response.ok) {
-            window.alert('Erro') //TEMP
-            window.location.href = 'admin.html'
+            $("#toast").toast({
+                type: 'error',
+                message: 'Erro',
+                href: 'admin.html'
+            })
         } else {
             var data = await response.json()
 

@@ -36,7 +36,17 @@ document.getElementById('formCadastro').addEventListener('submit', async (e) => 
             sessionStorage.setItem('sessionName', user)
             window.location.href = `perfil.html?p=${user}`
         }
-        else if (data.code == 409) window.alert('Cadastro repetido') //TEMP
-        else window.alert('Server Error') //TEMP
+        else if (data.code == 409) {
+            $("#toast").toast({
+                type: 'error',
+                message: 'Cadastro Repetido'
+            });
+        }
+        else {
+            $("#toast").toast({
+                type: 'error',
+                message: 'Erro'
+            });
+        }
     })
 })

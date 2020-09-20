@@ -18,7 +18,12 @@ loadCamps = async () => {
         credentials: 'include',
         method: "GET",
     }).then(async response => {
-        if (response.status == 500) window.alert("Internal Server Error")
+        if (response.status == 500) {
+            $("#toast").toast({
+                type: 'error',
+                message: 'Server Erro'
+            });
+        }
         else {
             var data = await response.json()
             data.forEach(value => {
@@ -108,8 +113,11 @@ document.addEventListener('readystatechange', async () => {
                 headers: { "Content-Type": "application/json; charset=UTF-8" }
             }).then(async response => {
                 if (!response.ok) {
-                    window.alert('Erro') //TEMP
-                    window.location.reload(true)
+                    $("#toast").toast({
+                        type: 'error',
+                        message: 'Erro',
+                        reload: true
+                    })
                 } else {
                     var data = await response.json()
                     window.location.href = `admin_edit.html?c=${data.id}`

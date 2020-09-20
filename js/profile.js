@@ -105,6 +105,11 @@ document.getElementById('btnSubmit').addEventListener('click', async () => {
             window.location.href = 'index.html'
         }
         if (response.ok) window.location.reload()
-        else window.alert('Erro') //TEMP
+        else {
+            $("#toast").toast({
+                type: 'error',
+                message: 'Erro'
+            });
+        }
     })
 })
