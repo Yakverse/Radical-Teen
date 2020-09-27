@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const helmet = require('helmet');
 const settings = require('./settings')
 
 const app = express();
@@ -39,6 +40,7 @@ const Camp = require('./models/campModel');
 const userRoute = require('./routes/userRoutes');
 const campRoute = require('./routes/campRoutes');
 
+app.use(helmet());
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.unsubscribe(bodyParser.urlencoded({ extended: false }));
