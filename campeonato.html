@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Campeonatos Radical Teen</title>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/scrollbar.css">
+    <link rel="stylesheet" href="css/mensagem.css">
+    <link rel="stylesheet" href="css/campeonato.css">
+    <link rel="shortcut icon" href="img/icon.png" />
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/72ea4166fa.js" crossorigin="anonymous"></script>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+</head>
+
+<body>
+    <header>
+        <div class="iconesDiv">
+            <div class="imgIconesDiv">
+                <a href="index.html"><img src="img/rtbrancosembordarecortado.png" class="icones imgIcones"></a>
+                <a href="index.html"><img src="img/rtlogobranco.png" class="icones imgIcones"></a>
+            </div>
+
+            <div class="loginIconesDiv" id="logoutOutput">
+                <a href="login.html" id="sessionLink">
+                    <i class="icones faIcones fas fa-user-circle"></i>
+                    <p class="icones" id="sessionName">INICIAR SESSÃO</p>
+                </a>
+            </div>
+            <script src="js/autologin.js"></script>
+        </div>
+    </header>
+    <main>
+        <!-- Campeonato -->
+        <div class="campeonato">
+            <div class="tituloCampeonato">
+                <h2>Nome do Campeonato</h2>
+            </div>
+            <div class="imagemCampeonato">
+                <img src="img/fortinitebanner.png">
+            </div>
+            <div class="conteudoCampeonato">
+                <nav class="menu">
+                    <ul>
+                        <li class="menuLinks informacoesLink ativo">Informações</li>
+                        <li class="menuLinks regrasLink">Regras</li>
+                        <li class="menuLinks participantesLink">Participantes</li>
+                    </ul>
+                </nav>
+
+                <div class="conteudo">
+                    <div class="conteudoPaginas informacoes">
+                        <div class="conteudoTexto">
+                            <div class="valoresCampeonato">
+                                <h3>Premiação - <span class="premiacao">R$<span id="valorPremicao">100,00</span></span></h3>
+                                <h3>Inscrição - <span class="inscricao">R$<span id="valorInscricao">100,00</span></span></h3>
+                            </div>
+                            <p>Inforamações gerais sobre o campeonato, como vai funcionar e tudo mais.</p>
+                        </div>
+                    </div>
+                    <div class="conteudoPaginas regras">
+                        <div class="conteudoTexto">
+                            <p>Regras do campeonato</p>
+                        </div>
+                    </div>
+                    <div class="conteudoPaginas participantes">
+                        <table id="table">
+                            <tr><td>Nome do Usuário</td></tr>
+                            <tr><td>Nome do Usuário</td></tr>
+                            <tr><td>Nome do Usuário</td></tr>
+                            <tr><td>Nome do Usuário</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="inscreverseDiv">
+                        <button class="botaoInscreverse"><span>Inscreva-se</span></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- <footer></footer> -->
+    <script>
+        $(".informacoesLink").click(function(){
+            $(".informacoesLink").addClass("ativo")
+            $(".regrasLink").removeClass("ativo")
+            $(".participantesLink").removeClass("ativo")
+            $(".informacoes").show()
+            $(".regras").hide()
+            $(".participantes").hide()
+        });
+
+        $(".regrasLink").click(function(){
+            $(".regrasLink").addClass("ativo")
+            $(".informacoesLink").removeClass("ativo")
+            $(".participantesLink").removeClass("ativo")
+            $(".informacoes").hide()
+            $(".regras").show()
+            $(".participantes").hide()
+        });
+
+        $(".participantesLink").click(function(){
+            $(".participantesLink").addClass("ativo")
+            $(".regrasLink").removeClass("ativo")
+            $(".informacoesLink").removeClass("ativo")
+            $(".informacoes").hide()
+            $(".regras").hide()
+            $(".participantes").show()
+        });
+    </script>
+</body>
+</html>
