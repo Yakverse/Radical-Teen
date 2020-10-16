@@ -46,6 +46,14 @@ const schema = new Schema({
     campType: {
         type: String,
         required: true
+    },
+    info: {
+        type: String,
+        required: false
+    },
+    regras: {
+        type: String,
+        required: false
     }
 })
 

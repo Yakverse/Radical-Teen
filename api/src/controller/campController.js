@@ -31,7 +31,8 @@ exports.inscriçãoCamp = (req, res) => {
 
     // header = {sessionID: ''}
     // body = {
-    //     campID: ''
+    //     campID: '',
+    //     comprovante: ''
     // }
 
     Camp.findById(req.body.campID).then(dataCamp => {
@@ -56,7 +57,7 @@ exports.inscriçãoCamp = (req, res) => {
                 }
             });
             if (!find) {
-                dataCamp['listaPlayers'].push({ id: req.cookies['sessionID'], status: false })
+                dataCamp['listaPlayers'].push({ id: req.cookies['sessionID'], status: false, comprovante: req.body.comprovante })
                 Camp.replaceOne({ _id: req.body.campID }, dataCamp).then(() => {
                     return res.status(200).send({ code: 200, sucess: true })
                 }).catch(() => {
@@ -169,8 +170,17 @@ exports.editCamp = (req, res) => {
     // header = {sessionID: ''}
     // body = {
     //     campID: '',
-    //     campProp: [],
-    //     info: [],
+    //     nome: '',
+    //     data: '',
+    //     hora: '',
+    //     maxPlayers: '',
+    //     limiteDataInscricoes: '',
+    //     inscricoesOn: '',
+    //     premiacao: '',
+    //     inscricao: '',
+    //     campType: '',
+    //     info: '',
+    //     regras: ''
     // }
 
     User.findById(req.cookies['sessionID']).then(userData => {
@@ -179,49 +189,13 @@ exports.editCamp = (req, res) => {
             return res.status(404).send()
         }
         if (!userData.admin) return res.status(401).send()
-
-        Camp.findById(req.body.campID).then(campData => {
-            campInfos = {
-                nome(info) {
-                    campData.nome = info
-                },
-                data(info) {
-                    campData.data = info
-                },
-                hora(info) {
-                    campData.hora = info
-                },
-                maxPlayers(info) {
-                    campData.maxPlayers = info
-                },
-                listaPlayers(info) {
-                    campData.listaPlayers = info
-                },
-                limiteDataInscricoes(info) {
-                    campData.limiteDataInscricoes = info
-                },
-                inscricoesOn(info) {
-                    campData.inscricoesOn = info
-                },
-                premiacao(info) {
-                    campData.premiacao = info
-                },
-                inscricao(info) {
-                    campData.inscricao = info
-                },
-                campType(info) {
-                    campData.campType = info
-                }
-            }
-
-            req.body.campProp.forEach((value, i) => {
-                campInfos[value](req.body.info[i])
-            })
-            Camp.replaceOne({ _id: req.body.campID }, campData).then(() => {
-                return res.status(201).send()
-            }).catch(() => {
+        campID = req.body.campID
+        delete req.body.campID
+        Camp.findByIdAndUpdate({ _id: campID}, {$set: req.body}).then(data => {
+            if (data === null || Object.keys(data).length == 0) {
                 return res.status(500).send()
-            })
+            }
+            return res.status(201).send()
         }).catch(() => {
             return res.status(400).send()
         })
@@ -269,6 +243,29 @@ exports.allCamps = (req, res) => {
 }
 
 exports.getCamp = (req, res) => {
+
+    if (req.query.id == undefined) return res.status(400).send()
+
+    Camp.findById(req.query.id).then(async camp => {
+        if (camp == null) return res.status(400).send()
+        listaUsers = []
+        for await (user of camp.listaPlayers) {
+            if (user.status){
+                await User.findById(user.id, {_id: 0}).then(user => {
+                    listaUsers.push(user.usuario)
+                }).catch(() => {
+                    return res.status(500).send()
+                })
+            }
+        }
+        camp.listaPlayers = listaUsers
+        return res.status(200).send(camp)
+    }).catch(() => {
+        return res.status(400).send()
+    })
+}
+
+exports.getCampAdmin = (req, res) => {
 
     // header = {sessionID: ''}
     // body = {

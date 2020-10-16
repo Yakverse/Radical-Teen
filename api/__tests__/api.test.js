@@ -160,7 +160,7 @@ describe('Testes de Usuário', () => {
         test('Conta salva', done => {
             request(app).put('/user/account')
                 .set('Cookie', userID)
-                .send({ userType: ['steam'], account: ['steamTest'] })
+                .send({ userSteam: 'steamTest' })
                 .expect(201)
                 .end(() => {
                     User.findById(userID.split('=')[1].split(';')[0]).then(data => {
@@ -693,8 +693,15 @@ describe('Testes de campeonato', () => {
                 .set('Cookie', cookieAdmin)
                 .send({
                     campID: campID,
-                    campProp: ['nome', 'data', 'hora', 'maxPlayers', 'limiteDataInscricoes', 'inscricoesOn', 'premiacao', 'inscricao', 'campType'],
-                    info: ['Teste', '01/01/1970', '13:00', '10', '01/01/1970', false, '100.00', '15.00', 'rocketleague']
+                    nome: 'Teste',
+                    data: '01/01/1970',
+                    hora: '13:00',
+                    maxPlayers: '10',
+                    limiteDataInscricoes: '01/01/1970',
+                    inscricoesOn: false,
+                    premiacao: '100.00',
+                    inscricao: '15.00',
+                    campType: 'rocketleague'
                 })
                 .expect(201)
                 .end(() => {
@@ -720,8 +727,15 @@ describe('Testes de campeonato', () => {
                 .set('Cookie', cookieAdmin)
                 .send({
                     campID: 'campidinvalido',
-                    campProp: ['nome', 'data', 'hora', 'maxPlayers', 'limiteDataInscricoes', 'inscricoesOn', 'premiacao', 'inscricao', 'campType'],
-                    info: ['Teste', '01/01/1970', '13:00', '10', '01/01/1970', false, '100.00', '15.00', 'rocketleague']
+                    nome: 'Teste',
+                    data: '01/01/1970',
+                    hora: '13:00',
+                    maxPlayers: '10',
+                    limiteDataInscricoes: '01/01/1970',
+                    inscricoesOn: false,
+                    premiacao: '100.00',
+                    inscricao: '15.00',
+                    campType: 'rocketleague'
                 })
                 .expect(400, done)
         })
@@ -731,8 +745,15 @@ describe('Testes de campeonato', () => {
                 .set('Cookie', cookie)
                 .send({
                     campID: campID,
-                    campProp: ['nome', 'data', 'hora', 'maxPlayers', 'limiteDataInscricoes', 'inscricoesOn', 'premiacao', 'inscricao', 'campType'],
-                    info: ['Teste', '01/01/1970', '13:00', '10', '01/01/1970', false, '100.00', '15.00', 'rocketleague']
+                    nome: 'Teste',
+                    data: '01/01/1970',
+                    hora: '13:00',
+                    maxPlayers: '10',
+                    limiteDataInscricoes: '01/01/1970',
+                    inscricoesOn: false,
+                    premiacao: '100.00',
+                    inscricao: '15.00',
+                    campType: 'rocketleague'
                 })
                 .expect(401, done)
         })
@@ -742,8 +763,15 @@ describe('Testes de campeonato', () => {
                 .set('Cookie', 'sessionID=5f5c20bc8e53ea218fa8a5c2;path=/; HttpOnly; SameSite=None; Secure')
                 .send({
                     campID: campID,
-                    campProp: ['nome', 'data', 'hora', 'maxPlayers', 'limiteDataInscricoes', 'inscricoesOn', 'premiacao', 'inscricao', 'campType'],
-                    info: ['Teste', '01/01/1970', '13:00', '10', '01/01/1970', false, '100.00', '15.00', 'rocketleague']
+                    nome: 'Teste',
+                    data: '01/01/1970',
+                    hora: '13:00',
+                    maxPlayers: '10',
+                    limiteDataInscricoes: '01/01/1970',
+                    inscricoesOn: false,
+                    premiacao: '100.00',
+                    inscricao: '15.00',
+                    campType: 'rocketleague'
                 })
                 .expect(404, done)
         })
@@ -753,19 +781,15 @@ describe('Testes de campeonato', () => {
                 .set('Cookie', 'sessionID=sessionidinvalido;path=/; HttpOnly; SameSite=None; Secure')
                 .send({
                     campID: campID,
-                    campProp: ['nome', 'data', 'hora', 'maxPlayers', 'limiteDataInscricoes', 'inscricoesOn', 'premiacao', 'inscricao', 'campType'],
-                    info: ['Teste', '01/01/1970', '13:00', '10', '01/01/1970', false, '100.00', '15.00', 'rocketleague']
-                })
-                .expect(400, done)
-        })
-
-        test('Edição de campeonato com propriedades que não existem', done => {
-            request(app).put('/edit-camp')
-                .set('Cookie', cookieAdmin)
-                .send({
-                    campID: campID,
-                    campProp: ['propriedadenaoexiste'],
-                    info: ['Teste']
+                    nome: 'Teste',
+                    data: '01/01/1970',
+                    hora: '13:00',
+                    maxPlayers: '10',
+                    limiteDataInscricoes: '01/01/1970',
+                    inscricoesOn: false,
+                    premiacao: '100.00',
+                    inscricao: '15.00',
+                    campType: 'rocketleague'
                 })
                 .expect(400, done)
         })
@@ -841,28 +865,28 @@ describe('Testes de campeonato', () => {
                 })
         })
 
-        test('Campeonatos com ID inválido/inexistente', done => {
+        test('Busca campeonatos com ID inválido/inexistente', done => {
             request(app).post('/camp-admin')
                 .set('Cookie', cookieAdmin)
                 .send({ campID: 'campidinvalido' })
                 .expect(400, done)
         })
 
-        test('Campeonatos com usuário sem admin', done => {
+        test('Busca campeonatos com usuário sem admin', done => {
             request(app).post('/camp-admin')
                 .set('Cookie', cookie)
                 .send({ campID: campID })
                 .expect(401, done)
         })
 
-        test('Campeonatos com usuário inexistente', done => {
+        test('Busca campeonatos com usuário inexistente', done => {
             request(app).post('/camp-admin')
                 .set('Cookie', 'sessionID=5f5c20bc8e53ea218fa8a5c2;path=/; HttpOnly; SameSite=None; Secure')
                 .send({ campID: campID })
                 .expect(404, done)
         })
 
-        test('Edição de campeonato com usuário inválido', done => {
+        test('Busca campeonato com usuário inválido', done => {
             request(app).post('/camp-admin')
                 .set('Cookie', 'sessionID=sessionidinvalido;path=/; HttpOnly; SameSite=None; Secure')
                 .send({ campID: campID })

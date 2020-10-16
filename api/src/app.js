@@ -30,7 +30,7 @@ const router = express.Router();
 
 // Connect DB
 mongoose.set('useCreateIndex', true);
-if (!process.env.NODE_ENV) mongoose.connect(settings.connectionStrig, { useNewUrlParser: true, useUnifiedTopology: true })
+if (!process.env.NODE_ENV) mongoose.connect(settings.connectionStrig, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
 
 //Models
 const User = require('./models/userModel');

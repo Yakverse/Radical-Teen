@@ -29,19 +29,17 @@ document.getElementById('excluirCampeonato').addEventListener('click', async () 
 })
 
 document.getElementById('adicionarCampeonato').addEventListener('click', async () => {
-    var nomeCamp = document.getElementById('nomeCamp').value
-    var tipoCamp = document.getElementById('tipoCamp').value
-    var maxCamp = document.getElementById('maxCamp').value
-    var dataCamp = document.getElementById('dataCamp').value
-    var horaCamp = document.getElementById('horaCamp').value
-    var dataLimiteCamp = document.getElementById('dataLimiteCamp').value
-    var premiacaoCamp = document.getElementById('premiacaoCamp').value
-    var inscricaoCamp = document.getElementById('inscricaoCamp').value
-
+    
     var payload = JSON.stringify({
         campID: campID,
-        campProp: ["nome", "data", "hora", "maxPlayers", "limiteDataInscrições", "premiacao", "inscricao", "campType"],
-        info: [nomeCamp, dataCamp, horaCamp, maxCamp, dataLimiteCamp, premiacaoCamp, inscricaoCamp, tipoCamp]
+        nome: document.getElementById('nomeCamp').value,
+        data: document.getElementById('dataCamp').value,
+        hora: document.getElementById('horaCamp').value,
+        maxPlayers: document.getElementById('maxCamp').value,
+        limiteDataInscricoes: document.getElementById('dataLimiteCamp').value,
+        premiacao: document.getElementById('premiacaoCamp').value,
+        inscricao: document.getElementById('inscricaoCamp').value,
+        campType: document.getElementById('tipoCamp').value
     })
 
     await fetch(`${URL_API}/edit-camp`, {

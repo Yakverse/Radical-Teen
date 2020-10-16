@@ -91,8 +91,12 @@ infoUser()
 
 document.getElementById('btnSubmit').addEventListener('click', async () => {
     var payload = JSON.stringify({
-        userType: ['fortnite', 'rl', 'fifa', 'lol', 'ff', 'steam'],
-        account: [document.getElementById('inputFortnite').value, document.getElementById('inputRL').value, document.getElementById('inputFifa').value, document.getElementById('inputLoL').value, document.getElementById('inputFF').value, document.getElementById('inputSteam').value]
+        userFortnite: document.getElementById('inputFortnite').value,
+        userRL: document.getElementById('inputRL').value,
+        userFifa: document.getElementById('inputFifa').value,
+        userLol: document.getElementById('inputLoL').value,
+        userFF: document.getElementById('inputFF').value,
+        userSteam: document.getElementById('inputSteam').value
     })
     await fetch(`${URL_API}/user/account`, {
         credentials: 'include',

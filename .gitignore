@@ -5,3 +5,4 @@ settings.js
 *.cert
 *.key
 globalConfig.json
+.vscode/
