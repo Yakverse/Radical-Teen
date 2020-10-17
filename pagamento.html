@@ -23,9 +23,9 @@
             <p>Você deve inserir o comprovante de pagamento. Podendo ser o código do comprovante ou um link da imagem do comprovante hospedado em algum serviço.
                  <br> Caso escolha a segunda opção, recomendamos a plataforma imgur.
             </p>
-            <input type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+            <input id="comprovanteText" type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
             <div class="botaoComprovante">
-                <button class="botaoComprovanteConfirmar""><span>Enviar Comprovante</span></button>
+                <button class="botaoComprovanteConfirmar" id="botaoComprovanteConfirmar"><span>Enviar Comprovante</span></button>
             </div>
         </div>
     </div>
@@ -88,7 +88,7 @@
                     </div>
 
                     <div class="botaoPagamento">
-                        <button class="botaoPagamentoConfirmar" onclick="confirmaIncricao()"><span>Confirmar Inscrição</span></button>
+                        <button class="botaoPagamentoConfirmar"><span>Confirmar Inscrição</span></button>
                     </div>
 
                 </div>

@@ -13,8 +13,8 @@ $.extend({
     }
 })
 
-confirmaIncricao = async () => {
-    var payload = JSON.stringify({ campID: $.getUrlVars()['c'] })
+document.getElementById('botaoComprovanteConfirmar').addEventListener('click', async () => {
+    var payload = JSON.stringify({ campID: $.getUrlVars()['c'], comprovante: document.getElementById('comprovanteText').value })
     await fetch(`${URL_API}/inscrever`, {
         credentials: 'include',
         method: 'POST',
@@ -36,7 +36,7 @@ confirmaIncricao = async () => {
             })
         }
     })
-}
+})
 
 document.getElementById('nomeOutput').innerHTML = sessionStorage.getItem('sessionName').replace(/\"/g, "")
 document.getElementById('inscricaoOutput').innerHTML = `R$ ${$.getUrlVars()['i']}`
