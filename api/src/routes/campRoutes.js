@@ -3,8 +3,9 @@ const router = express.Router();
 const campController = require('../controller/campController');
 
 router.get('/camps', campController.allCamps)
+router.get('/camp', campController.getCamp);
 
-router.post('/camp-admin', campController.getCamp)
+router.post('/camp-admin', campController.getCampAdmin)
 router.post('/create-camp', campController.createCamp);
 router.post('/inscrever', campController.inscriçãoCamp);
 

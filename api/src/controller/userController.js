@@ -53,44 +53,21 @@ exports.saveAccount = async (req, res) => {
 
     // header = {sessionID: ''}
     // body = {
-    //     userType: [''],
-    //     account: ['']
+    //     userFortnite: '',
+    //     userRL: '',
+    //     userFifa: '',
+    //     userLol: '',
+    //     userFF: '',
+    //     userSteam: '',
     // }
 
-    User.findById(req.cookies['sessionID']).then(data => {
+    if (req.body.nome || req.body.usuario || req.body.email || req.body.cel || req.body.senha || req.body.admin) return res.status(401).send()
+    User.findByIdAndUpdate({ _id: req.cookies['sessionID'] }, {$set: req.body}).then(data => {
         if (data == null || Object.keys(data).length == 0) {
             res.clearCookie('sessionID', { path: '/' })
             return res.status(404).send()
         }
-        const userTypes = {
-            fortnite(account) {
-                data.userFortnite = account
-            },
-            rl(account) {
-                data.userRL = account
-            },
-            fifa(account) {
-                data.userFifa = account
-            },
-            lol(account) {
-                data.userLol = account
-            },
-            ff(account) {
-                data.userFF = account
-            },
-            steam(account) {
-                data.userSteam = account
-            }
-        }
-
-        req.body.userType.forEach((value, i) => {
-            userTypes[value](req.body.account[i])
-        })
-        User.replaceOne({ _id: req.cookies['sessionID'] }, data).then(() => {
-            return res.status(201).send()
-        }).catch(() => {
-            return res.status(500).send()
-        })
+        return res.status(201).send()
     }).catch(() => {
         res.clearCookie('sessionID', { path: '/' })
         return res.status(400).send()

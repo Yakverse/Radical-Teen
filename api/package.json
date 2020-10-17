@@ -6,7 +6,7 @@
     "api": "server.js"
   },
   "scripts": {
-    "start": "node bin/server.js",
+    "start": "nodemon bin/server.js",
     "test": "set NODE_ENV=test&& jest --forceExit"
   },
   "keywords": [],
@@ -18,8 +18,10 @@
     "cors": "^2.8.5",
     "debug": "^4.1.1",
     "express": "^4.17.1",
+    "helmet": "^4.1.1",
     "http": "0.0.1-security",
-    "mongoose": "^5.10.2"
+    "mongoose": "^5.10.2",
+    "nodemon": "^2.0.4"
   },
   "devDependencies": {
     "@shelf/jest-mongodb": "^1.2.3",
