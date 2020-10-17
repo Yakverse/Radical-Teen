@@ -12,6 +12,17 @@ $.extend({
 })
 const campID = $.getUrlVars()['c']
 
+downloadComprovante = (comprovante, nome) => {
+    var element = document.createElement('a');
+    element.style.display = 'none';
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(comprovante));
+    element.setAttribute('download', nome);
+
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+}
+
 deleteUser = async userID => {
     var payload = JSON.stringify({ userID: userID, campID: campID })
     await fetch(`${URL_API}/delete-user`, {
@@ -21,7 +32,7 @@ deleteUser = async userID => {
         headers: { "Content-Type": "application/json; charset=UTF-8" }
     }).then(response => {
         if (!response.ok) window.location.href = 'admin.html'
-        else window.location.reload(true) //TEMP
+        else window.location.reload(true)
     })
 }
 
@@ -34,7 +45,7 @@ editStatus = async userID => {
         headers: { "Content-Type": "application/json; charset=UTF-8" }
     }).then(response => {
         if (!response.ok) window.location.href = 'admin.html'
-        else window.location.reload(true) //TEMP
+        else window.location.reload(true)
     })
 }
 
@@ -56,7 +67,7 @@ loadParticipantes = async () => {
         } else {
             var data = await response.json()
 
-            var table = document.getElementById('table')
+            var table = document.getElementById('tableBody')
             data.listaPlayers.forEach(value => {
                 if (value.status) table.innerHTML +=
                     `<tr class="cadaUsuario">
@@ -64,6 +75,7 @@ loadParticipantes = async () => {
                     <td>${value.user}</td>
                     <td>${value.email}</td>
                     <td>${value.cel}</td>
+                    <td class="comprovanteDoUsuario"><i class="fas fa-download" aria-hidden="true" onclick="downloadComprovante('${value.comprovante || 'Nenhuma informação enviada'}', 'Comprovante_${value.user}')"></i></td>
                     <td class="estadoDoUsuario"><i class="fas fa-circle inscrito"></i></td>
                     <td class="botoesUsuario">
                         <i class="fas fa-trash-alt exclude" onclick="deleteUser('${value.id}')"></i>
@@ -76,6 +88,7 @@ loadParticipantes = async () => {
                     <td>${value.user}</td>
                     <td>${value.email}</td>
                     <td>${value.cel}</td>
+                    <td class="comprovanteDoUsuario"><i class="fas fa-download" aria-hidden="true" onclick="downloadComprovante('${value.comprovante || 'Nenhuma informação enviada'}', 'Comprovante_${value.user}')"></i></td>
                     <td class="estadoDoUsuario"><i class="fas fa-circle aguardo"></i></td>
                     <td class="botoesUsuario">
                         <i class="fas fa-check add" onclick="editStatus('${value.id}')"></i>

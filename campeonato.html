@@ -36,12 +36,8 @@
     <main>
         <!-- Campeonato -->
         <div class="campeonato">
-            <div class="tituloCampeonato">
-                <h2>Nome do Campeonato</h2>
-            </div>
-            <div class="imagemCampeonato">
-                <img src="img/fortinitebanner.png">
-            </div>
+            <div class="tituloCampeonato" id="tituloCampeonato"></div>
+            <div class="imagemCampeonato" id="imagemCampeonato"></div>
             <div class="conteudoCampeonato">
                 <nav class="menu">
                     <ul>
@@ -53,30 +49,22 @@
 
                 <div class="conteudo">
                     <div class="conteudoPaginas informacoes">
-                        <div class="conteudoTexto">
+                        <div class="conteudoTexto" id="conteudoInfo">
                             <div class="valoresCampeonato">
-                                <h3>Premiação - <span class="premiacao">R$<span id="valorPremicao">100,00</span></span></h3>
-                                <h3>Inscrição - <span class="inscricao">R$<span id="valorInscricao">100,00</span></span></h3>
+                                <h3>Premiação - <span class="premiacao">R$<span id="valorPremiacao"></span></span></h3>
+                                <h3>Inscrição - <span class="inscricao">R$<span id="valorInscricao"></span></span></h3>
                             </div>
-                            <p>Inforamações gerais sobre o campeonato, como vai funcionar e tudo mais.</p>
                         </div>
                     </div>
                     <div class="conteudoPaginas regras">
-                        <div class="conteudoTexto">
-                            <p>Regras do campeonato</p>
-                        </div>
+                        <div class="conteudoTexto" id="conteudoRegras"></div>
                     </div>
                     <div class="conteudoPaginas participantes">
-                        <table id="table">
-                            <tr><td>Nome do Usuário</td></tr>
-                            <tr><td>Nome do Usuário</td></tr>
-                            <tr><td>Nome do Usuário</td></tr>
-                            <tr><td>Nome do Usuário</td></tr>
-                        </table>
+                        <table id="table"></table>
                     </div>
 
                     <div class="inscreverseDiv">
-                        <button class="botaoInscreverse"><span>Inscreva-se</span></button>
+                        <button class="botaoInscreverse" id="botaoInscreverse"><span>Inscreva-se</span></button>
                     </div>
 
                 </div>
@@ -84,6 +72,7 @@
         </div>
     </main>
     <!-- <footer></footer> -->
+    <script defer src="js/campeonato.js"></script>
     <script>
         $(".informacoesLink").click(function(){
             $(".informacoesLink").addClass("ativo")

@@ -39,7 +39,9 @@ document.getElementById('adicionarCampeonato').addEventListener('click', async (
         limiteDataInscricoes: document.getElementById('dataLimiteCamp').value,
         premiacao: document.getElementById('premiacaoCamp').value,
         inscricao: document.getElementById('inscricaoCamp').value,
-        campType: document.getElementById('tipoCamp').value
+        campType: document.getElementById('tipoCamp').value,
+        info: document.getElementById('campInfo').value,
+        regras: document.getElementById('campRegras').value
     })
 
     await fetch(`${URL_API}/edit-camp`, {
@@ -79,6 +81,8 @@ loadCamp = async () => {
         document.getElementById('dataLimiteCamp').value = data.limiteDataInscricoes
         document.getElementById('premiacaoCamp').value = data.premiacao
         document.getElementById('inscricaoCamp').value = data.inscricao
+        document.getElementById('campInfo').value = data.info
+        document.getElementById('campRegras').value = data.regras
     })
 }
 loadCamp()
