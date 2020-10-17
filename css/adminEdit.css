@@ -45,8 +45,8 @@ main {
 .blocoDeDadosDoCampeonato{
     margin-top: 10vh;
     margin-bottom: 10vh;
-    margin-left: 10vh;
-    margin-right: 10vh;
+    width: 60%;
+    margin: auto;
 }
 
 .imgJogo{
@@ -55,17 +55,17 @@ main {
     text-align: center;
 }
 .imgJogo input{
-    height: 40vh;
+    height: 25vh;
 }
 .imgJogo input:hover{
     filter: brightness(50%);
 }
 
 .blocoDoInput{
-    margin-bottom: 5vh;
+    margin-bottom: 3vh;
 }
 .blocoDoInput p{
-    font-size: 3vh;
+    font-size: 2vh;
     color: white;
     margin-bottom: 3vh;
 }
@@ -75,10 +75,27 @@ main {
     background: #2C2F33;
     border-radius: 1vh;
     font-weight: bold;
-    width: 70%;
 }
 
 .campoInput input{
+    background: transparent;
+    border: none;
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 1.5vh;
+    margin: 0;
+    line-height: 3vh;
+    vertical-align: top;
+    font-weight: bold;
+    height: 4vh;
+    width: 100%;
+}
+.campoInput input:focus{
+    box-shadow: inset 0 -2px 0 #fff;
+}
+
+.campoTextarea{
     background: transparent;
     border: none;
     box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.15);
@@ -89,12 +106,19 @@ main {
     line-height: 3vh;
     vertical-align: top;
     font-weight: bold;
-    height: 5vh;
+    height: 20vh;
     width: 100%;
+    padding: 1vh;
+
+    background: #2C2F33;
+    border-radius: 1vh;
+    font-weight: bold;
 }
-.campoInput input:focus{
+.campoTextarea:focus{
     box-shadow: inset 0 -2px 0 #fff;
 }
+
+
 
 #campType .campoInput{
     width: 30%;
@@ -125,8 +149,8 @@ main {
     color: white;
     margin: 0;
     margin-top: 3vh;
-    width: 40%;
-    height: 7vh;
+    min-width: 50%;
+    height: 6vh;
     clip-path: polygon(8% 0,100% 0,93% 93%,0 100%);
     background: #2C2F33;
 }
@@ -152,7 +176,7 @@ main {
 }
 
 .botaoAdicionarCampeonato span{
-    font-size: 3vh;
+    font-size: 2vh;
     line-height: 100%;
 }
 

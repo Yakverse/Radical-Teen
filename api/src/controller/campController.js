@@ -284,7 +284,7 @@ exports.getCampAdmin = (req, res) => {
             var infoUsers = []
             for await (user of dataCamp.listaPlayers) {
                 await User.findById(user.id).then(dataUser => {
-                    infoUsers.push({ id: dataUser.id, nome: dataUser.nome, user: dataUser.usuario, email: dataUser.email, cel: dataUser.cel, status: user.status })
+                    infoUsers.push({ id: dataUser.id, nome: dataUser.nome, user: dataUser.usuario, email: dataUser.email, cel: dataUser.cel, status: user.status, comprovante: user.comprovante })
                 })
             }
             dataCamp.listaPlayers = infoUsers

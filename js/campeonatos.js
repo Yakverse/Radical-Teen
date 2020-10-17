@@ -13,17 +13,6 @@ $.extend({
 const campType = $.getUrlVars()['j']
 document.getElementById('tituloJogo').innerHTML = campType.toUpperCase()
 
-verifyLogin = async (campID, campInscricao, campType) => {
-    await fetch(`${URL_API}/user/info`, {
-        credentials: 'include',
-        method: 'POST'
-    }).then(async response => {
-        if (response.status == 204) window.location.href = 'login.html'
-        else if (response.status != 200) window.location.reload(true)
-        else window.location.href = `pagamento.html?c=${campID}&i=${campInscricao}&t=${campType}`
-    })
-}
-
 loadCamp = async () => {
     await fetch(`${URL_API}/camps?tag=${campType}`, {
         credentials: 'include',
@@ -36,7 +25,7 @@ loadCamp = async () => {
 
             data.forEach(value => {
                 campeonatos.innerHTML +=
-                    `<a  onclick="verifyLogin('${value._id}', '${value.inscricao}', '${value.campType}')"><div class="campeonato">
+                    `<a href=campeonato.html?j=${campType}&id=${value._id}><div class="campeonato">
                 <div class="imagemCampeonato" style="background: url(img/${campType}.jpg) no-repeat center / cover;">
                     <div class="premiacaoEInscricao">
                         <div class="premiacao">

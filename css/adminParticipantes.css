@@ -45,16 +45,13 @@ main {
 .blocoDeDadosDosParticipantes{
     margin-top: 10vh;
     margin-bottom: 10vh;
-    margin-left: 10%;
-    margin-right: 10%;
 }
 
 table {
     border-collapse: collapse;
     width: 80%;
     max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     background: #2C2F33;
     color: white;
   }
@@ -64,13 +61,16 @@ th{
     text-align: center !important;
 }
 th, td {
-    padding: 3vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding-left: 1vh;
+    padding-right: 1vh;
     text-align: left;
     border: 1px solid rgba(255, 255, 255, 0.15);
-    font-size: 2vh;
-    white-space: nowrap;                 
-    overflow: hidden;              
-    text-overflow:    ellipsis;
+    font-size: 1.5vh;
+    line-height: 100%;      
+    text-overflow: ellipsis;
+    table-layout: fixed
 }
 
 tr:nth-child(even) {
@@ -86,7 +86,7 @@ tr:hover {
     text-align: center;
 }
 .estadoDoUsuario i::before{
-    font-size: 3vh;
+    font-size: 2.5vh;
 }
 .inscrito::before{
     color: rgb(12, 185, 12);
@@ -96,14 +96,21 @@ tr:hover {
 }
 
 
+.comprovanteDoUsuario{
+    text-align: center;
+}
+.comprovanteDoUsuario i::before{
+    font-size: 2.5vh;
+    cursor: pointer;
+}
+
 
 .botoesUsuario{
     text-align: center;
 }
 .botoesUsuario i::before{
-    margin-left: 2vh;
-    margin-right: 2vh;
-    font-size: 3vh;
+    margin: auto;
+    font-size: 2.5vh;
     cursor: pointer;
 }
 .add::before{
@@ -112,6 +119,7 @@ tr:hover {
 .exclude::before{
     color: rgb(238, 27, 27);
 }
+
 
 /* Mobile */
 @media (max-width: 1650px) {}

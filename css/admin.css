@@ -51,14 +51,14 @@ main {
 }
 
 .nomeJogoCampeonato{
-    font-size: 4vh;
+    font-size: 3vh;
     color: white;
     cursor: pointer;
 }
 
 .nomeJogoCampeonato span::before{
     font-family: "Font Awesome 5 Free";
-    font-size: 4vh;
+    font-size: 3vh;
     font-weight: 900;
     font-family: "Font Awesome 5 Free";
     -webkit-font-smoothing: antialiased;
@@ -169,7 +169,7 @@ main {
 }
 .nomeCampeonato{
     margin: 0;
-    font-size: 3vh;
+    font-size: 2vh;
     color: white;
     line-height: 100%;
     vertical-align: bottom;
