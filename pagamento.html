@@ -16,6 +16,21 @@
 </head>
 
 <body>
+
+    <div class="mensagemInserirComprovante animate__animated animate__slideInDown">
+        <div class="content">
+            <h3>Insira o comprovante de pagamento</h3>
+            <p>Você deve inserir o comprovante de pagamento. Podendo ser o código do comprovante ou um link da imagem do comprovante hospedado em algum serviço.
+                 <br> Caso escolha a segunda opção, recomendamos a plataforma imgur.
+            </p>
+            <input type="text" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+            <div class="botaoComprovante">
+                <button class="botaoComprovanteConfirmar""><span>Enviar Comprovante</span></button>
+            </div>
+        </div>
+    </div>
+
+
     <main>
 
         <div class="pagamentosBloco">
@@ -97,6 +112,13 @@
             $("#deposito").hide()
             $("#picpay").show()
         });
+
+        // Comprovante
+
+        $(".botaoPagamentoConfirmar").click(function(){
+            $(".mensagemInserirComprovante").show();
+        })
+
     </script>
 </body>
 

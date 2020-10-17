@@ -58,6 +58,7 @@ main {
     font-size: 3vh;
     color: white;
     text-transform: uppercase;
+    line-height: 100%;
 }
 
 .imagemCampeonato{
@@ -230,10 +231,27 @@ tr:hover {
 @media (max-width: 1650px) {}
 
 @media (max-width: 1080px) {
-    .campeonatos{
+    .campeonato{
         padding-top: 1vh;
         width: 100%;
         text-align: center;
+    }
+
+    .menu .menuLinks{
+        font-size: 1.9vh;
+    }
+    .valoresCampeonato{
+        display: block;
+    }
+    .valoresCampeonato h3, .valoresCampeonato span{
+        font-size: 1.8vh;
+    }
+    .botaoInscreverse{
+        width: 70%;
+        height: 4vh;
+    }
+    .botaoInscreverse span{
+        font-size: 2.5vh;
     }
 }
 

@@ -23,7 +23,7 @@
 // })
 
 $(document).ready(function () {
-    var images = ['img/fortinitebanner.png', 'img/lolbanner.png', 'img/rocketleaguebanner.png', 'img/pubgbanner.png', 'img/fifabanner.png', 'img/csgo.jpg']
+    var images = ['img/fortnitebanner.png', 'img/lolbanner.png', 'img/rocketleaguebanner.png', 'img/pubgbanner.png', 'img/fifabanner.png', 'img/csgo.jpg']
 
     $('#fundoJogo').append('<style>#fundoJogo{background: url(' + images[Math.floor(Math.random() * images.length)] + ') no-repeat center / cover}')
 

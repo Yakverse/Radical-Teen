@@ -31,7 +31,84 @@ img {
     -o-user-drag: none;
 }
 
+/* Inserir Comprovante */
+.mensagemInserirComprovante{
+    position: absolute;
+    left: 25%;
+    top: 13%;
+    min-height: 30%;
+    width: 50%;
+    border-radius: 1vh;
+    background: rgba(250, 250, 250, 0.95);
+    display: none;
+    z-index: 4;
+}
+.mensagemInserirComprovante .content{
+    padding: 5%;
+    text-align: center;
+}
+.mensagemInserirComprovante h3{
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #A7C957;
+    margin-bottom: 4vh;
+    line-height: 100%;
+}
+.mensagemInserirComprovante p{
+    font-size: 16px;
+    color: black;
+    line-height: 100%;
+    margin-bottom: 2vh;
+}
+.mensagemInserirComprovante input{
+    width: 100%;
+    margin: auto;
+    font-size: 18px;
+    border-radius: 1vh;
+    padding: 5px;
+}
 
+/* Botão */
+.botaoComprovante{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 3vh;
+    width: 100%;
+}
+.botaoComprovanteConfirmar{
+    text-transform: uppercase;
+    padding: 1vh;
+    padding-left: 0.5vh;
+    padding-right: 0.5vh;
+    border: 0px;
+    color: black;
+    margin: 0;
+    background: #A7C957;
+    transition: all .5s;
+    height: 8vh;
+    width: 35vh;
+    border-radius: 1vh;
+}
+
+.botaoComprovanteConfirmar:hover{
+    cursor: pointer;
+    color: white;
+}
+
+.botaoComprovanteConfirmar:active {
+    border-style: none;
+    outline: none;
+}
+
+.botaoComprovanteConfirmar:focus{
+    outline: none;
+}
+
+.botaoComprovanteConfirmar span{
+    font-size: 2vh;
+    line-height: 100%;
+}
 
 
 /* Main */
@@ -244,13 +321,18 @@ main {
     display: none;
 }
 
-
-
 /* Mobile */
 
 @media (max-width: 1650px) {}
 
 @media (max-width: 1080px) {
+    .mensagemInserirComprovante{
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 1);
+    }
     .pagamentosBloco{
         height: 100vh;
         width: 100%;
