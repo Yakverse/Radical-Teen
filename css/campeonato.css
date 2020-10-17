@@ -44,7 +44,7 @@ main {
     height: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 8vh;
+    padding-top: 3vh;
 }
 
 .tituloCampeonato{
@@ -233,18 +233,25 @@ tr:hover {
 @media (max-width: 1080px) {
     .campeonato{
         padding-top: 1vh;
-        width: 100%;
+        width: 95%;
         text-align: center;
     }
 
+    .menu{
+        text-align: center;
+        margin-left: 1em;
+    }
     .menu .menuLinks{
         font-size: 1.9vh;
     }
     .valoresCampeonato{
-        display: block;
+        justify-content: center;
     }
     .valoresCampeonato h3, .valoresCampeonato span{
-        font-size: 1.8vh;
+        font-size: 1.5vh;
+    }
+    .conteudoTexto p{
+        font-size: 1.5vh;
     }
     .botaoInscreverse{
         width: 70%;

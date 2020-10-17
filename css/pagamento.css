@@ -341,6 +341,16 @@ main {
     .botaoPagamentoConfirmar{
         width: 90%;
     }
+    
+    .mensagemInserirComprovante h3{
+        font-size: 3vh;
+    }
+    .mensagemInserirComprovante p, .mensagemInserirComprovante input{
+        font-size: 2.5vh;
+    }
+    .mensagemInserirComprovante button{
+        width: 100%;
+    }
 }
 
 @media (max-height: 1600px) {}
