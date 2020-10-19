@@ -22,36 +22,39 @@ loadCamp = async () => {
         else {
             var data = await response.json()
             var campeonatos = document.getElementById('campeonatos')
-
-            data.forEach(value => {
-                campeonatos.innerHTML +=
-                    `<a href=campeonato.html?j=${campType}&id=${value._id}><div class="campeonato">
-                <div class="imagemCampeonato" style="background: url(img/${campType}.jpg) no-repeat center / cover;">
-                    <div class="premiacaoEInscricao">
-                        <div class="premiacao">
-                            <i class="fas fa-trophy"></i><p>R$ ${value.premiacao}</p>
+            if (data.length == 0) {
+                campeonatos.innerHTML += '<p class="msgSemCampeonato">Nenhum campeonato disponível.</p>'
+            } else {
+                data.forEach(value => {
+                    campeonatos.innerHTML +=
+                        `<a href=campeonato.html?j=${campType}&id=${value._id}><div class="campeonato">
+                    <div class="imagemCampeonato" style="background: url(img/${campType}.jpg) no-repeat center / cover;">
+                        <div class="premiacaoEInscricao">
+                            <div class="premiacao">
+                                <i class="fas fa-trophy"></i><p>R$ ${value.premiacao}</p>
+                            </div>
+                            <div class="inscricao">
+                                <i class="fas fa-ticket-alt"></i><p>R$ ${value.inscricao}</p>
+                            </div>
                         </div>
-                        <div class="inscricao">
-                            <i class="fas fa-ticket-alt"></i><p>R$ ${value.inscricao}</p>
+                    </div>
+                    <div class="campoTitutloCampeonato"> 
+                        <h3 class="tituloCampeonato">${value.nome}</h3>
+                    </div>
+                    <div class="informacoesCampeonato">
+                        <div class="data">
+                            <i class="far fa-calendar"></i><p>${value.data}</p>
+                        </div>
+                        <div class="horario">
+                            <i class="far fa-clock"></i><p>${value.hora}</p>
                         </div>
                     </div>
-                </div>
-                <div class="campoTitutloCampeonato"> 
-                    <h3 class="tituloCampeonato">${value.nome}</h3>
-                </div>
-                <div class="informacoesCampeonato">
-                    <div class="data">
-                        <i class="far fa-calendar"></i><p>${value.data}</p>
+                    <div class="botaoCampeonato">
+                        <button class="botaoCampeonatoInscreva-se"><span>Inscreva-se</span></button>
                     </div>
-                    <div class="horario">
-                        <i class="far fa-clock"></i><p>${value.hora}</p>
-                    </div>
-                </div>
-                <div class="botaoCampeonato">
-                    <button class="botaoCampeonatoInscreva-se"><span>Inscreva-se</span></button>
-                </div>
-            </div></a>`
-            });
+                </div></a>`
+                });
+            }
         }
     })
 }
