@@ -11,12 +11,13 @@
 .errorMsg p{
     padding: 20px;
     font-size: 20px;
-    color: rgba(195, 60, 60, 0.75);
+    color: white;
 }
 
-a{
-    color: rgba(195, 60, 60, 1); 
+.errorMsg a{
+    color: rgb(255, 255, 255); 
     font-weight: bold;
+    font-size: 20px;
 }
 
 @media (max-width: 1080px){
