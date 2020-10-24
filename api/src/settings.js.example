@@ -1,3 +1,4 @@
 module.exports = {
-    connectionStrig: "" //MongoDB
+    connectionStrig: "", //MongoDB
+    SMPTKey: "" //SMPT API key
 }

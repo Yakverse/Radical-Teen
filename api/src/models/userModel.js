@@ -16,6 +16,16 @@ const schema = new Schema({
         required: true,
         unique: true
     },
+    active: {
+        type: Boolean,
+        required: false,
+        default: false
+    },
+    emailVerification: {
+        type: String,
+        required: false,
+        default: ''
+    },
     cel: {
         type: String,
         required: true,
