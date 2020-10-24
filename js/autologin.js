@@ -15,7 +15,7 @@ reverification = async () => {
         credentials: 'include',
         method: 'POST'
     }).then(response => {
-        if (response.status == 200) $("#toast").toast({ type: 'sucess', message: 'Email enviado!' })
+        if (response.status == 200) $("#toast").toast({ type: 'success', message: 'Email enviado!' })
         else if (response.status == 304) {
             sessionStorage.clear()
             $("#toast").toast({ type: 'error', message: 'Seu email já está verificado', reload: true })
