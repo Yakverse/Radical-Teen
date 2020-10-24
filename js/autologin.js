@@ -12,10 +12,11 @@ logout = async () => {
 
 autoLogin = async () => {
 
-    if (sessionStorage.getItem('sessionName')) {
+    if (sessionStorage.getItem('sessionName') && sessionStorage.getItem('activeEmail')) {
         document.getElementById('sessionName').innerHTML = sessionStorage.getItem('sessionName').replace(/\"/g, "")
         document.getElementById('sessionLink').href = `perfil.html?p=${sessionStorage.getItem('sessionName').replace(/\"/g, "")}`
         document.getElementById('logoutOutput').innerHTML += `<i class="icones faIcones logout fas fa-sign-out-alt" onclick=logout()></i>`
+        if (sessionStorage.getItem('activeEmail') === 'false') document.body.innerHTML += '<div class="errorMsg"><p>Email não verificado</p></div>'
         return
     }
 
@@ -30,6 +31,10 @@ autoLogin = async () => {
             document.getElementById('sessionName').innerHTML = data.data.usuario
             document.getElementById('sessionLink').href = `perfil.html?p=${data.data.usuario}`
             document.getElementById('logoutOutput').innerHTML += `<i class="icones faIcones logout fas fa-sign-out-alt" onclick=logout()></i>`
+            if (!data.data.active) {
+                sessionStorage.setItem('activeEmail', false)
+                document.body.innerHTML += '<div class="errorMsg"><p>Email não verificado</p></div>'
+            } else sessionStorage.setItem('activeEmail', true)
         } else if (response.status == 404 || response.status == 400) {
             if (sessionStorage.getItem('sessionName')) sessionStorage.removeItem('sessionName')
             if (!window.location.pathname == '/index.html') window.location.href = 'index.html'

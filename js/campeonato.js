@@ -14,6 +14,7 @@ const campType = $.getUrlVars()['j']
 const id = $.getUrlVars()['id']
 
 verifyLogin = async (campInscricao) => {
+    if (sessionStorage.getItem('activeEmail') == 'false') return $("#toast").toast({ type: 'error', message: 'Verifique seu email antes!' })
     await fetch(`${URL_API}/user/info`, {
         credentials: 'include',
         method: 'POST'

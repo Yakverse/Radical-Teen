@@ -90,6 +90,7 @@ infoUser = async () => {
 infoUser()
 
 document.getElementById('btnSubmit').addEventListener('click', async () => {
+    if (sessionStorage.getItem('activeEmail') == 'false') return $("#toast").toast({ type: 'error', message: 'Verifique seu email antes!' })
     var payload = JSON.stringify({
         userFortnite: document.getElementById('inputFortnite').value,
         userRL: document.getElementById('inputRL').value,
