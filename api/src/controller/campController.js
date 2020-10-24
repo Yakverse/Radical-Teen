@@ -36,6 +36,7 @@ exports.createCamp = async (req, res) => {
                     campLink: `https://radicalteen.com.br/campeonato.html?j=${req.body.campType}&id=${message.id}`
                 }
             }).then(() => {
+                User.updateMany({}, {$push: {notification: {title: `Um campeonato de ${req.body.campType.charAt(0).toUpperCase() + req.body.campType.slice(1)} foi criado!`, text: `Se inscreva agora mesmo! https://radicalteen.com.br/campeonato.html?j=${req.body.campType}&id=${message.id}`}}})
                 return res.status(201).send({ code: 201, sucess: true, id: message.id })
             }).catch(() => {
                 return res.status(500).send({ code: 500, sucess: false})
@@ -91,6 +92,7 @@ exports.inscriçãoCamp = (req, res) => {
                             gameName: dataCamp.campType.charAt(0).toUpperCase() + dataCamp.campType.slice(1)
                         }
                     }).then(() => {
+                        User.findByIdAndUpdate(req.cookies['sessionID'], {$push: {notification: {title: "Seu pagamento está em análise!", text: `O pagamento do campeonato ${dataCamp.nome} está em análise`}}})
                         return res.status(200).send({ code: 200, sucess: true })
                     }).catch(() => {
                         return res.status(500).send({ code: 500, sucess: false })
@@ -146,6 +148,7 @@ exports.editStatus = (req, res) => {
                             gameName: dataCamp.campType.charAt(0).toUpperCase() + dataCamp.campType.slice(1)
                         }
                     }).then(() => {
+                        User.findByIdAndUpdate(req.body.userID, {$push: {notification: {title: "Seu pagamento foi aprovado!", text: `O pagamento do campeonato ${dataCamp.nome} foi aprovado!`}}})
                         return res.status(200).send()
                     }).catch(() => {
                         return res.status(500).send()
@@ -204,6 +207,7 @@ exports.deleteUser = (req, res) => {
                             campLink: `https://radicalteen.com.br/campeonato.html?j=${dataCamp.campType}&id=${dataCamp.id}`
                         }
                     }).then(() => {
+                        User.findByIdAndUpdate(req.body.userID, {$push: {notification: {title: "Seu pagamento foi recusado.", text: `O pagamento do campeonato ${dataCamp.nome} foi recusado, tente se inscrever novamente ou entre em contato com um administrador.`}}})
                         return res.status(200).send()
                     }).catch(() => {
                         return res.status(500).send()

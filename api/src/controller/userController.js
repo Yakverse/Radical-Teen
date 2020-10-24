@@ -4,7 +4,6 @@ const User = mongoose.model('User');
 const sgMail = require('../mail/sgMail');
 const templates = require('../mail/templates.json')
 const crypto = require('crypto');
-const path = require('path');
 
 const randomBytesLength = 32;
 
@@ -22,6 +21,10 @@ exports.signin = async (req, res) => {
 
     req.body.emailVerification = randomString;
     req.body.senha = auth.generateHash(req.body.senha)
+    req.body.notification = {
+        title: "Bem-Vindo(a) ao Radical Teen!",
+        text: "Verifique seu email e aproveite os campeonatos!"
+    }
 
     new User(req.body).save().then(message => {
         sgMail.send({
@@ -52,7 +55,9 @@ exports.emailVerification = async (req, res) => {
 
     if (req.body.code == undefined) return res.status(400).send()
 
-    User.findOneAndUpdate({ emailVerification: req.body.code }, {$unset: {emailVerification: req.body.code}, active: true}).then((msg) => {
+    User.findOneAndUpdate(
+        { emailVerification: req.body.code },
+        {$unset: {emailVerification: req.body.code}, active: true, $push: {notification: {title: "Email Verificado!", text: "Agora você pode aproveitar de todos os recursos do site!\nCadastre suas contas no seu perfil e se inscreva nos campeonatos dos seus jogos favoritos!"}}}).then((msg) => {
         if (msg == null) return res.status(304).send({ code: 304, sucess: false })
         return res.status(200).send({ code: 200, sucess: true })
     }).catch(() => {
@@ -64,7 +69,7 @@ exports.reverification = async (req, res) => {
 
     // header = {sessionID: ''}
     // body = {
-    //     email: ''
+    //     email: '' (opcional)
     // }
 
     User.findById(req.cookies['sessionID']).then(data => {
@@ -76,12 +81,12 @@ exports.reverification = async (req, res) => {
 
         randomString = crypto.randomBytes(randomBytesLength).toString('hex');
 
-        data.email = req.body.email
+        if (req.body.email) data.email = req.body.email
         data.emailVerification = randomString
 
         User.replaceOne({ _id: req.cookies['sessionID']}, data).then(() => {
             sgMail.send({
-                to: req.body.email,
+                to: data.email,
                 from: "no-reply@radicalteen.com.br",
                 templateId: templates.emailVerification,
                 dynamic_template_data: {
@@ -144,11 +149,9 @@ exports.saveAccount = async (req, res) => {
         }
         if (!data.active) return res.status(401).send()
 
-        User.update({ _id: req.cookies['sessionID']}, {$set: req.body}).then((msg) => {
-            console.log(msg)
+        User.update({ _id: req.cookies['sessionID']}, {$set: req.body}).then(() => {
             return res.status(201).send()
-        }).catch((err) => {
-            console.log(err)
+        }).catch(() => {
             return res.status(400).send()
         })
     }).catch(() => {

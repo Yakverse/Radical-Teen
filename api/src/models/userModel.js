@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const notificationSchema = require('./notificationModel')
 
 const schema = new Schema({
     nome: {
@@ -63,7 +64,8 @@ const schema = new Schema({
     userSteam: {
         type: String,
         required: false
-    }
+    },
+    notification: [notificationSchema]
 });
 
 module.exports = mongoose.model('User', schema);

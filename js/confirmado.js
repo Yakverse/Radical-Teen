@@ -36,7 +36,7 @@ verifyEmail = async (code) => {
             `<div class="emailContent mensagemInserirComprovante animate__animated animate__slideInDown">
                 <img class="logoRadical" src="img/icon.png">
                 <h1 class="emailTitle">Email Confirmado!</h1>
-                <p class="emailText">Bem-Vindo ao Radical Teen! Seu email foi confirmado. Clique no botão abaixo para ser redirecionado para a página principal.</p>
+                <p class="emailText">Bem-Vindo(a) ao Radical Teen! Seu email foi confirmado. Clique no botão abaixo para ser redirecionado para a página principal.</p>
                 <a href="index.html"><button class="emailButton"><i class="fas fa-home"></i></button></a>
             </div>`
         }
