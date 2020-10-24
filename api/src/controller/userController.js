@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 const auth = require('../auth/auth');
 const User = mongoose.model('User');
+const sgMail = require('../mail/sgMail');
+const templates = require('../mail/templates.json')
+const crypto = require('crypto');
+
+const randomBytesLength = 32;
 
 exports.signin = async (req, res) => {
 
@@ -12,15 +17,90 @@ exports.signin = async (req, res) => {
     //     senha = '',
     // }
 
+    randomString = crypto.randomBytes(randomBytesLength).toString('hex');
+
+    req.body.emailVerification = randomString;
     req.body.senha = auth.generateHash(req.body.senha)
+    req.body.notification = {
+        title: "Bem-Vindo(a) ao Radical Teen!",
+        text: "Verifique seu email e aproveite os campeonatos!"
+    }
 
     new User(req.body).save().then(message => {
-        var date = new Date();
-        date.setDate(date.getDate() + 2);
-        res.setHeader('Set-Cookie', `sessionID=${message.id};expires=${date.toUTCString()};path=/;HttpOnly;SameSite=None;Secure`)
-        return res.status(200).send({ code: 200, sucess: true, user: message.usuario })
-    }).catch(error => {
-        return res.status(409).send({ code: 409, sucess: false, error: error })
+        sgMail.send({
+            to: req.body.email,
+            from: "no-reply@radicalteen.com.br",
+            templateId: templates.emailVerification,
+            dynamic_template_data: {
+                randomString: randomString
+            }
+        }).then(() => {
+            var date = new Date();
+            date.setDate(date.getDate() + 2);
+            res.setHeader('Set-Cookie', `sessionID=${message.id};expires=${date.toUTCString()};path=/;HttpOnly;SameSite=None;Secure`)
+            return res.status(200).send({ code: 200, sucess: true, user: message.usuario })
+        }).catch(() => {
+            return res.status(400).send({code: 409, sucess: false})
+        })
+    }).catch(() => {
+        return res.status(409).send({ code: 409, sucess: false})
+    })
+}
+
+exports.emailVerification = async (req, res) => {
+
+    // body = {
+    //     code = ''
+    // }
+
+    if (req.body.code == undefined) return res.status(400).send()
+
+    User.findOneAndUpdate(
+        { emailVerification: req.body.code },
+        {$unset: {emailVerification: req.body.code}, active: true, $push: {notification: {title: "Email Verificado!", text: "Agora você pode aproveitar de todos os recursos do site!\nCadastre suas contas no seu perfil e se inscreva nos campeonatos dos seus jogos favoritos!"}}}).then((msg) => {
+        if (msg == null) return res.status(304).send({ code: 304, sucess: false })
+        return res.status(200).send({ code: 200, sucess: true })
+    }).catch(() => {
+        return res.status(400).send({ code: 400, sucess: false })
+    })
+}
+
+exports.reverification = async (req, res) => {
+
+    // header = {sessionID: ''}
+    // body = {
+    //     email: '' (opcional)
+    // }
+
+    User.findById(req.cookies['sessionID']).then(data => {
+        if (data == null || Object.keys(data).length == 0) {
+            res.clearCookie('sessionID', { path: '/' })
+            return res.status(404).send({ code: 404, sucess: false })
+        }
+        if (data.active) return res.status(304).send({ code: 304, sucess: false })
+
+        randomString = crypto.randomBytes(randomBytesLength).toString('hex');
+
+        if (req.body.email) data.email = req.body.email
+        data.emailVerification = randomString
+
+        User.replaceOne({ _id: req.cookies['sessionID']}, data).then(() => {
+            sgMail.send({
+                to: data.email,
+                from: "no-reply@radicalteen.com.br",
+                templateId: templates.emailVerification,
+                dynamic_template_data: {
+                    randomString: randomString
+                }
+            }).then(() => {
+                return res.status(200).send({ code: 200, sucess: true })
+            }).catch(() => {
+                return res.status(400).send({code: 409, sucess: false })
+            })
+        }).catch(() => {
+            return res.status(500).send( {code: 500, sucess: false })
+        })
+
     })
 }
 
@@ -61,13 +141,19 @@ exports.saveAccount = async (req, res) => {
     //     userSteam: '',
     // }
 
-    if (req.body.nome || req.body.usuario || req.body.email || req.body.cel || req.body.senha || req.body.admin) return res.status(401).send()
-    User.findByIdAndUpdate({ _id: req.cookies['sessionID'] }, {$set: req.body}).then(data => {
+    if (req.body.nome || req.body.usuario || req.body.email || req.body.cel || req.body.senha || req.body.admin || req.body.active || req.body.emailVerification) return res.status(401).send()
+    User.findById({ _id: req.cookies['sessionID'] }).then(data => {
         if (data == null || Object.keys(data).length == 0) {
             res.clearCookie('sessionID', { path: '/' })
             return res.status(404).send()
         }
-        return res.status(201).send()
+        if (!data.active) return res.status(401).send()
+
+        User.update({ _id: req.cookies['sessionID']}, {$set: req.body}).then(() => {
+            return res.status(201).send()
+        }).catch(() => {
+            return res.status(400).send()
+        })
     }).catch(() => {
         res.clearCookie('sessionID', { path: '/' })
         return res.status(400).send()
@@ -85,6 +171,7 @@ exports.userInfo = (req, res) => {
             return res.status(404).send()
         } else {
             data.senha = undefined
+            data.emailVerification = undefined
             return res.status(200).send({ code: 200, sucess: true, data })
         }
     }).catch(() => {
@@ -107,6 +194,8 @@ exports.userAccounts = (req, res) => {
             data[0].senha = undefined
             data[0].admin = undefined
             data[0].usuario = undefined
+            data[0].emailVerification = undefined
+            data[0].active = undefined
             return res.status(200).send(data[0])
         }
     }).catch(() => {

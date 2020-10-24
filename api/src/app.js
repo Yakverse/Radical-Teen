@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const helmet = require('helmet');
-const settings = require('./settings')
+const settings = require('./settings');
 
 const app = express();
 
