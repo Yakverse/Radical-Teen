@@ -22,6 +22,7 @@ verifyEmail = async (code) => {
         headers: { "Content-Type": "application/json; charset=UTF-8" }
     }).then(response => {
         if (response.status == 400 || response.status == 304) {
+            document.getElementById('loader').style.display = 'none'
             document.getElementById('main').innerHTML += 
             `<div class="emailContent mensagemInserirComprovante animate__animated animate__slideInDown">
                 <img class="logoRadical" src="img/icon.png">
@@ -30,6 +31,7 @@ verifyEmail = async (code) => {
                 <a href="index.html"><button class="emailButton"><i class="fas fa-home"></i></button></a>
             </div>`
         } else {
+            document.getElementById('loader').style.display = 'none'
             document.getElementById('main').innerHTML += 
             `<div class="emailContent mensagemInserirComprovante animate__animated animate__slideInDown">
                 <img class="logoRadical" src="img/icon.png">
