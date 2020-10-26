@@ -1,0 +1,41 @@
+.header-default{
+    background: $header-color;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 0 1rem #09090b;
+
+    .header-default-content{
+        padding-left: 0;
+        padding-right: 0;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+        align-items: center;
+        height: 100%;
+
+        *{
+            margin-right: 0.5rem;
+            margin-left: 0.5rem;
+            cursor: pointer;
+        }
+
+        .header-default-div-logo{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .header-default-div-user{
+            display: flex;
+            justify-content: space-between;
+            
+            i::before{
+                font-size: 1.5rem;
+                color: white;
+            }
+        }
+    }
+
+    img{
+        height: 1.5rem;
+    }
+}

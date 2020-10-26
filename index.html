@@ -4,62 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Campeonatos Radical Teen</title>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/scrollbar.css">
-    <link rel="stylesheet" href="css/mensagem.css">
-    <link rel="stylesheet" href="css/error.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="img/icon.png" />
     <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/72ea4166fa.js" crossorigin="anonymous"></script>
-    <!-- JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <script src="plugins/fontawesome.js"></script>
+    <link rel="stylesheet" href="plugins/animate.css" />
 </head>
 
-<body>
-    <header>
-        <div class="iconesDiv">
-            <div class="imgIconesDiv">
-                <a href="index.html"><img src="img/rtbrancosembordarecortado.png" class="icones imgIcones"></a>
-                <a href="index.html"><img src="img/rtlogobranco.png" class="icones imgIcones"></a>
-            </div>
+<body class="radical-template">
 
-            <div class="loginIconesDiv" id="logoutOutput">
-                <a href="login.html" id="sessionLink">
-                    <i class="icones faIcones fas fa-user-circle"></i>
-                    <p class="icones" id="sessionName">INICIAR SESSÃO</p>
-                </a>
+    <header class="header-default">
+        <div class="header-default-content">
+            <div class="header-default-div-logo">
+                <img src="utility/img/rtbrancosembordarecortado.png">
+                <!-- <img src="utility/img/rtlogobranco.png"> -->
             </div>
-            <script src="js/autologin.js"></script>
+            <div class="header-default-div-user">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </header>
-    <main>
-        <div class="imagemDiv">
-            <div class="fundo">
-                <div class="fundoJogo" id=fundoJogo></div>
-                <!-- <div class="fundoJogo" id=fundoJogo1></div>
-                <div class="fundoJogo" id=fundoJogo2></div>
-                <div class="fundoJogo" id=fundoJogo3></div> -->
-            </div>
-            
-            <div class="divTituloBotao">
-                <div class="tituloCampeonato">
-                </div>
-                <a href="jogos.html"><button class="botaoInscricao"><span>Inscreva-se</span></button></a>
-            </div>
-        </div>
 
-        <div class="sobreDiv">
-            <div class="sobreTituloDiv">
-                <h2 class="sobreTitulo">CAMPEONATOS RADICAL TEEN</h2>
+    <main class="main-default">
+        <section class="main-default-content">
+            <!-- <div class="main-page-banner"></div> -->
+            <div class="main-default-block">
+                <!-- <h2>Clique aqui</h2> -->
             </div>
-            <p class="sobreTexto">Seja bem-vindo ao mais novo site do Radical Teen. Esta será a plataforma onde realizaremos as inscrições para os nossos campeonatos. Basta clicar no botão acima, escolher o jogo, selecionar o campeonato, fazer sua inscrição, pagar e se divertir.
-                Todos os campeonatos possuem taxa de inscrição e premiação. (Os fundos arrecadados serão direcionados para a manutenção do mídia do Radical Teen).</p>
-        </div>
+        </section>
     </main>
-    <!-- <footer></footer> -->
-    <script src="js/script.js"></script>
+
+    <footer class="footer-default">
+        <div class="footer-default-content">
+
+        </div>
+    </footer>
 </body>
 
 </html>
