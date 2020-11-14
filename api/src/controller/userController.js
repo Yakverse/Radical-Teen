@@ -83,6 +83,9 @@ exports.reverification = async (req, res) => {
             return res.status(500).send( {code: 500, sucess: false })
         })
 
+    }).catch(() => {
+        res.clearCookie('sessionID', { path: '/' })
+        return res.status(400).send({ code: 400, sucess: false })
     })
 }
 

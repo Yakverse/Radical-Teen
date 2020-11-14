@@ -13,6 +13,11 @@ exports.savePicture = async (req, res) => {
     const { originalname: name, size, key, location: url } = req.file;
 
     User.findById(req.cookies['sessionID']).then(data => {
+        if (data == null || Object.keys(data).length == 0) {
+            res.clearCookie('sessionID', { path: '/' })
+            return res.status(404).send({ code: 404, sucess: false })
+        }
+
         if (data.profilePicture){
             s3.deleteObject({
                 Bucket: process.env.BUCKET_NAME,
@@ -26,6 +31,9 @@ exports.savePicture = async (req, res) => {
         }).catch(() => {
             return res.status(500).send({ code: 500, sucess: false })
         })
+    }).catch(() => {
+        res.clearCookie('sessionID', { path: '/' })
+        return res.status(400).send({ code: 400, sucess: false })
     })
 }
 
@@ -34,6 +42,11 @@ exports.deletePicture = async (req, res) => {
     // header = {sessionID: ''}
 
     User.findById(req.cookies['sessionID']).then(data => {
+        if (data == null || Object.keys(data).length == 0) {
+            res.clearCookie('sessionID', { path: '/' })
+            return res.status(404).send({ code: 404, sucess: false })
+        }
+
         if(data.profilePicture) {
             s3.deleteObject({
                 Bucket: process.env.BUCKET_NAME,
@@ -46,5 +59,8 @@ exports.deletePicture = async (req, res) => {
                 return res.status(500).send()
             })
         } else return res.status(304).send()       
+    }).catch(() => {
+        res.clearCookie('sessionID', { path: '/' })
+        return res.status(400).send({ code: 400, sucess: false })
     })
 }
