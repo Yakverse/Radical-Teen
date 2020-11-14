@@ -10,7 +10,9 @@ router.post('/user/change-password', userController.changePassword);
 router.post('/user/info', userController.userInfo);
 router.post('/logout', userController.logout);
 router.post('/verification', userController.emailVerification);
-router.post('/reverification', userController.reverification)
+router.post('/reverification', userController.reverification);
+router.post('/forgot-password', userController.forgotPassword);
+router.post('/confirm-password', userController.confirmPassword);
 
 router.put('/user/account', userController.saveAccount);
 

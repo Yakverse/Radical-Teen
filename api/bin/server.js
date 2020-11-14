@@ -1,8 +1,8 @@
-const app = require('../src/app');
-const https = require('https');
-const fs = require('fs');
-const debug = require('debug')('api:server');
-const express = require('express');
+import 'dotenv/config';
+import app from '../src/app'
+import https from 'https'
+import fs from 'fs'
+import express from 'express'
 const port = 443;
 
 var options = {

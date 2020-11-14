@@ -1,8 +1,7 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose'
 const User = mongoose.model('User');
 const Camp = mongoose.model('Camp');
-const sgMail = require('../mail/sgMail');
-const templates = require('../mail/templates.json')
+import Queue from '../lib/Queue'
 
 exports.createCamp = async (req, res) => {
 
@@ -27,20 +26,13 @@ exports.createCamp = async (req, res) => {
             }).catch(() => {
                 return res.status(500).send({ code: 500, sucess: false})
             })
-            sgMail.send({
-                to: listaEmails,
-                from: "no-reply@radicalteen.com.br",
-                templateId: templates.newCamp,
-                dynamicTemplateData: {
-                    gameName: req.body.campType.charAt(0).toUpperCase() + req.body.campType.slice(1),
-                    campLink: `https://radicalteen.com.br/campeonato.html?j=${req.body.campType}&id=${message.id}`
-                }
-            }).then(() => {
-                User.updateMany({}, {$push: {notification: {title: `Um campeonato de ${req.body.campType.charAt(0).toUpperCase() + req.body.campType.slice(1)} foi criado!`, text: `Se inscreva agora mesmo! https://radicalteen.com.br/campeonato.html?j=${req.body.campType}&id=${message.id}`}}})
-                return res.status(201).send({ code: 201, sucess: true, id: message.id })
-            }).catch(() => {
-                return res.status(500).send({ code: 500, sucess: false})
+
+            listaEmails.forEach(email => {
+                Queue.add('NewCampMail', { email: email, gameName: req.body.campType.charAt(0).toUpperCase() + req.body.campType.slice(1), campLink: `https://radicalteen.com.br/campeonato.html?j=${req.body.campType}&id=${message.id}` })
             })
+
+            User.updateMany({}, {$push: {notification: {title: `Um campeonato de ${req.body.campType.charAt(0).toUpperCase() + req.body.campType.slice(1)} foi criado!`, text: `Se inscreva agora mesmo! https://radicalteen.com.br/campeonato.html?j=${req.body.campType}&id=${message.id}`}}})
+            return res.status(201).send({ code: 201, sucess: true, id: message.id })
         }).catch(() => {
             return res.status(400).send({ code: 400, sucess: false, error: error })
         })
@@ -84,19 +76,9 @@ exports.inscriçãoCamp = (req, res) => {
             if (!find) {
                 dataCamp['listaPlayers'].push({ id: req.cookies['sessionID'], status: false, comprovante: req.body.comprovante })
                 Camp.replaceOne({ _id: req.body.campID }, dataCamp).then(() => {
-                    sgMail.send({
-                        to: dataUser.email,
-                        from: "no-reply@radicalteen.com.br",
-                        templateId: templates.paymentReview,
-                        dynamicTemplateData: {
-                            gameName: dataCamp.campType.charAt(0).toUpperCase() + dataCamp.campType.slice(1)
-                        }
-                    }).then(() => {
-                        User.findByIdAndUpdate(req.cookies['sessionID'], {$push: {notification: {title: "Seu pagamento está em análise!", text: `O pagamento do campeonato ${dataCamp.nome} está em análise`}}})
-                        return res.status(200).send({ code: 200, sucess: true })
-                    }).catch(() => {
-                        return res.status(500).send({ code: 500, sucess: false })
-                    })
+                    Queue.add('PaymentReviewMail', { email: dataUser.email, gameName: dataCamp.campType.charAt(0).toUpperCase() + dataCamp.campType.slice(1) })
+                    User.findByIdAndUpdate(req.cookies['sessionID'], {$push: {notification: {title: "Seu pagamento está em análise!", text: `O pagamento do campeonato ${dataCamp.nome} está em análise`}}})
+                    return res.status(200).send({ code: 200, sucess: true })
                 }).catch(() => {
                     return res.status(500).send({ code: 500, sucess: false })
                 })
@@ -140,19 +122,9 @@ exports.editStatus = (req, res) => {
                 });
                 if (!find) return res.status(404).send()
                 Camp.replaceOne({ _id: req.body.campID }, dataCamp).then(() => {
-                    sgMail.send({
-                        to: dataUser.email,
-                        from: "no-reply@radicalteen.com.br",
-                        templateId: templates.paymentApproved,
-                        dynamicTemplateData: {
-                            gameName: dataCamp.campType.charAt(0).toUpperCase() + dataCamp.campType.slice(1)
-                        }
-                    }).then(() => {
-                        User.findByIdAndUpdate(req.body.userID, {$push: {notification: {title: "Seu pagamento foi aprovado!", text: `O pagamento do campeonato ${dataCamp.nome} foi aprovado!`}}})
-                        return res.status(200).send()
-                    }).catch(() => {
-                        return res.status(500).send()
-                    })
+                    Queue.add('PaymentApprovedMail', { email: dataUser.email, gameName: dataCamp.campType.charAt(0).toUpperCase() + dataCamp.campType.slice(1) })
+                    User.findByIdAndUpdate(req.body.userID, {$push: {notification: {title: "Seu pagamento foi aprovado!", text: `O pagamento do campeonato ${dataCamp.nome} foi aprovado!`}}})
+                    return res.status(200).send()
                 }).catch(() => {
                     return res.status(500).send()
                 })
@@ -198,20 +170,9 @@ exports.deleteUser = (req, res) => {
                 });
                 if (!find) return res.status(404).send()
                 Camp.replaceOne({ _id: req.body.campID }, dataCamp).then(() => {
-                    sgMail.send({
-                        to: dataUser.email,
-                        from: "no-reply@radicalteen.com.br",
-                        templateId: templates.paymentRefused,
-                        dynamicTemplateData: {
-                            gameName: dataCamp.campType.charAt(0).toUpperCase() + dataCamp.campType.slice(1),
-                            campLink: `https://radicalteen.com.br/campeonato.html?j=${dataCamp.campType}&id=${dataCamp.id}`
-                        }
-                    }).then(() => {
-                        User.findByIdAndUpdate(req.body.userID, {$push: {notification: {title: "Seu pagamento foi recusado.", text: `O pagamento do campeonato ${dataCamp.nome} foi recusado, tente se inscrever novamente ou entre em contato com um administrador.`}}})
-                        return res.status(200).send()
-                    }).catch(() => {
-                        return res.status(500).send()
-                    })
+                    Queue.add('PaymentRefusedMail', { email: dataUser.email, gameName: dataCamp.campType.charAt(0).toUpperCase() + dataCamp.campType.slice(1), campLink: `https://radicalteen.com.br/campeonato.html?j=${dataCamp.campType}&id=${dataCamp.id}` })
+                    User.findByIdAndUpdate(req.body.userID, {$push: {notification: {title: "Seu pagamento foi recusado.", text: `O pagamento do campeonato ${dataCamp.nome} foi recusado, tente se inscrever novamente ou entre em contato com um administrador.`}}})
+                    return res.status(200).send()
                 }).catch(() => {
                     return res.status(500).send()
                 })

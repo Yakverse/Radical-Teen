@@ -1,4 +1,0 @@
-module.exports = {
-    connectionStrig: "", //MongoDB
-    SMPTKey: "" //SMPT API key
-}

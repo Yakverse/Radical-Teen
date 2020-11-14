@@ -1,12 +1,15 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const helmet = require('helmet');
-const settings = require('./settings');
+import 'dotenv/config';
+import express from 'express'
+import bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
+import mongoose from 'mongoose'
+import cors from 'cors'
+import helmet from 'helmet'
+import BullBoard from 'bull-board'
+import Queue from './lib/Queue'
 
 const app = express();
+BullBoard.setQueues(Queue.queues.map(queue => queue.bull));
 
 //Middleware CORS
 app.use((req, res, next) => {
@@ -31,7 +34,7 @@ const router = express.Router();
 
 // Connect DB
 mongoose.set('useCreateIndex', true);
-if (!process.env.NODE_ENV) mongoose.connect(settings.connectionStrig, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
+if (!process.env.NODE_ENV) mongoose.connect(process.env.MONGO_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
 
 //Models
 const User = require('./models/userModel');
@@ -40,7 +43,9 @@ const Camp = require('./models/campModel');
 //Rotes
 const userRoute = require('./routes/userRoutes');
 const campRoute = require('./routes/campRoutes');
+const profilePictureRoute = require('./routes/profilePictureRoutes');
 
+app.use('/queues', BullBoard.UI);
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -48,5 +53,6 @@ app.unsubscribe(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', userRoute);
 app.use('/', campRoute);
+app.use('/', profilePictureRoute);
 
 module.exports = app;

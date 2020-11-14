@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const notificationSchema = require('./notificationModel')
+const notificationSchema = require('./notificationModel');
+const profilePictureSchema = require('./profilePictureModel');
 
 const schema = new Schema({
     nome: {
@@ -26,6 +27,18 @@ const schema = new Schema({
         type: String,
         required: false,
         default: ''
+    },
+    emailVerificationExpires: {
+        type: Date,
+        required: true
+    },
+    passwordReset: {
+        type: String,
+        required: false
+    },
+    passwordResetExpires: {
+        type: Date,
+        required: false
     },
     cel: {
         type: String,
@@ -65,7 +78,8 @@ const schema = new Schema({
         type: String,
         required: false
     },
-    notification: [notificationSchema]
+    notification: [notificationSchema],
+    profilePicture: profilePictureSchema
 });
 
 module.exports = mongoose.model('User', schema);

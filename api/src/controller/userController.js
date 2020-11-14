@@ -1,9 +1,8 @@
-const mongoose = require('mongoose');
-const auth = require('../auth/auth');
+import mongoose from 'mongoose'
+import auth from '../auth/auth'
+import Queue from '../lib/Queue'
 const User = mongoose.model('User');
-const sgMail = require('../mail/sgMail');
-const templates = require('../mail/templates.json')
-const crypto = require('crypto');
+import crypto from 'crypto'
 
 const randomBytesLength = 32;
 
@@ -17,9 +16,10 @@ exports.signin = async (req, res) => {
     //     senha = '',
     // }
 
-    randomString = crypto.randomBytes(randomBytesLength).toString('hex');
+    var randomString = crypto.randomBytes(randomBytesLength).toString('hex');
 
     req.body.emailVerification = randomString;
+    req.body.emailVerificationExpires = Date.now() + 7200000; //2h
     req.body.senha = auth.generateHash(req.body.senha)
     req.body.notification = {
         title: "Bem-Vindo(a) ao Radical Teen!",
@@ -27,21 +27,12 @@ exports.signin = async (req, res) => {
     }
 
     new User(req.body).save().then(message => {
-        sgMail.send({
-            to: req.body.email,
-            from: "no-reply@radicalteen.com.br",
-            templateId: templates.emailVerification,
-            dynamic_template_data: {
-                randomString: randomString
-            }
-        }).then(() => {
-            var date = new Date();
-            date.setDate(date.getDate() + 2);
-            res.setHeader('Set-Cookie', `sessionID=${message.id};expires=${date.toUTCString()};path=/;HttpOnly;SameSite=None;Secure`)
-            return res.status(200).send({ code: 200, sucess: true, user: message.usuario })
-        }).catch(() => {
-            return res.status(400).send({code: 409, sucess: false})
-        })
+        Queue.add('RegistrationMail', {email: req.body.email, randomString: randomString})
+
+        var date = new Date();
+        date.setDate(date.getDate() + 2);
+        res.setHeader('Set-Cookie', `sessionID=${message.id};expires=${date.toUTCString()};path=/;HttpOnly;SameSite=None;Secure`)
+        return res.status(200).send({ code: 200, sucess: true, user: message.usuario })
     }).catch(() => {
         return res.status(409).send({ code: 409, sucess: false})
     })
@@ -50,14 +41,14 @@ exports.signin = async (req, res) => {
 exports.emailVerification = async (req, res) => {
 
     // body = {
-    //     code = ''
+    //     token = ''
     // }
 
-    if (req.body.code == undefined) return res.status(400).send()
+    if (req.body.token == undefined) return res.status(400).send()
 
     User.findOneAndUpdate(
-        { emailVerification: req.body.code },
-        {$unset: {emailVerification: req.body.code}, active: true, $push: {notification: {title: "Email Verificado!", text: "Agora você pode aproveitar de todos os recursos do site!\nCadastre suas contas no seu perfil e se inscreva nos campeonatos dos seus jogos favoritos!"}}}).then((msg) => {
+        { emailVerification: req.body.token, emailVerificationExpires: { $gt: Date.now() } },
+        { $unset: {emailVerification: req.body.token, emailVerificationExpires: ''}, active: true, $push: {notification: {title: "Email Verificado!", text: "Agora você pode aproveitar de todos os recursos do site!\nCadastre suas contas no seu perfil e se inscreva nos campeonatos dos seus jogos favoritos!"}}}).then((msg) => {
         if (msg == null) return res.status(304).send({ code: 304, sucess: false })
         return res.status(200).send({ code: 200, sucess: true })
     }).catch(() => {
@@ -83,20 +74,11 @@ exports.reverification = async (req, res) => {
 
         if (req.body.email) data.email = req.body.email
         data.emailVerification = randomString
+        data.emailVerificationExpires = Date.now() + 7200000; //1h
 
         User.replaceOne({ _id: req.cookies['sessionID']}, data).then(() => {
-            sgMail.send({
-                to: data.email,
-                from: "no-reply@radicalteen.com.br",
-                templateId: templates.emailVerification,
-                dynamic_template_data: {
-                    randomString: randomString
-                }
-            }).then(() => {
-                return res.status(200).send({ code: 200, sucess: true })
-            }).catch(() => {
-                return res.status(400).send({code: 409, sucess: false })
-            })
+            Queue.add('RegistrationMail', {email: data.email, randomString: randomString})
+            return res.status(200).send({ code: 200, sucess: true })
         }).catch(() => {
             return res.status(500).send( {code: 500, sucess: false })
         })
@@ -118,7 +100,7 @@ exports.login = async (req, res) => {
         var date = new Date();
         date.setDate(date.getDate() + 2);
         res.setHeader('Set-Cookie', `sessionID=${data[0]._id};expires=${date.toUTCString()};path=/;HttpOnly;SameSite=None;Secure`)
-        return res.status(200).send({ code: 200, sucess: true, nome: data[0].usuario })
+        return res.status(200).send({ code: 200, sucess: true, nome: data[0].usuario, active: data[0].active })
     }).catch(() => {
         return res.status(400).send({ code: 400, sucess: false })
     })
@@ -228,6 +210,51 @@ exports.changePassword = (req, res) => {
         }
     }).catch(() => {
         res.clearCookie('sessionID', { path: '/' })
+        return res.status(400).send({ code: 400, sucess: false })
+    })
+}
+
+exports.forgotPassword = (req, res) => {
+
+    // body = {
+    //     email: ''
+    // }
+
+    if (req.body.email == undefined) return res.status(400).send()
+    User.findOne({ email: req.body.email }).then(data => {
+        if (data == null || Object.keys(data).length == 0) return res.status(404).send()
+
+        var randomString = crypto.randomBytes(randomBytesLength).toString('hex');
+
+        data.passwordReset = randomString;
+        data.passwordResetExpires = Date.now() + 3600000; //1h
+
+        User.findOneAndUpdate({ email: req.body.email }, data).then(() => {
+            Queue.add('ForgotPasswordMail', {email: req.body.email, randomString: randomString})
+            return res.status(200).send({ code: 200, sucess: true })
+        }).catch(() => {
+            return res.status(500).send( {code: 500, sucess: false })
+        })
+    }).catch(() => {
+        return res.status(400).send( {code: 400, sucess: false })
+    })
+}
+
+exports.confirmPassword = (req, res) => {
+
+    // body = {
+    //     token: '',
+    //     senhaNova: ''
+    // }
+
+    var newPassword = auth.generateHash(req.body.senhaNova)
+
+    User.findOneAndUpdate({ passwordReset: req.body.token, passwordResetExpires: { $gt: Date.now() } },
+    { $unset: {passwordReset: req.body.token, passwordResetExpires: ''}, senha: newPassword, $push: { notification: { title: "Senha alterado com sucesso!", text: "Sua senha foi alterado recetemente com sucesso!" } } }).then(msg => {
+        if (msg == null) return res.status(304).send({ code: 304, sucess: false })
+        res.clearCookie('sessionID', { path: '/' })
+        return res.status(200).send({ code: 200, sucess: true })
+    }).catch(() => {
         return res.status(400).send({ code: 400, sucess: false })
     })
 }
