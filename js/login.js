@@ -21,6 +21,7 @@ form.addEventListener('submit', async (e) => {
     await login.json().then(data => {
         if (data.sucess) {
             sessionStorage.setItem('sessionName', data.nome)
+            sessionStorage.setItem('activeEmail', data.active || 'false')
             window.location.href = document.referrer || 'index.html'
         } else if (data.code == 401) {
             $("#toast").toast({

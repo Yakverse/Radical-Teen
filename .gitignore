@@ -6,3 +6,4 @@ settings.js
 *.key
 globalConfig.json
 .vscode/
+.env

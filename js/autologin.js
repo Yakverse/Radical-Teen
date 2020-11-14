@@ -25,7 +25,7 @@ reverification = async () => {
 
 autoLogin = async () => {
 
-    if (sessionStorage.getItem('sessionName') && sessionStorage.getItem('activeEmail')) {
+    if (sessionStorage.getItem('sessionName') && sessionStorage.getItem('activeEmail') != 'false') {
         document.getElementById('sessionName').innerHTML = sessionStorage.getItem('sessionName').replace(/\"/g, "")
         document.getElementById('sessionLink').href = `perfil.html?p=${sessionStorage.getItem('sessionName').replace(/\"/g, "")}`
         document.getElementById('logoutOutput').innerHTML += `<i class="icones faIcones logout fas fa-sign-out-alt" onclick=logout()></i>`
