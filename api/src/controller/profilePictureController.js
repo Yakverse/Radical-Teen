@@ -1,7 +1,9 @@
 import mongoose from 'mongoose';
 import aws from 'aws-sdk';
+import { basename, extname } from 'path';
 const User = mongoose.model('User');
 const s3 = new aws.S3()
+import Queue from '../lib/Queue'
 
 exports.savePicture = async (req, res) => {
 
@@ -10,7 +12,7 @@ exports.savePicture = async (req, res) => {
     //     file: base64 file
     // }
 
-    const { originalname: name, size, key, location: url } = req.file;
+    var { originalname: name, size, key, location: url } = req.file;
 
     User.findById(req.cookies['sessionID']).then(data => {
         if (data == null || Object.keys(data).length == 0) {
@@ -29,7 +31,11 @@ exports.savePicture = async (req, res) => {
             }).promise()
         }
 
+        Queue.add('CompressImage', { key })
+        key = `${basename(key, extname(key))}.jpeg`
+        url = `${url.substring(0, url.length - (url.split('.')[url.split('.').length - 1]).length)}jpeg`
         data.profilePicture = { name, size, key, url }
+
         User.replaceOne({ _id: req.cookies['sessionID'] }, data).then(() => {
             return res.status(200).send({ code: 200, sucess: true })
         }).catch(() => {
